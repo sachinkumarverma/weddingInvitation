@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-cormorant: 'Cormorant Garamond', serif;
+    --font-cinzel: 'Cinzel', serif;
+    --font-cinzel-decorative: 'Cinzel Decorative', serif;
+    --font-script: 'Great Vibes', cursive;
+    --font-sans: 'Montserrat', sans-serif;
+
+    /* Current / Dark Royal Theme (Default) */
+    --bg-primary: #0a0305;
+    --bg-primary-dark: #0f0709;
+    --bg-secondary: #1a0810;
+    --bg-card: #200a12;
+    --bg-card-dark: #1b050b;
+    --bg-card-elevated: #250d15;
+    
+    --text-primary: #f3e5ab;
+    --text-secondary: #d8bca0;
+    --text-tertiary: #b3957a;
+    
+    --accent-gold: #d4af37;
+    --accent-gold-light: #ffd700;
+    
+    --brand-crimson: #a81c38;
+    --brand-crimson-dark: #8b152b;
+  }
+
+  [data-theme="light"] {
+    /* Light Royal / Ivory Theme */
+    --bg-primary: #fcfbf8;
+    --bg-primary-dark: #f5f3eb;
+    --bg-secondary: #f0ebe1;
+    --bg-card: #ffffff;
+    --bg-card-dark: #fcfbf8;
+    --bg-card-elevated: #ffffff;
+    
+    --text-primary: #2d1820;
+    --text-secondary: #5c434a;
+    --text-tertiary: #8b737a;
+    
+    --accent-gold: #b38b1d;
+    --accent-gold-light: #cca32d;
+    
+    --brand-crimson: #a81c38;
+    --brand-crimson-dark: #8b152b;
+  }
+  
+  [data-theme="rose"] {
+    /* Rose Gold Theme */
+    --bg-primary: #1c1114;
+    --bg-primary-dark: #140b0e;
+    --bg-secondary: #26171b;
+    --bg-card: #2e1a20;
+    --bg-card-dark: #241318;
+    --bg-card-elevated: #362027;
+    
+    --text-primary: #ffe4e6;
+    --text-secondary: #fecdd3;
+    --text-tertiary: #fda4af;
+    
+    --accent-gold: #f43f5e;
+    --accent-gold-light: #fb7185;
+    
+    --brand-crimson: #9f1239;
+    --brand-crimson-dark: #881337;
+  }
+}
+
+.font-serif-luxury {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+.font-cinzel {
+  font-family: var(--font-cinzel), serif;
+}
+
+.font-cinzel-dec {
+  font-family: var(--font-cinzel-decorative), serif;
+}
+
+.font-playfair {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+.font-script {
+  font-family: var(--font-script), cursive;
+}
+
+.font-sans-clean {
+  font-family: var(--font-sans), sans-serif;
+}
+
+/* Luxury Metallic Gold Foil Gradients & Shimmers */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #fff3b0 0%, var(--accent-gold) 35%, #aa7c11 65%, var(--accent-gold-light) 85%, #f9e29c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-light {
+  background: linear-gradient(135deg, #ffffff 0%, #f7e6b5 40%, #dfb758 75%, #fae69e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-rose-gold {
+  background: linear-gradient(135deg, #ffe5e5 0%, #e2a76f 40%, #c97d60 70%, #ffd0c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gold-metallic {
+  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--text-primary) 30%, #aa7c11 70%, var(--accent-gold) 100%);
+}
+
+.border-gold-subtle {
+  border-color: rgba(212, 175, 55, 0.28);
+}
+
+.border-gold-glow {
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15), inset 0 0 10px rgba(212, 175, 55, 0.05);
+}
+
+.gold-shadow {
+  box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.25);
+}
+
+.luxury-card {
+  background: rgba(25, 12, 16, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.luxury-card-hover {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-card-hover:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(212, 175, 55, 0.15);
+}
+
+/* Paper and Ornamental Texture overlays */
+.bg-noise {
+  background-image: radial-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.bg-mandala-pattern {
+  background-image: radial-gradient(circle at center, rgba(212, 175, 55, 0.08) 0, transparent 70%);
+}
+
+/* Animations */
+@keyframes shimmerGold {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmerGold 6s linear infinite;
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+.animate-gentle-float {
+  animation: gentleFloat 6s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Hide scrollbar across all browsers */
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
