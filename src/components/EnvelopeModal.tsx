@@ -264,7 +264,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
         /* ========================================================================= */
         <>
           <div
-            className="relative w-full max-w-sm sm:max-w-md md:max-w-lg aspect-[4/3] sm:aspect-[1.3/1] perspective-1000 my-auto"
+            className="relative w-full max-w-sm sm:max-w-md md:max-w-lg aspect-[1.1/1] sm:aspect-[1.3/1] perspective-1000 my-auto px-2 sm:px-0"
             onClick={(e) => {
               e.stopPropagation();
               handleOpenEnvelope();
