@@ -7,11 +7,21 @@ export const MusicPlayer: React.FC<{ autoStartPrompt?: boolean }> = ({ autoStart
   const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
+    // Sync UI with actual engine state
+    const syncTimer = setInterval(() => {
+      setIsPlaying(sound.getMusicStatus());
+    }, 200);
+
     if (autoStartPrompt) {
       setShowTooltip(true);
       const timer = setTimeout(() => setShowTooltip(false), 6000);
-      return () => clearTimeout(timer);
+      return () => {
+        clearTimeout(timer);
+        clearInterval(syncTimer);
+      };
     }
+
+    return () => clearInterval(syncTimer);
   }, [autoStartPrompt]);
 
   const togglePlayback = () => {
@@ -56,8 +66,8 @@ export const MusicPlayer: React.FC<{ autoStartPrompt?: boolean }> = ({ autoStart
             <span className="w-0.5 bg-[var(--text-primary)] rounded-full animate-[equalizer_1.2s_ease-in-out_infinite_0.1s]" />
           </div>
         ) : (
-          <div className="relative">
-            <Music className="w-5 h-5 text-[var(--accent-gold)]/80 group-hover:text-[var(--accent-gold-light)] transition-colors" />
+          <div className="relative flex items-center justify-center">
+            <VolumeX className="w-5 h-5 text-[var(--text-tertiary)] group-hover:text-[var(--text-secondary)] transition-colors opacity-80" />
           </div>
         )}
       </button>

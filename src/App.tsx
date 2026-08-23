@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Mail, Calendar, MapPin, Sparkles } from 'lucide-react';
+import { Mail, Calendar, MapPin } from 'lucide-react';
 import { weddingData } from './data/weddingData';
-import { sound } from './utils/soundEngine';
-
 import { FloatingParticles } from './components/FloatingParticles';
 import { CustomCursor } from './components/CustomCursor';
 import { MusicPlayer } from './components/MusicPlayer';
@@ -18,9 +16,10 @@ import { FamilySection } from './components/FamilySection';
 import { ShareSection } from './components/ShareSection';
 import { FinalSection } from './components/FinalSection';
 import { EasterEggModal } from './components/EasterEggs';
-import { ThemeSwitcher } from './components/ThemeSwitcher';
+import { useSecurity } from './utils/useSecurity';
 
 export default function App() {
+  useSecurity();
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(true);
   const [hasOpenedBefore, setHasOpenedBefore] = useState(false);
   const [isEasterEggOpen, setIsEasterEggOpen] = useState(false);
@@ -58,7 +57,6 @@ export default function App() {
     <div
       className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-secondary)] font-sans-clean relative overflow-x-hidden selection:bg-[var(--accent-gold)]/30 selection:text-[#ffffff]"
     >
-      <ThemeSwitcher />
       {/* Desktop Luxury Follow Cursor */}
       <CustomCursor />
 

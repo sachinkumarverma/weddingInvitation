@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { X, ChevronLeft, ChevronRight, Maximize2, Heart } from 'lucide-react';
-import { GalleryPhoto, WeddingConfig } from '../types';
+import { createPortal } from 'react-dom';
+import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import { WeddingConfig } from '../types';
 import { RoyalCorner, GoldDivider } from './Ornaments';
 
 export const GallerySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) => {
@@ -116,8 +117,8 @@ export const GallerySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }
         })}
       </div>
 
-      {/* Full-screen Lightbox Modal */}
-      {selectedPhotoIndex !== null && (
+      {/* Full-screen Lightbox Modal via Portal */}
+      {selectedPhotoIndex !== null && createPortal(
         <div 
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-2xl p-4 animate-in fade-in duration-200"
           onClick={() => setSelectedPhotoIndex(null)}
@@ -186,7 +187,8 @@ export const GallerySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   );

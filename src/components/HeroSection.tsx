@@ -118,7 +118,7 @@ export const HeroSection: React.FC<{
         type="button"
         onClick={onScrollToEvents}
         aria-label="Scroll to explore invitation"
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-[var(--accent-gold)]/80 hover:text-[var(--accent-gold)] transition-colors cursor-pointer group"
+        className="relative z-20 mt-12 sm:mt-16 flex flex-col items-center gap-1 text-[var(--accent-gold)]/80 hover:text-[var(--accent-gold)] transition-colors cursor-pointer group"
       >
         <span className="text-[10px] font-cinzel tracking-[0.25em] uppercase opacity-75 group-hover:opacity-100">
           Scroll to Explore

@@ -28,45 +28,6 @@
     --brand-crimson-dark: #8b152b;
   }
 
-  [data-theme="light"] {
-    /* Light Royal / Ivory Theme */
-    --bg-primary: #fcfbf8;
-    --bg-primary-dark: #f5f3eb;
-    --bg-secondary: #f0ebe1;
-    --bg-card: #ffffff;
-    --bg-card-dark: #fcfbf8;
-    --bg-card-elevated: #ffffff;
-    
-    --text-primary: #2d1820;
-    --text-secondary: #5c434a;
-    --text-tertiary: #8b737a;
-    
-    --accent-gold: #b38b1d;
-    --accent-gold-light: #cca32d;
-    
-    --brand-crimson: #a81c38;
-    --brand-crimson-dark: #8b152b;
-  }
-  
-  [data-theme="rose"] {
-    /* Rose Gold Theme */
-    --bg-primary: #1c1114;
-    --bg-primary-dark: #140b0e;
-    --bg-secondary: #26171b;
-    --bg-card: #2e1a20;
-    --bg-card-dark: #241318;
-    --bg-card-elevated: #362027;
-    
-    --text-primary: #ffe4e6;
-    --text-secondary: #fecdd3;
-    --text-tertiary: #fda4af;
-    
-    --accent-gold: #f43f5e;
-    --accent-gold-light: #fb7185;
-    
-    --brand-crimson: #9f1239;
-    --brand-crimson-dark: #881337;
-  }
 }
 
 .font-serif-luxury {
@@ -188,6 +149,15 @@
 * {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  -webkit-user-select: none; /* Safari */
+  user-select: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 85%; /* Scales all rem-based Tailwind sizes down to exactly 85% */
+  }
 }
 
 *::-webkit-scrollbar {
