@@ -39,6 +39,13 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
 
   const handleDismiss = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
+
+    // If already visited, just close instantly without door animation
+    if (hasOpenedBefore) {
+      onOpened();
+      return;
+    }
+
     setIsDismissing(true);
     // Play a gentle magical chime for entering the site
     sound.playCelebrationChimes();
@@ -142,7 +149,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
         /* ========================================================================= */
         <div
           onClick={(e) => e.stopPropagation()}
-          className="relative w-full max-w-sm sm:max-w-md my-auto rounded-3xl p-5 sm:p-7 text-center select-none shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_40px_rgba(212,175,55,0.25)] border-2 border-[var(--accent-gold)]/70 animate-scale-in"
+          className="relative w-full max-w-sm sm:max-w-md my-auto rounded-3xl p-4 sm:p-6 text-center select-none shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_40px_rgba(212,175,55,0.25)] border-2 border-[var(--accent-gold)]/70 animate-scale-in"
           style={{
             background: 'linear-gradient(135deg, #fffcf5 0%, #fbedcb 45%, #ebd193 100%)',
             boxShadow: '0 25px 60px rgba(0,0,0,0.8), inset 0 0 40px rgba(212,175,55,0.2)',
@@ -155,14 +162,14 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
           <RoyalCorner position="bottom-right" color="var(--brand-crimson-dark)" />
 
           {/* Inner Decorative Double Border */}
-          <div className="border border-[#aa7c11]/40 rounded-2xl p-4 sm:p-6 flex flex-col justify-between">
+          <div className="border border-[#aa7c11]/40 rounded-2xl p-3 sm:p-5 flex flex-col justify-between">
             {/* Auspicious Shloka */}
             <p className="font-serif-luxury text-[11px] sm:text-xs text-[var(--brand-crimson-dark)] tracking-widest uppercase font-bold mb-2">
               ॥ श्री गणेशाय नमः ॥
             </p>
 
             {/* Monogram Seal Badge */}
-            <div className="flex justify-center my-1.5">
+            <div className="flex justify-center my-1">
               <WaxSealBadge
                 initials={wedding.couple.initials}
                 city={wedding.venue.city}
@@ -171,19 +178,19 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
             </div>
 
             {/* Family Invocation */}
-            <p className="font-script text-xl sm:text-2xl text-[var(--brand-crimson-dark)] mt-1.5 mb-1 leading-tight">
+            <p className="font-script text-lg sm:text-2xl text-[var(--brand-crimson-dark)] mt-0.5 mb-0.5 leading-tight">
               Dubey & Pathak Family
             </p>
-            <p className="text-[10px] sm:text-[11px] font-cinzel font-semibold tracking-[0.22em] text-[#6b1424] uppercase mb-3">
+            <p className="text-[9px] sm:text-[11px] font-cinzel font-semibold tracking-[0.22em] text-[#6b1424] uppercase mb-1">
               Cordially invite you to celebrate the wedding of
             </p>
 
-            {/* Couple Names */}
-            <div className="my-2 py-1">
+            {/* Venue */}
+            <div className="my-1 pt-1.5 pb-2">
               <h1 className="font-cinzel-dec text-2xl sm:text-3xl font-bold tracking-wider text-[#3d0813] leading-none">
                 SATYAM
               </h1>
-              <div className="font-script text-2xl text-[var(--brand-crimson)] my-1 leading-tight">
+              <div className="font-script text-xl sm:text-2xl text-[var(--brand-crimson)] my-0.5 leading-tight">
                 weds
               </div>
               <h1 className="font-cinzel-dec text-2xl sm:text-3xl font-bold tracking-wider text-[#3d0813] leading-none">
@@ -191,10 +198,10 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
               </h1>
             </div>
 
-            <GoldDivider variant="lotus" className="w-full max-w-xs mx-auto my-2.5" />
+            <GoldDivider variant="lotus" className="w-full max-w-xs mx-auto my-1.5" />
 
             {/* Date and Time */}
-            <div className="my-2 py-2 border-y border-[#aa7c11]/30">
+            <div className="my-1.5 py-1.5 border-y border-[#aa7c11]/30">
               <div className="font-cinzel text-xs sm:text-sm font-bold text-[var(--brand-crimson-dark)] tracking-widest uppercase">
                 Wednesday • 02 December 2026
               </div>
@@ -239,12 +246,12 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
             </div>
 
             {/* Single Close & View Website button */}
-            <div className="mt-3.5 pt-2.5 border-t border-[#aa7c11]/25 flex items-center justify-center">
+            <div className="mt-2.5 pt-2 border-t border-[#aa7c11]/25 flex items-center justify-center">
               <button
                 type="button"
                 id="opened-card-close-btn"
                 onClick={handleDismiss}
-                className="w-full py-2.5 px-5 rounded-full bg-gradient-to-r from-[var(--brand-crimson-dark)] via-[var(--brand-crimson)] to-[var(--brand-crimson-dark)] text-[#ffffff] hover:scale-102 transition-all font-cinzel text-xs font-bold uppercase tracking-widest shadow-sm cursor-pointer"
+                className="w-full py-2 px-5 rounded-full bg-gradient-to-r from-[var(--brand-crimson-dark)] via-[var(--brand-crimson)] to-[var(--brand-crimson-dark)] text-[#ffffff] hover:scale-102 transition-all font-cinzel text-[11px] sm:text-xs font-bold uppercase tracking-widest shadow-sm cursor-pointer"
               >
                 Close & View Website
               </button>

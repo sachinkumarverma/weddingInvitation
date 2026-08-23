@@ -41,7 +41,10 @@ export default function App() {
   const handleEnvelopeOpened = () => {
     setIsEnvelopeOpen(false);
     setHasOpenedBefore(true);
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    setActiveNavTab('events');
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }, 10);
   };
 
   const handleReopenEnvelope = () => {

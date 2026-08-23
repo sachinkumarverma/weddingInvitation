@@ -1,5 +1,4 @@
 import React from 'react';
-import { Heart, Instagram } from 'lucide-react';
 import { WeddingConfig } from '../types';
 import { RoyalCorner, GoldDivider } from './Ornaments';
 
@@ -91,31 +90,11 @@ export const CoupleSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
                 Daughter of {bride.parents}
               </div>
 
-              {bride.grandparents && (
-                <div className="text-[11px] font-sans text-[var(--text-tertiary)] italic mt-0.5">
-                  Granddaughter of {bride.grandparents}
-                </div>
-              )}
-
               <p className="text-xs sm:text-sm font-sans text-[var(--text-secondary)] mt-4 leading-relaxed max-w-md mx-auto">
                 {bride.bio}
               </p>
             </div>
           </div>
-
-          {bride.instagram && (
-            <div className="flex items-center justify-center mt-6 pt-4 border-t border-[var(--accent-gold)]/20">
-              <a
-                href={`https://instagram.com/${bride.instagram.replace('@', '')}`}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-sans text-[var(--accent-gold)] hover:text-[var(--accent-gold-light)] transition-colors"
-              >
-                <Instagram className="w-3.5 h-3.5" />
-                <span>{bride.instagram}</span>
-              </a>
-            </div>
-          )}
         </div>
       </div>
     </section>

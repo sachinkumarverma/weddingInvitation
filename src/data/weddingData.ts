@@ -1,4 +1,4 @@
-import { WeddingConfig, WeddingTheme, WeddingThemeId, GuestWish } from '../types';
+import { WeddingConfig } from '../types';
 
 export const weddingData: WeddingConfig = {
   couple: {
@@ -31,8 +31,8 @@ export const weddingData: WeddingConfig = {
     address: "Jaiswal Marriage Garden, Bhopal, Madhya Pradesh 462001",
     googleMapsUrl: "https://maps.app.goo.gl/bJCAB2kX7J8KVyNEA?g_st=ac",
     appleMapsUrl: "https://maps.app.goo.gl/bJCAB2kX7J8KVyNEA?g_st=ac",
-    image: "/4.png", // 4th image (Jaiswal Marriage Garden background)
-    cityImage: "/2.jpg", // 2nd image (Bhopal background)
+    image: "/marriage-garden1.png",
+    cityImage: "/bhopal.jpg",
     airportDistance: "16 km from Raja Bhoj Airport Bhopal (BHO)",
     railwayDistance: "7 km from Rani Kamlapati / Bhopal Junction Railway Station",
   },
@@ -50,7 +50,7 @@ export const weddingData: WeddingConfig = {
       motif: "pooja",
       description: "An auspicious beginning with prayers to the Goddess for a blessed union.",
       themeColor: "#eab308",
-      image: "/5.jpg",
+      image: "/poojan.jpg",
     },
     {
       id: "haldi",
@@ -64,7 +64,7 @@ export const weddingData: WeddingConfig = {
       motif: "haldi",
       description: "A joyous morning filled with auspicious turmeric, floral showers, and folk songs.",
       themeColor: "#eab308",
-      image: "/3.jpg",
+      image: "/haldi.jpg",
     },
     {
       id: "mehendi",
@@ -78,7 +78,7 @@ export const weddingData: WeddingConfig = {
       motif: "mehendi",
       description: "Intricate henna artistry accompanied by live music, dance, and celebrations.",
       themeColor: "#10b981",
-      image: "/1.jpg",
+      image: "/mehendi.jpg",
     },
     {
       id: "wedding",
@@ -92,13 +92,13 @@ export const weddingData: WeddingConfig = {
       motif: "wedding",
       description: "A majestic royal procession led by brass trumpets and dhols, followed by the Jai Mala garland exchange under a shower of rose petals and sacred Vedic wedding vows by the holy fire.",
       themeColor: "#dc2626",
-      image: "/6.jpg",
+      image: "/wedding.jpg",
     },
   ],
   gallery: [
     {
       id: "g1",
-      url: "/7.jpg",
+      url: "/photo1.jpg",
       title: "Golden Hour",
       subtitle: "Our beautiful shared moments",
       category: "moments",
@@ -106,7 +106,7 @@ export const weddingData: WeddingConfig = {
     },
     {
       id: "g2",
-      url: "/8.jpg",
+      url: "/photo2.jpg",
       title: "A Shared Glance",
       subtitle: "Unspoken promises and joyful smiles",
       category: "moments",
@@ -149,103 +149,5 @@ export const weddingData: WeddingConfig = {
         ],
       },
     ],
-  },
-};
-
-export const sampleGuestWishes: GuestWish[] = [
-  {
-    id: "w1",
-    name: "Dr. Alok & Meera Verma",
-    relationship: "Uncle & Aunt",
-    message: "May your lives be blessed with unending joy, deep understanding, and timeless love. Counting down the days to celebrate in Bhopal!",
-    date: "10 Aug 2026",
-    avatarColor: "#8b263e",
-  },
-  {
-    id: "w2",
-    name: "Aakash Verma & Sneha Roy",
-    relationship: "College Best Friends",
-    message: "From engineering days to the grandest royal wedding of the decade! So incredibly happy for you both, Satyam & Harshita!",
-    date: "14 Aug 2026",
-    avatarColor: "#b45309",
-  },
-  {
-    id: "w3",
-    name: "Pooja & Rohan Malhotra",
-    relationship: "Close Friends",
-    message: "Seeing you two together makes us believe in true soulmates. The invitation is out of this world beautiful! Can't wait to dance at the Sangeet!",
-    date: "18 Aug 2026",
-    avatarColor: "#047857",
-  },
-  {
-    id: "w4",
-    name: "Kavita Aunty & Family",
-    relationship: "Family Friends",
-    message: "Heartiest congratulations and warmest blessings to our dearest Harshita and Satyam. May God shower all grace upon both families.",
-    date: "20 Aug 2026",
-    avatarColor: "#6d28d9",
-  },
-];
-
-export const weddingThemes: Record<WeddingThemeId, WeddingTheme> = {
-  royal: {
-    id: 'royal',
-    name: 'Royal Rajasthani',
-    subtitle: 'Deep Maroon & Antique Gold Foil',
-    bgGradient: 'from-[#14060a] via-[#240a12] to-[#120509]',
-    cardBg: 'rgba(38, 12, 20, 0.75)',
-    accentGold: 'var(--accent-gold)',
-    accentCrimson: '#881337',
-    textColor: '#f9f1e1',
-    secondaryText: 'var(--text-secondary)',
-    borderSubtle: 'rgba(212, 175, 55, 0.25)',
-  },
-  modern: {
-    id: 'modern',
-    name: 'Modern Indian Luxury',
-    subtitle: 'Burgundy & Warm Champagne',
-    bgGradient: 'from-[#170c14] via-[#2b1022] to-[#120810]',
-    cardBg: 'rgba(45, 18, 36, 0.75)',
-    accentGold: '#e5c07b',
-    accentCrimson: '#9f1239',
-    textColor: '#faf5ea',
-    secondaryText: '#dcc6b8',
-    borderSubtle: 'rgba(229, 192, 123, 0.25)',
-  },
-  floral: {
-    id: 'floral',
-    name: 'Floral Romance',
-    subtitle: 'Muted Rose, Blush & Gold',
-    bgGradient: 'from-[#1c0d12] via-[#331420] to-[#1a0c12]',
-    cardBg: 'rgba(50, 20, 32, 0.75)',
-    accentGold: '#f3c99f',
-    accentCrimson: '#be185d',
-    textColor: '#fff1f2',
-    secondaryText: '#e2b8c6',
-    borderSubtle: 'rgba(243, 201, 159, 0.28)',
-  },
-  palace: {
-    id: 'palace',
-    name: 'Palace Night Glamour',
-    subtitle: 'Midnight Black & Polished Gold',
-    bgGradient: 'from-[#0a0a0d] via-[#16141a] to-[#08080a]',
-    cardBg: 'rgba(22, 20, 26, 0.85)',
-    accentGold: 'var(--accent-gold-light)',
-    accentCrimson: '#e11d48',
-    textColor: '#fdfbf7',
-    secondaryText: '#c9c4b7',
-    borderSubtle: 'rgba(255, 215, 0, 0.3)',
-  },
-  minimal: {
-    id: 'minimal',
-    name: 'Minimal Elegance',
-    subtitle: 'Warm Espresso & Subtle Gold',
-    bgGradient: 'from-[#120e0c] via-[#1f1714] to-[#0f0b0a]',
-    cardBg: 'rgba(32, 24, 20, 0.8)',
-    accentGold: '#deb887',
-    accentCrimson: '#9a3412',
-    textColor: '#fbf7ee',
-    secondaryText: '#cebfae',
-    borderSubtle: 'rgba(222, 184, 135, 0.25)',
   },
 };

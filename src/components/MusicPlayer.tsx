@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX, Music } from 'lucide-react';
+import { VolumeX } from 'lucide-react';
 import { sound } from '../utils/soundEngine';
 
 export const MusicPlayer: React.FC<{ autoStartPrompt?: boolean }> = ({ autoStartPrompt = false }) => {

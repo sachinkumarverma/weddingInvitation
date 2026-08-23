@@ -1,5 +1,3 @@
-import { WeddingEvent } from '../types';
-
 export function addToNativeCalendar(event: {
   title: string;
   description: string;

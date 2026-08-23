@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import confetti from 'canvas-confetti';
-import { sound } from '../utils/soundEngine';
 import { weddingData } from '../data/weddingData';
 
 export const EasterEggModal: React.FC<{

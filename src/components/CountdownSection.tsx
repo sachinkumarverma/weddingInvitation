@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Clock, Sparkles } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import { WeddingConfig } from '../types';
 import { addToNativeCalendar } from '../utils/calendar';
 import { RoyalCorner, GoldDivider } from './Ornaments';

@@ -1,10 +1,25 @@
-import React from 'react';
-import { MapPin, Navigation, Plane, Train, Hotel, ExternalLink } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { MapPin, Navigation, Plane, Train, ExternalLink } from 'lucide-react';
 import { WeddingConfig } from '../types';
 import { RoyalCorner, GoldDivider } from './Ornaments';
 
+const venueImages = [
+  '/marriage_garden1.png',
+  '/marriage_garden2.jpg',
+  '/marriage_garden3.jpg',
+  '/marriage_garden4.jpg'
+];
+
 export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) => {
   const { venue } = wedding;
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % venueImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section id="venue-section" className="py-20 px-4 max-w-6xl mx-auto relative scroll-mt-6">
@@ -30,17 +45,38 @@ export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
         <RoyalCorner position="top-left" />
         <RoyalCorner position="top-right" />
 
-        {/* Hero Venue Image Banner */}
-        <div className="relative h-72 sm:h-96 w-full">
-          <img
-            src={venue.image}
-            alt={venue.name}
-            referrerPolicy="no-referrer"
-            className="w-full h-full object-cover filter brightness-90 contrast-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[#140409]/40 to-transparent venue-overlay" />
+        {/* Hero Venue Image Carousel */}
+        <div className="relative h-72 sm:h-96 w-full overflow-hidden">
+          {venueImages.map((src, idx) => (
+            <img
+              key={src}
+              src={src}
+              alt={`${venue.name} - View ${idx + 1}`}
+              referrerPolicy="no-referrer"
+              className={`absolute inset-0 w-full h-full object-cover filter brightness-90 contrast-105 transition-opacity duration-1000 ${
+                idx === currentImageIndex ? 'opacity-100 z-0' : 'opacity-0 -z-10'
+              }`}
+            />
+          ))}
           
-          <div className="absolute bottom-6 left-6 right-6 text-center sm:text-left flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          {/* Carousel Indicators */}
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+            {venueImages.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setCurrentImageIndex(idx)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  idx === currentImageIndex ? 'w-6 bg-[var(--accent-gold)]' : 'w-2 bg-white/50 hover:bg-white/80'
+                }`}
+                aria-label={`Go to image ${idx + 1}`}
+              />
+            ))}
+          </div>
+
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[#140409]/40 to-transparent venue-overlay pointer-events-none z-10" />
+          
+          <div className="absolute bottom-6 left-6 right-6 text-center sm:text-left flex flex-col sm:flex-row sm:items-end justify-between gap-4 z-20 pointer-events-auto">
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-crimson-dark)]/80 border border-[var(--accent-gold)]/40 text-[var(--text-primary)] text-xs font-cinzel mb-2 venue-badge-text">
                 <MapPin className="w-3.5 h-3.5 text-[var(--accent-gold-light)]" />

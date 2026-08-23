@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronDown, Calendar, MapPin, Sparkles } from 'lucide-react';
+import { ChevronDown, Calendar, MapPin } from 'lucide-react';
 import { WeddingConfig } from '../types';
 import { GoldDivider, MandalaBackground, WaxSealBadge } from './Ornaments';
 
