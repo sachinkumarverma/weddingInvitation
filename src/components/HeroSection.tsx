@@ -55,7 +55,7 @@ export const HeroSection: React.FC<{
 
         {/* Couple Names - The Crown of the Invitation */}
         <div className="my-3 space-y-1 sm:space-y-0">
-          <h1 className="font-cinzel-dec text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+          <h1 className="font-cinzel-dec text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient drop-shadow-title">
             SATYAM
           </h1>
           
@@ -65,7 +65,7 @@ export const HeroSection: React.FC<{
             </span>
           </div>
 
-          <h1 className="font-cinzel-dec text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+          <h1 className="font-cinzel-dec text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient drop-shadow-title">
             HARSHITA
           </h1>
         </div>
@@ -96,7 +96,7 @@ export const HeroSection: React.FC<{
             id="hero-events-cta"
             data-cursor="EVENTS"
             onClick={onScrollToEvents}
-            className="px-7 sm:px-9 py-3 rounded-full bg-gradient-to-r from-[var(--brand-crimson-dark)] via-[var(--brand-crimson)] to-[var(--brand-crimson-dark)] text-[#ffffff] font-cinzel text-xs sm:text-sm font-bold tracking-widest uppercase border border-[var(--accent-gold)]/60 shadow-[0_10px_25px_rgba(168,28,56,0.5)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:scale-105 transition-all duration-300 cursor-pointer"
+            className="btn-primary px-7 sm:px-9 py-3 rounded-full font-cinzel text-xs sm:text-sm tracking-widest uppercase cursor-pointer"
           >
             Wedding Events & Itinerary
           </button>
@@ -106,7 +106,7 @@ export const HeroSection: React.FC<{
             id="hero-venue-cta"
             data-cursor="VENUE"
             onClick={onScrollToVenue}
-            className="px-5 sm:px-7 py-3 rounded-full bg-[var(--bg-card-elevated)]/70 text-[var(--text-secondary)] font-cinzel text-xs sm:text-sm font-semibold tracking-wider uppercase border border-[var(--accent-gold)]/30 hover:border-[var(--accent-gold)] hover:bg-[#2e101b] transition-all duration-300 cursor-pointer backdrop-blur-md"
+            className="btn-secondary px-5 sm:px-7 py-3 rounded-full font-cinzel text-xs sm:text-sm tracking-wider uppercase cursor-pointer backdrop-blur-md"
           >
             Venue & Map
           </button>

@@ -139,7 +139,7 @@ export const ScratchRevealCard: React.FC<{ wedding: WeddingConfig }> = ({ weddin
       </div>
 
       {/* The Scratch Container */}
-      <div className="relative mx-auto w-full max-w-sm sm:max-w-md rounded-2xl overflow-hidden border border-[var(--accent-gold)]/40 shadow-[0_20px_50px_rgba(0,0,0,0.8)] bg-[#1c0810]/90 backdrop-blur-md">
+      <div className="relative mx-auto w-full max-w-sm sm:max-w-md rounded-2xl overflow-hidden border border-[var(--accent-gold)]/40 shadow-[0_20px_50px_rgba(0,0,0,0.8)] bg-[var(--bg-card)] backdrop-blur-md">
         <RoyalCorner position="top-left" />
         <RoyalCorner position="top-right" />
         <RoyalCorner position="bottom-left" />
@@ -164,8 +164,9 @@ export const ScratchRevealCard: React.FC<{ wedding: WeddingConfig }> = ({ weddin
             "{wedding.couple.quote}"
           </p>
 
-          <div className="mt-3 text-[11px] font-cinzel text-[var(--accent-gold)] font-semibold tracking-widest uppercase">
-            {wedding.couple.hashtag} • {wedding.venue.city}, {wedding.venue.state}
+          <div className="mt-4 flex flex-col gap-1.5 text-[11px] font-cinzel text-[var(--accent-gold)] font-semibold tracking-widest uppercase">
+            <span>{wedding.couple.hashtag}</span>
+            <span>{wedding.venue.city}, {wedding.venue.state}</span>
           </div>
         </div>
 
@@ -208,7 +209,7 @@ export const ScratchRevealCard: React.FC<{ wedding: WeddingConfig }> = ({ weddin
             id="instant-reveal-btn"
             data-cursor="REVEAL"
             onClick={handleCompleteReveal}
-            className="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--accent-gold)]/40 bg-[var(--bg-card-elevated)]/80 text-[var(--text-secondary)] hover:bg-[#38111e] hover:border-[var(--accent-gold)] text-xs font-cinzel transition-all shadow-md cursor-pointer"
+            className="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--accent-gold)]/40 bg-[var(--bg-card-elevated)]/80 text-[var(--text-secondary)] hover:bg-[var(--bg-card)] hover:border-[var(--accent-gold)] text-xs font-cinzel transition-all shadow-md cursor-pointer"
           >
             <Sparkles className="w-3.5 h-3.5 text-[var(--accent-gold)]" />
             Reveal Instantly

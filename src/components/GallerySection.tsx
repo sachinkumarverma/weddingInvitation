@@ -30,6 +30,18 @@ export const GallerySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedPhotoIndex, filteredPhotos.length]);
 
+  // Lock body scroll when Lightbox is open
+  useEffect(() => {
+    if (selectedPhotoIndex !== null) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [selectedPhotoIndex]);
+
   return (
     <section className="py-20 px-4 max-w-6xl mx-auto relative">
       <div className="text-center mb-12">
@@ -96,7 +108,7 @@ export const GallerySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }
               />
 
               {/* Gold Gradient Overlay on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#140409]/90 via-[#140409]/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[#140409]/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300 pointer-events-none" />
 
               {/* Photo Title & Caption */}
               <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">

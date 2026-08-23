@@ -27,6 +27,61 @@
     --brand-crimson: #a81c38;
     --brand-crimson-dark: #8b152b;
   }
+  
+  [data-theme="pink"] {
+    --bg-image: 
+      linear-gradient(to bottom, rgba(253, 242, 248, 1) 0%, rgba(253, 242, 248, 0) 15%, rgba(253, 242, 248, 0) 85%, rgba(253, 242, 248, 1) 100%),
+      linear-gradient(rgba(253, 242, 248, 0.8), rgba(253, 242, 248, 0.8)),
+      url('/bg-rose.png');
+    --bg-primary: #fdf2f8;
+    --bg-primary-dark: #fce7f3;
+    --bg-secondary: #fbcfe8;
+    --bg-card: rgba(253, 242, 248, 0.7);
+    --bg-card-dark: rgba(252, 231, 243, 0.8);
+    --bg-card-elevated: rgba(251, 207, 232, 0.9);
+    
+    --text-primary: #2e1018; /* Very dark crimson/black */
+    --text-secondary: #4a2c34; /* Dark grey-maroon */
+    --text-tertiary: #6b4c54;
+    
+    --accent-gold: #db2777;
+    --accent-gold-light: #9d174d;
+    
+    --brand-crimson: #be185d;
+    --brand-crimson-dark: #9d174d;
+    
+    --grad-1: #2e1018;
+    --grad-3: #831843;
+    --grad-5: #4a2c34;
+    
+    --grad-light-1: #4a2c34;
+    --grad-light-2: #9d174d;
+    --grad-light-3: #2e1018;
+    --grad-light-4: #4a2c34;
+  }
+
+  [data-theme="midnight"] {
+    --bg-image: 
+      linear-gradient(to bottom, rgba(15, 11, 41, 1) 0%, rgba(15, 11, 41, 0) 15%, rgba(15, 11, 41, 0) 85%, rgba(15, 11, 41, 1) 100%),
+      linear-gradient(rgba(15, 11, 41, 0.85), rgba(15, 11, 41, 0.85)),
+      url('/bg-midnight.png');
+    --bg-primary: #0f0b29;
+    --bg-primary-dark: #0a071c;
+    --bg-secondary: #1a1240;
+    --bg-card: rgba(15, 11, 41, 0.7);
+    --bg-card-dark: rgba(10, 7, 28, 0.8);
+    --bg-card-elevated: rgba(26, 18, 64, 0.9);
+    
+    --text-primary: #fdf8f6; /* Soft pearl white */
+    --text-secondary: #cbd5e1; /* Elegant silver grey */
+    --text-tertiary: #94a3b8; /* Muted grey */
+    
+    --accent-gold: #d4af37; /* Luxury gold */
+    --accent-gold-light: #fef08a;
+    
+    --brand-crimson: #d4af37;
+    --brand-crimson-dark: #b48b22;
+  }
 
 }
 
@@ -56,13 +111,13 @@
 
 /* Luxury Metallic Gold Foil Gradients & Shimmers */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #fff3b0 0%, var(--accent-gold) 35%, #aa7c11 65%, var(--accent-gold-light) 85%, #f9e29c 100%);
+  background: linear-gradient(135deg, var(--grad-1, #fff3b0) 0%, var(--accent-gold) 35%, var(--grad-3, #aa7c11) 65%, var(--accent-gold-light) 85%, var(--grad-5, #f9e29c) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gold-light {
-  background: linear-gradient(135deg, #ffffff 0%, #f7e6b5 40%, #dfb758 75%, #fae69e 100%);
+  background: linear-gradient(135deg, var(--grad-light-1, #ffffff) 0%, var(--grad-light-2, #f7e6b5) 40%, var(--grad-light-3, #dfb758) 75%, var(--grad-light-4, #fae69e) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -164,3 +219,74 @@
   display: none; /* Chrome, Safari and Opera */
 }
 
+
+/* Premium Universal Buttons */
+.btn-primary {
+  background: #c29100;
+  color: #000000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(194, 145, 0, 0.4);
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: #a37a00;
+  box-shadow: 0 6px 20px rgba(194, 145, 0, 0.6);
+  transform: scale(1.03);
+}
+.btn-primary svg {
+  color: #000000 !important;
+}
+
+.btn-secondary {
+  background: var(--bg-card-elevated);
+  border: 1px solid #d4af37;
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.btn-secondary:hover {
+  background: var(--bg-card);
+  border-color: #f3e5ab;
+  transform: translateY(-2px);
+}
+.btn-secondary svg {
+  color: #d4af37 !important;
+}
+
+/* Base title shadow */
+.drop-shadow-title {
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.8));
+}
+.drop-shadow-title-sm {
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+/* --- PINK THEME SPECIFIC OVERRIDES --- */
+[data-theme="pink"] .drop-shadow-title {
+  filter: drop-shadow(0 2px 8px rgba(255,255,255,0.4)) !important;
+}
+[data-theme="pink"] .drop-shadow-title-sm {
+  filter: drop-shadow(0 1px 4px rgba(255,255,255,0.4)) !important;
+}
+[data-theme="pink"] .wax-seal-text span {
+  filter: none !important;
+  text-shadow: none !important;
+  -webkit-filter: none !important;
+}
+/* --- GLOBAL WHATSAPP BUTTON --- */
+.btn-whatsapp {
+  background: #00a83e !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4) !important;
+}
+.btn-whatsapp:hover {
+  background: #128C7E !important;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6) !important;
+}
+.btn-whatsapp svg {
+  color: #ffffff !important;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Mail, Calendar, MapPin } from 'lucide-react';
 import { weddingData } from './data/weddingData';
 import { FloatingParticles } from './components/FloatingParticles';
@@ -16,6 +16,7 @@ import { FamilySection } from './components/FamilySection';
 import { ShareSection } from './components/ShareSection';
 import { FinalSection } from './components/FinalSection';
 import { EasterEggModal } from './components/EasterEggs';
+import { ThemeSwitcher } from './components/ThemeSwitcher';
 import { useSecurity } from './utils/useSecurity';
 
 export default function App() {
@@ -24,10 +25,23 @@ export default function App() {
   const [hasOpenedBefore, setHasOpenedBefore] = useState(false);
   const [isEasterEggOpen, setIsEasterEggOpen] = useState(false);
   const [activeNavTab, setActiveNavTab] = useState<'events' | 'venue' | 'card'>('events');
+  const [theme, setTheme] = useState<'default' | 'pink' | 'midnight'>('default');
+
+  useEffect(() => {
+    if (isEnvelopeOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isEnvelopeOpen]);
 
   const handleEnvelopeOpened = () => {
     setIsEnvelopeOpen(false);
     setHasOpenedBefore(true);
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   const handleReopenEnvelope = () => {
@@ -57,11 +71,19 @@ export default function App() {
     <div
       className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-secondary)] font-sans-clean relative overflow-x-hidden selection:bg-[var(--accent-gold)]/30 selection:text-[#ffffff]"
     >
+      {/* Universal Scrolling Background Layer */}
+      <div 
+        className="absolute inset-0 z-0 bg-[length:100%_auto] bg-repeat-y transition-all duration-1000" 
+        style={{ backgroundImage: 'var(--bg-image, none)' }}
+      />
+      {/* Theme Switcher (Top Left) */}
+      <ThemeSwitcher theme={theme} setTheme={setTheme} />
+
       {/* Desktop Luxury Follow Cursor */}
       <CustomCursor />
 
-      {/* Floating Golden Dust & Rose Petals */}
-      <FloatingParticles count={24} showPetals={true} />
+      {/* Floating Golden Dust, Rose Petals, or Midnight Stars depending on theme */}
+      <FloatingParticles count={24} theme={theme} />
 
       {/* Ambient Music Player */}
       <MusicPlayer autoStartPrompt={hasOpenedBefore} />

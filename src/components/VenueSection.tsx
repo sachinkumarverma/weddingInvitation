@@ -38,7 +38,7 @@ export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover filter brightness-90 contrast-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#140409] via-[#140409]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[#140409]/40 to-transparent" />
           
           <div className="absolute bottom-6 left-6 right-6 text-center sm:text-left flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
@@ -69,7 +69,7 @@ export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
                 href={venue.appleMapsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#2a0c16]/80 text-[var(--text-secondary)] border border-[var(--accent-gold)]/40 font-cinzel font-semibold text-xs tracking-wider uppercase hover:border-[var(--accent-gold)] transition-all"
+                className="btn-secondary flex items-center gap-2 px-5 py-2.5 rounded-full font-cinzel text-xs tracking-wider uppercase cursor-pointer"
               >
                 <ExternalLink className="w-3.5 h-3.5 text-[var(--accent-gold)]" />
                 Apple Maps
@@ -80,7 +80,7 @@ export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
 
         {/* Travel & Amenities Grid */}
         <div className="p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-2 gap-6 border-t border-[var(--accent-gold)]/20">
-          <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-[#140409]/60 border border-[var(--accent-gold)]/20">
+          <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-[var(--bg-card)] border border-[var(--accent-gold)]/20">
             <div className="p-2.5 rounded-xl bg-[var(--brand-crimson-dark)]/40 border border-[var(--accent-gold)]/30 text-[var(--accent-gold)] shrink-0">
               <Plane className="w-5 h-5" />
             </div>
@@ -94,7 +94,7 @@ export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
             </div>
           </div>
 
-          <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-[#140409]/60 border border-[var(--accent-gold)]/20">
+          <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-[var(--bg-card)] border border-[var(--accent-gold)]/20">
             <div className="p-2.5 rounded-xl bg-[var(--brand-crimson-dark)]/40 border border-[var(--accent-gold)]/30 text-[var(--accent-gold)] shrink-0">
               <Train className="w-5 h-5" />
             </div>

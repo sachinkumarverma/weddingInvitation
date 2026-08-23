@@ -25,7 +25,7 @@ export const FamilySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
         <RoyalCorner position="bottom-right" />
 
         <div className="max-w-2xl mx-auto">
-          <p className="font-serif-luxury text-lg sm:text-2xl text-[var(--accent-gold-light)] tracking-wide leading-relaxed font-semibold">
+          <p className="font-serif-luxury text-lg sm:text-2xl text-[var(--accent-gold-light)] tracking-wide leading-relaxed font-semibold whitespace-pre-line">
             {familyBlessings.shlokaSanskrit}
           </p>
 
@@ -42,7 +42,7 @@ export const FamilySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
         {familyBlessings.patrons.map((patron, idx) => (
           <div
             key={idx}
-            className="relative p-6 sm:p-8 rounded-2xl bg-[#1c0810]/80 border border-[var(--accent-gold)]/30 shadow-lg"
+            className="relative p-6 sm:p-8 rounded-2xl bg-[var(--bg-card)] border border-[var(--accent-gold)]/30 shadow-lg"
           >
             <RoyalCorner position="top-left" />
             <RoyalCorner position="bottom-right" />

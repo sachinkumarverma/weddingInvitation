@@ -42,6 +42,22 @@ export function addToNativeCalendar(event: {
     'END:VCALENDAR',
   ].join('\r\n');
 
+  // On Android, use the native intent system to prompt any available Calendar app
+  const isAndroid = /android/i.test(navigator.userAgent || navigator.vendor || (window as any).opera);
+  
+  if (isAndroid) {
+    const beginTime = new Date(event.startDate).getTime();
+    const endTime = new Date(event.endDate).getTime();
+    
+    const fallbackUrl = encodeURIComponent(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${start}/${end}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}`);
+    
+    const intentUrl = `intent:#Intent;action=android.intent.action.INSERT;mimetype=vnd.android.cursor.item/event;S.title=${encodeURIComponent(event.title)};S.description=${encodeURIComponent(event.description)};S.eventLocation=${encodeURIComponent(event.location)};l.beginTime=${beginTime};l.endTime=${endTime};S.browser_fallback_url=${fallbackUrl};end`;
+    
+    window.location.href = intentUrl;
+    return;
+  }
+
+  // On iOS and Desktop, the .ics file is correctly intercepted by the native Calendar app
   const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');

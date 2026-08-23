@@ -95,7 +95,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
           onOpened();
         }
       }}
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0d0407]/95 backdrop-blur-xl p-3 sm:p-6 transition-opacity duration-500 overflow-y-auto"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[var(--bg-card)] backdrop-blur-xl p-3 sm:p-6 transition-opacity duration-500 overflow-y-auto"
     >
       {/* Ambient background light radial aura */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,28,56,0.38)_0%,rgba(15,7,9,0.96)_75%)] pointer-events-none" />
@@ -373,7 +373,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                   />
                 </div>
 
-                <div className="mt-3 flex items-center gap-2 px-5 py-2 rounded-full bg-[#140409]/80 border border-[var(--accent-gold)]/40 backdrop-blur-md shadow-lg animate-pulse">
+                <div className="mt-3 flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--bg-card)] border border-[var(--accent-gold)]/40 backdrop-blur-md shadow-lg animate-pulse">
                   <span className="w-2 h-2 rounded-full bg-[var(--accent-gold)] animate-ping" />
                   <span className="text-[11px] font-cinzel tracking-widest text-[var(--text-secondary)] uppercase font-bold">
                     Tap to open invitation

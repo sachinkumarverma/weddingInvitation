@@ -129,7 +129,7 @@ export const weddingData: WeddingConfig = {
     brideInspo: [],
   },
   familyBlessings: {
-    shlokaSanskrit: "ॐ मङ्गलम् भगवान विष्णुः, मङ्गलम् गरुडध्वजः। मङ्गलम् पुण्डरीकाक्षः, मङ्गलाय तनो हरिः॥",
+    shlokaSanskrit: "ॐ मङ्गलम् भगवान विष्णुः, मङ्गलम् गरुडध्वजः।\nमङ्गलम् पुण्डरीकाक्षः, मङ्गलाय तनो हरिः॥",
     shlokaEnglish: "May the divine presence bless this union with prosperity, auspicious peace, and eternal companionship.",
     patrons: [
       {

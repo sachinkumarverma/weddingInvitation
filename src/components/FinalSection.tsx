@@ -8,7 +8,7 @@ export const FinalSection: React.FC<{
   onScrollToTop: () => void;
 }> = ({ wedding, onScrollToTop }) => {
   return (
-    <footer className="relative py-28 px-4 text-center overflow-hidden border-t border-[var(--accent-gold)]/30 bg-gradient-to-b from-[#14060a] to-[#0a0204]">
+    <footer className="relative py-28 px-4 text-center overflow-hidden border-t border-[var(--accent-gold)]/30 bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-primary-dark,var(--bg-primary))]">
       {/* Background Palace Architecture silhouette */}
       <div
         className="absolute inset-0 bg-cover bg-bottom opacity-15 filter contrast-125 pointer-events-none"
@@ -61,7 +61,7 @@ export const FinalSection: React.FC<{
             id="scroll-to-top-btn"
             onClick={onScrollToTop}
             aria-label="Scroll back to top"
-            className="flex items-center gap-2 px-6 py-2.5 rounded-full border border-[var(--accent-gold)]/40 bg-[var(--bg-card-elevated)]/80 text-[var(--text-secondary)] hover:text-[#ffffff] hover:border-[var(--accent-gold)] hover:bg-[#2e101b] text-xs font-cinzel tracking-wider uppercase transition-all cursor-pointer shadow-md"
+            className="flex items-center gap-2 px-6 py-2.5 rounded-full border border-[var(--accent-gold)]/40 bg-[var(--bg-card-elevated)]/80 text-[var(--text-secondary)] hover:text-[#ffffff] hover:border-[var(--accent-gold)] hover:bg-[var(--bg-card)] text-xs font-cinzel tracking-wider uppercase transition-all cursor-pointer shadow-md"
           >
             <ArrowUp className="w-3.5 h-3.5 text-[var(--accent-gold)]" />
             Back to Top

@@ -128,7 +128,7 @@ export const WaxSealBadge: React.FC<{
       <div className="absolute inset-1.5 rounded-full border border-[var(--accent-gold)]/40 border-dashed opacity-60 pointer-events-none" />
       
       {/* Center gold monogram ring */}
-      <div className="relative flex flex-col items-center justify-center text-center">
+      <div className="relative flex flex-col items-center justify-center text-center wax-seal-text">
         <span className="font-cinzel-dec font-bold text-[var(--text-primary)] tracking-wider drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
           {initials}
         </span>

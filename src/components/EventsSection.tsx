@@ -237,7 +237,7 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
                 type="button"
                 data-cursor="ADD"
                 onClick={() => handleAddToCalendar(event)}
-                className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full border border-[var(--accent-gold)]/50 bg-[#2b0c16] text-[var(--text-primary)] hover:border-[var(--accent-gold)] hover:bg-[#3d1120] text-xs font-cinzel font-semibold tracking-wider uppercase transition-all shadow-md cursor-pointer whitespace-nowrap"
+                className="btn-primary flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full text-xs font-cinzel font-semibold tracking-wider uppercase cursor-pointer whitespace-nowrap"
               >
                 <Plus className="w-3.5 h-3.5 text-[var(--accent-gold)] shrink-0" />
                 <span>Save the Date</span>
@@ -248,7 +248,7 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
                 target="_blank"
                 rel="noreferrer"
                 data-cursor="MAP"
-                className="flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-full border border-[var(--accent-gold)]/30 bg-[#19060e]/70 text-[var(--text-secondary)] hover:text-[#ffffff] hover:border-[var(--accent-gold)] text-xs font-cinzel tracking-wider uppercase transition-all cursor-pointer whitespace-nowrap"
+                className="btn-secondary flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-full text-xs font-cinzel tracking-wider uppercase cursor-pointer whitespace-nowrap"
               >
                 <MapPin className="w-3.5 h-3.5 text-[var(--accent-gold)] shrink-0" />
                 <span>Directions</span>
