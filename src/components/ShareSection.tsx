@@ -19,7 +19,34 @@ export const ShareSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
   }, [showQR]);
 
   const shareUrl = "https://harshita-weds-satyam.vercel.app";
-  const inviteMessage = `✨ Royal Wedding Invitation ✨\n\nYou are cordially invited to celebrate the union of ${wedding.couple.groom.fullName} & ${wedding.couple.bride.fullName} on ${wedding.displayDate} at ${wedding.venue.name}, ${wedding.venue.city}, ${wedding.venue.state}.\n\nExplore our interactive digital invitation: ${shareUrl}\n\n#${wedding.couple.hashtag.replace('#', '')}`;
+  const inviteMessage = `🪔 *॥ श्री गणेशाय नमः ॥* 🪔
+
+✨ *शुभ विवाह* ✨
+
+With the blessings of our beloved families,
+
+💍 *${wedding.couple.groom.fullName}*
+&
+🌸 *${wedding.couple.bride.fullName}*
+
+cordially invite you to grace the auspicious occasion of their wedding and bless them as they begin their journey of *love, togetherness & forever*. ❤️
+
+_“May this new beginning be filled with endless happiness, love and countless beautiful memories.”_ ✨
+
+🌺 *आपकी गरिमामयी उपस्थिति एवं शुभाशीर्वाद हमारे लिए अत्यंत महत्वपूर्ण हैं।* 🌺
+
+💌 *You are warmly invited to our wedding celebration.*
+
+Please open our *digital wedding invitation* to discover the complete details of the celebrations:
+
+👇✨
+${shareUrl}
+✨👇
+
+With heartfelt love,  
+❤️ *${wedding.couple.groom.firstName} & ${wedding.couple.bride.firstName}* ❤️
+
+_We look forward to celebrating this beautiful beginning with you._ 🥂🌸`;
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(shareUrl);
@@ -30,22 +57,6 @@ export const ShareSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
   const handleWhatsAppShare = () => {
     const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(inviteMessage)}`;
     window.open(url, '_blank');
-  };
-
-  const handleNativeShare = async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: `${wedding.couple.groom.firstName} & ${wedding.couple.bride.firstName} — Royal Wedding Invitation`,
-          text: `You are cordially invited to celebrate the union of ${wedding.couple.groom.firstName} & ${wedding.couple.bride.firstName} in ${wedding.venue.city}, ${wedding.venue.state}.`,
-          url: shareUrl,
-        });
-      } catch (e) {
-        console.warn('Share cancelled', e);
-      }
-    } else {
-      handleCopyLink();
-    }
   };
 
   return (

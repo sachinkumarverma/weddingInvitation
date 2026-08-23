@@ -46,7 +46,7 @@ export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
         <RoyalCorner position="top-right" />
 
         {/* Hero Venue Image Carousel */}
-        <div className="relative h-72 sm:h-96 w-full overflow-hidden">
+        <div className="relative h-96 sm:h-[32rem] w-full overflow-hidden">
           {venueImages.map((src, idx) => (
             <img
               key={src}
@@ -76,38 +76,38 @@ export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
 
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[#140409]/40 to-transparent venue-overlay pointer-events-none z-10" />
           
-          <div className="absolute bottom-6 left-6 right-6 text-center sm:text-left flex flex-col sm:flex-row sm:items-end justify-between gap-4 z-20 pointer-events-auto">
-            <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-crimson-dark)]/80 border border-[var(--accent-gold)]/40 text-[var(--text-primary)] text-xs font-cinzel mb-2 venue-badge-text">
-                <MapPin className="w-3.5 h-3.5 text-[var(--accent-gold-light)]" />
+          <div className="absolute bottom-5 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 text-center sm:text-left flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 z-20 pointer-events-auto">
+            <div className="flex-1">
+              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-[var(--brand-crimson-dark)]/80 border border-[var(--accent-gold)]/40 text-[var(--text-primary)] text-[9px] sm:text-xs font-cinzel mb-1.5 venue-badge-text">
+                <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[var(--accent-gold-light)]" />
                 <span>{venue.city}, {venue.state}</span>
               </div>
-              <h3 className="font-cinzel-dec text-2xl sm:text-4xl font-bold text-[#ffffff] drop-shadow-lg venue-title">
+              <h3 className="font-cinzel-dec text-xl sm:text-4xl font-bold text-[#ffffff] drop-shadow-lg venue-title leading-tight">
                 {venue.name}
               </h3>
-              <p className="text-xs sm:text-sm font-sans text-[var(--text-primary)] mt-1 max-w-xl venue-address">
+              <p className="text-[10px] sm:text-sm font-sans text-[var(--text-primary)] mt-1 max-w-xl mx-auto sm:mx-0 venue-address">
                 {venue.address}
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-3 justify-center">
+            <div className="flex flex-row w-full sm:w-auto gap-2 sm:gap-3 justify-center mt-1 sm:mt-0">
               <a
                 href={venue.googleMapsUrl}
                 target="_blank"
                 rel="noreferrer"
                 data-cursor="MAP"
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--accent-gold)] text-[var(--bg-card-dark)] font-cinzel font-bold text-xs tracking-wider uppercase hover:bg-[var(--accent-gold-light)] hover:scale-105 transition-all shadow-lg"
+                className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-2 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[var(--accent-gold)] text-[var(--bg-card-dark)] font-cinzel font-bold text-[9px] sm:text-xs tracking-wider uppercase hover:bg-[var(--accent-gold-light)] hover:scale-105 transition-all shadow-lg whitespace-nowrap"
               >
-                <Navigation className="w-3.5 h-3.5" />
+                <Navigation className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 Google Maps
               </a>
               <a
                 href={venue.appleMapsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="btn-secondary flex items-center gap-2 px-5 py-2.5 rounded-full font-cinzel text-xs tracking-wider uppercase cursor-pointer"
+                className="btn-secondary flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-2 py-2 sm:px-5 sm:py-2.5 rounded-full font-cinzel text-[9px] sm:text-xs tracking-wider uppercase cursor-pointer whitespace-nowrap"
               >
-                <ExternalLink className="w-3.5 h-3.5 text-[var(--accent-gold)] apple-maps-icon" />
+                <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[var(--accent-gold)] apple-maps-icon" />
                 Apple Maps
               </a>
             </div>

@@ -1,20 +1,25 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# 👑 Royal Wedding Invitation
 
-# Run and deploy your AI Studio app
+A premium, interactive digital wedding invitation for Satyam & Harshita built with React and Tailwind CSS.
 
-This contains everything you need to run your app locally.
+## 🚀 Quick Start
 
-View your app in AI Studio: https://ai.studio/apps/1f1c40c5-80a7-4222-93aa-6c09c9e0e6e8
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-## Run Locally
+2. **Run locally:**
+   ```bash
+   npm run dev
+   ```
+   *The app will be available at `http://localhost:3000/`.*
 
-**Prerequisites:**  Node.js
+3. **Build for production:**
+   ```bash
+   npm run build
+   ```
 
+## 🎨 Customization
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+To customize the invitation for your own event, simply edit the configuration object inside `src/data/weddingData.ts` to update names, dates, venue info, and image paths.
