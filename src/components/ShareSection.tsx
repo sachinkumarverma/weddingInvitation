@@ -25,8 +25,7 @@ export const ShareSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
 
 With the blessings of our beloved families,
 
-💍 *${wedding.couple.groom.fullName}*
-&
+💍 *${wedding.couple.groom.fullName}* &
 🌸 *${wedding.couple.bride.fullName}*
 
 cordially invite you to grace the auspicious occasion of their wedding and bless them as they begin their journey of *love, togetherness & forever*. ❤️
@@ -39,9 +38,7 @@ _“May this new beginning be filled with endless happiness, love and countless 
 
 Please open our *digital wedding invitation* to discover the complete details of the celebrations:
 
-👇✨
 ${shareUrl}
-✨👇
 
 With heartfelt love,  
 ❤️ *${wedding.couple.groom.firstName} & ${wedding.couple.bride.firstName}* ❤️
