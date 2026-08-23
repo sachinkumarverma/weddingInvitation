@@ -69,8 +69,10 @@ export const FinalSection: React.FC<{
         </div>
 
         {/* Subtle Watermark */}
-        <div className="mt-12 text-[10px] font-sans tracking-widest text-[#a68972] uppercase opacity-75">
-          {wedding.couple.hashtag} • Designed with Royal Elegance
+        <div className="mt-12 text-[10px] font-sans tracking-widest text-[#a68972] uppercase opacity-75 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2">
+          <span>{wedding.couple.hashtag}</span>
+          <span className="hidden sm:inline">•</span>
+          <span>Designed with Royal Elegance</span>
         </div>
       </div>
     </footer>
