@@ -18,20 +18,27 @@ export const FamilySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
       </div>
 
       {/* Sanskrit Shloka Blessing Card */}
-      <div className="relative rounded-3xl p-8 sm:p-12 bg-[var(--bg-card)]/85 border border-[var(--accent-gold)]/40 backdrop-blur-md shadow-2xl mb-12">
+      <div className="relative rounded-3xl p-8 sm:p-12 border border-[var(--accent-gold)]/40 shadow-2xl mb-12 min-h-[400px] flex items-center justify-center overflow-hidden bg-[var(--bg-card)]/90 backdrop-blur-md">
+        
+        {/* Ganesh Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-no-repeat opacity-25 pointer-events-none"
+          style={{ backgroundImage: 'url(/ganeshji.png)', backgroundPosition: 'center 20%' }}
+        />
+
         <RoyalCorner position="top-left" />
         <RoyalCorner position="top-right" />
         <RoyalCorner position="bottom-left" />
         <RoyalCorner position="bottom-right" />
 
-        <div className="max-w-2xl mx-auto">
-          <p className="font-serif-luxury text-lg sm:text-2xl text-[var(--accent-gold-light)] tracking-wide leading-relaxed font-semibold whitespace-pre-line">
+        <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center text-center mt-32">
+          <p className="font-serif-luxury text-lg sm:text-2xl text-[var(--accent-gold-light)] tracking-wide leading-relaxed font-semibold whitespace-pre-line drop-shadow-md">
             {familyBlessings.shlokaSanskrit}
           </p>
 
-          <div className="h-[1px] w-24 bg-[var(--accent-gold)]/40 mx-auto my-4" />
+          <div className="h-[1px] w-24 bg-[var(--accent-gold)]/50 mx-auto my-6" />
 
-          <p className="text-xs sm:text-sm font-sans text-[var(--text-secondary)] italic">
+          <p className="text-sm sm:text-base font-sans text-[var(--text-secondary)] italic drop-shadow-md font-medium">
             "{familyBlessings.shlokaEnglish}"
           </p>
         </div>

@@ -46,14 +46,11 @@ export function addToNativeCalendar(event: {
   const isAndroid = /android/i.test(navigator.userAgent || navigator.vendor || (window as any).opera);
   
   if (isAndroid) {
-    const beginTime = new Date(event.startDate).getTime();
-    const endTime = new Date(event.endDate).getTime();
-    
-    const fallbackUrl = encodeURIComponent(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${start}/${end}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}`);
-    
-    const intentUrl = `intent:#Intent;action=android.intent.action.INSERT;mimetype=vnd.android.cursor.item/event;S.title=${encodeURIComponent(event.title)};S.description=${encodeURIComponent(event.description)};S.eventLocation=${encodeURIComponent(event.location)};l.beginTime=${beginTime};l.endTime=${endTime};S.browser_fallback_url=${fallbackUrl};end`;
-    
-    window.location.href = intentUrl;
+    // In-app browsers (WhatsApp, Instagram) often block intent:// URIs.
+    // Opening the Google Calendar web URL is 100% reliable and often deep-links
+    // to the native Google Calendar app anyway.
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${start}/${end}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}`;
+    window.open(googleCalendarUrl, '_blank');
     return;
   }
 

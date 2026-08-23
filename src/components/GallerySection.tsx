@@ -108,15 +108,15 @@ export const GallerySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }
               />
 
               {/* Gold Gradient Overlay on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[#140409]/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[#140409]/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300 pointer-events-none gallery-gradient" />
 
               {/* Photo Title & Caption */}
               <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                 <div>
-                  <h3 className="font-cinzel text-base sm:text-lg font-bold text-[var(--text-secondary)] drop-shadow-md">
+                  <h3 className="font-cinzel text-base sm:text-lg font-bold text-white drop-shadow-md gallery-title">
                     {photo.title}
                   </h3>
-                  <p className="font-script text-sm text-[var(--text-primary)]">
+                  <p className="font-script text-sm text-[#ca8a04] gallery-subtitle">
                     {photo.subtitle}
                   </p>
                 </div>

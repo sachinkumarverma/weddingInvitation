@@ -38,7 +38,7 @@ export const CoupleSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card-dark)]/80 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-2 left-0 right-0 text-center">
-                <span className="font-cinzel text-[10px] font-bold tracking-[0.25em] text-[var(--text-primary)] uppercase bg-[var(--brand-crimson-dark)]/80 px-3 py-0.5 rounded-full border border-[var(--accent-gold)]/40">
+                <span className="font-cinzel text-[10px] font-bold tracking-[0.25em] text-white uppercase bg-[var(--brand-crimson-dark)]/80 px-3 py-0.5 rounded-full border border-[var(--accent-gold)]/40">
                   {groom.title}
                 </span>
               </div>
@@ -75,7 +75,7 @@ export const CoupleSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card-dark)]/80 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-2 left-0 right-0 text-center">
-                <span className="font-cinzel text-[10px] font-bold tracking-[0.25em] text-[var(--text-primary)] uppercase bg-[var(--brand-crimson-dark)]/80 px-3 py-0.5 rounded-full border border-[var(--accent-gold)]/40">
+                <span className="font-cinzel text-[10px] font-bold tracking-[0.25em] text-white uppercase bg-[var(--brand-crimson-dark)]/80 px-3 py-0.5 rounded-full border border-[var(--accent-gold)]/40">
                   {bride.title}
                 </span>
               </div>

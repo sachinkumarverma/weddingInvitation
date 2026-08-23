@@ -71,11 +71,6 @@ export default function App() {
     <div
       className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-secondary)] font-sans-clean relative overflow-x-hidden selection:bg-[var(--accent-gold)]/30 selection:text-[#ffffff]"
     >
-      {/* Universal Scrolling Background Layer */}
-      <div 
-        className="absolute inset-0 z-0 bg-[length:100%_auto] bg-repeat-y transition-all duration-1000" 
-        style={{ backgroundImage: 'var(--bg-image, none)' }}
-      />
       {/* Theme Switcher (Top Left) */}
       <ThemeSwitcher theme={theme} setTheme={setTheme} />
 
@@ -106,8 +101,14 @@ export default function App() {
           onScrollToVenue={() => scrollToSection('venue-section', 'venue')}
         />
 
-        {/* 2. Interactive Scratch-to-Reveal Gold Card */}
-        <ScratchRevealCard wedding={weddingData} />
+        {/* --- DYNAMIC BACKGROUND WRAPPER FOR SECTIONS 2-10 --- */}
+        {/* This ensures the palace background starts exactly after the Hero Section ends */}
+        <div 
+          className="relative bg-[length:100%_auto] bg-repeat-y transition-all duration-1000" 
+          style={{ backgroundImage: 'var(--bg-image, none)' }}
+        >
+          {/* 2. Interactive Scratch-to-Reveal Gold Card */}
+          <ScratchRevealCard wedding={weddingData} />
 
         {/* 3. Live Auspicious Countdown Section with Native Add-to-Calendar */}
         <CountdownSection wedding={weddingData} />
@@ -131,10 +132,11 @@ export default function App() {
         <ShareSection wedding={weddingData} />
 
         {/* 10. Emotional Climax & Closing */}
-        <FinalSection
-          wedding={weddingData}
-          onScrollToTop={scrollToTop}
-        />
+          <FinalSection
+            wedding={weddingData}
+            onScrollToTop={scrollToTop}
+          />
+        </div>
       </main>
 
       {/* Mobile Sticky Quick Navigation Bar */}

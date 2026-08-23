@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import confetti from 'canvas-confetti';
+import Confetti from 'react-confetti';
 import { Calendar, MapPin, ChevronDown } from 'lucide-react';
 import { sound } from '../utils/soundEngine';
 import { RoyalCorner, WaxSealBadge, GoldDivider } from './Ornaments';
@@ -21,6 +21,9 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
 }) => {
   // If previously opened, show opened card directly; otherwise start sealed
   const [stage, setStage] = useState<'closed' | 'unsealing' | 'opening' | 'revealed' | 'opened_card'>('closed');
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [recycleConfetti, setRecycleConfetti] = useState(true);
+  const [isDismissing, setIsDismissing] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -36,15 +39,21 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
 
   const handleDismiss = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    onOpened();
+    setIsDismissing(true);
+    // Play a gentle magical chime for entering the site
+    sound.playCelebrationChimes();
+    
+    // Wait for the grand zoom-through animation to complete
+    setTimeout(() => {
+      onOpened();
+      setIsDismissing(false); // Reset state for future re-opens
+    }, 1500);
   };
 
   const handleOpenEnvelope = () => {
-    if (stage === 'revealed' || stage === 'opened_card') {
-      onOpened();
+    if (stage === 'revealed' || stage === 'opened_card' || stage !== 'closed') {
       return;
     }
-    if (stage !== 'closed') return;
 
     // 1. Play wax crack sound & start music
     sound.playWaxSealSnap();
@@ -60,14 +69,11 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
     // 3. Trigger confetti burst and set to revealed
     setTimeout(() => {
       setStage('revealed');
-      confetti({
-        particleCount: 75,
-        spread: 85,
-        origin: { y: 0.6 },
-        colors: ['var(--accent-gold)', 'var(--accent-gold-light)', 'var(--brand-crimson)', 'var(--text-primary)', '#ffffff'],
-        shapes: ['circle'],
-        scalar: 1.1,
-      });
+      setShowConfetti(true);
+      setRecycleConfetti(true);
+
+      setTimeout(() => setRecycleConfetti(false), 4000);
+      setTimeout(() => setShowConfetti(false), 10000);
     }, 1000);
   };
 
@@ -84,19 +90,49 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
 
   const handleOpenMap = (e: React.MouseEvent) => {
     e.stopPropagation();
-    window.open(wedding.venue.mapUrl, '_blank');
+    window.open(wedding.venue.googleMapsUrl, '_blank');
   };
 
   return (
     <div
       id="envelope-modal-overlay"
-      onClick={() => {
-        if (stage === 'revealed' || stage === 'opened_card') {
-          onOpened();
-        }
-      }}
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[var(--bg-card)] backdrop-blur-xl p-3 sm:p-6 transition-opacity duration-500 overflow-y-auto"
+      className={`fixed inset-0 z-50 overflow-hidden ${
+        isDismissing ? 'pointer-events-none' : ''
+      }`}
     >
+      {/* Left Royal Door */}
+      <div 
+        className={`absolute top-0 left-0 w-1/2 h-full bg-[var(--bg-card)] backdrop-blur-xl border-r-2 border-[var(--accent-gold)]/20 shadow-[10px_0_30px_rgba(0,0,0,0.5)] transition-transform duration-[1800ms] ease-[cubic-bezier(0.7,0,0.2,1)] ${
+          isDismissing ? '-translate-x-full' : 'translate-x-0'
+        } z-0`}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_right,rgba(168,28,56,0.15)_0%,transparent_60%)]" />
+      </div>
+      
+      {/* Right Royal Door */}
+      <div 
+        className={`absolute top-0 right-0 w-1/2 h-full bg-[var(--bg-card)] backdrop-blur-xl border-l-2 border-[var(--accent-gold)]/20 shadow-[-10px_0_30px_rgba(0,0,0,0.5)] transition-transform duration-[1800ms] ease-[cubic-bezier(0.7,0,0.2,1)] ${
+          isDismissing ? 'translate-x-full' : 'translate-x-0'
+        } z-0`}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,rgba(168,28,56,0.15)_0%,transparent_60%)]" />
+      </div>
+
+      <div className={`relative z-10 w-full h-full overflow-y-auto flex flex-col items-center justify-center p-3 sm:p-6 transition-all duration-[1200ms] ease-in-out ${
+        isDismissing ? 'opacity-0 scale-125 blur-md translate-y-8' : 'opacity-100 scale-100 blur-0 translate-y-0'
+      }`}>
+      {showConfetti && (
+        <div className="fixed inset-0 pointer-events-none z-[100]">
+          <Confetti 
+            width={window.innerWidth}
+            height={window.innerHeight}
+            numberOfPieces={250}
+            gravity={0.15}
+            recycle={recycleConfetti}
+            colors={['#ffb7c5', '#ff9eaa', '#ffc0cb', '#d4af37', '#eab308', '#ffffff']}
+          />
+        </div>
+      )}
       {/* Ambient background light radial aura */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,28,56,0.38)_0%,rgba(15,7,9,0.96)_75%)] pointer-events-none" />
 
@@ -305,15 +341,11 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
 
               {/* Sliding Gold Card Content that emerges on tap */}
               <div
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onOpened();
-                }}
-                className={`absolute left-4 right-4 sm:left-8 sm:right-8 h-[92%] rounded-xl p-5 sm:p-6 transition-all duration-1000 ease-out flex flex-col items-center justify-between text-center cursor-pointer ${
+                className={`absolute left-4 right-4 sm:left-8 sm:right-8 h-[92%] rounded-xl p-5 sm:p-6 transition-all duration-1000 ease-out flex flex-col items-center justify-between text-center ${
                   stage === 'revealed'
-                    ? '-translate-y-24 shadow-2xl opacity-100'
+                    ? '-translate-y-16 shadow-2xl opacity-100'
                     : stage === 'opening'
-                    ? '-translate-y-12 opacity-95'
+                    ? '-translate-y-8 opacity-95'
                     : 'translate-y-2 opacity-0 pointer-events-none'
                 }`}
                 style={{
@@ -343,7 +375,10 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                   {wedding.venue.name} • {wedding.venue.city}
                 </div>
 
-                <div className="mt-1 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-crimson-dark)] text-[#ffffff] text-[10px] font-cinzel font-bold uppercase tracking-wider shadow-sm animate-pulse">
+                <div 
+                  onClick={handleDismiss}
+                  className="mt-1 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-crimson-dark)] text-[#ffffff] text-[10px] font-cinzel font-bold uppercase tracking-wider shadow-sm animate-pulse cursor-pointer hover:scale-105 transition-transform"
+                >
                   <span>Click to Enter Website</span>
                   <ChevronDown className="w-3 h-3 text-[var(--accent-gold-light)]" />
                 </div>
@@ -399,6 +434,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
           )}
         </>
       )}
+      </div>
     </div>
   );
 };

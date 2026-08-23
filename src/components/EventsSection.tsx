@@ -27,7 +27,7 @@ const EventImageSlider: React.FC<{ images: string[]; name: string }> = ({ images
           } group-hover:scale-108 transition-transform filter brightness-90`}
         />
       ))}
-      <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card-dark)]/90 via-transparent to-transparent pointer-events-none z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card-dark)]/90 via-transparent to-transparent pointer-events-none z-10 event-image-overlay" />
       <div className="absolute bottom-3 left-4 right-4 z-20">
         <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#ffffff] drop-shadow-md">
           {name}
@@ -138,7 +138,13 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
       </div>
 
       {/* Events Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+      <div 
+        className={`grid gap-8 items-stretch mx-auto ${
+          filteredEvents.length === 1 
+            ? 'grid-cols-1 max-w-xl' 
+            : 'grid-cols-1 md:grid-cols-2'
+        }`}
+      >
         {filteredEvents.map((event) => (
           <div
             key={event.id}
@@ -164,7 +170,7 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
                 </div>
                 
                 <div
-                  className="px-4 py-1.5 rounded-full text-[10px] sm:text-[11px] font-cinzel font-semibold tracking-[0.2em] uppercase border flex items-center gap-2 backdrop-blur-sm"
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[10px] sm:text-xs font-cinzel font-bold tracking-widest uppercase shadow-sm event-badge-${event.motif}`}
                   style={{
                     borderColor: `${event.themeColor}40`,
                     color: event.themeColor,
@@ -188,7 +194,7 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 filter brightness-90"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card-dark)]/90 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card-dark)]/90 via-transparent to-transparent pointer-events-none event-image-overlay" />
                   <div className="absolute bottom-3 left-4 right-4 z-10">
                     <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#ffffff] drop-shadow-md">
                       {event.name}
@@ -250,7 +256,7 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
                 data-cursor="MAP"
                 className="btn-secondary flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-full text-xs font-cinzel tracking-wider uppercase cursor-pointer whitespace-nowrap"
               >
-                <MapPin className="w-3.5 h-3.5 text-[var(--accent-gold)] shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-[var(--accent-gold)] shrink-0 directions-icon" />
                 <span>Directions</span>
               </a>
             </div>

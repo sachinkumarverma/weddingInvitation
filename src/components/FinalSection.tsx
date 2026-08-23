@@ -1,7 +1,7 @@
 import React from 'react';
-import { Mail, Heart, ArrowUp } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import { WeddingConfig } from '../types';
-import { RoyalCorner, GoldDivider, WaxSealBadge } from './Ornaments';
+import { GoldDivider, WaxSealBadge } from './Ornaments';
 
 export const FinalSection: React.FC<{
   wedding: WeddingConfig;
@@ -13,7 +13,7 @@ export const FinalSection: React.FC<{
       <div
         className="absolute inset-0 bg-cover bg-bottom opacity-15 filter contrast-125 pointer-events-none"
         style={{
-          backgroundImage: `url('${wedding.venue.cityImage || "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=1600&auto=format&fit=crop"}')`,
+          backgroundImage: `url('${wedding.venue.cityImage || "/royal.png"}')`,
         }}
       />
 
@@ -30,13 +30,13 @@ export const FinalSection: React.FC<{
         {/* Emotionally Resonant Climax */}
         <div className="space-y-1 mb-4">
           <h2 className="font-cinzel-dec text-3xl sm:text-5xl font-bold tracking-widest text-gold-gradient">
-            TWO HEARTS.
+            TWO HEARTS
           </h2>
           <h2 className="font-cinzel-dec text-3xl sm:text-5xl font-bold tracking-widest text-gold-gradient">
-            ONE JOURNEY.
+            ONE JOURNEY
           </h2>
           <h2 className="font-cinzel-dec text-3xl sm:text-5xl font-bold tracking-widest text-gold-gradient">
-            FOREVER.
+            FOREVER
           </h2>
         </div>
 

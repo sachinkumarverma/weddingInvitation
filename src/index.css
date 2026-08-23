@@ -26,11 +26,16 @@
     
     --brand-crimson: #a81c38;
     --brand-crimson-dark: #8b152b;
+
+    --bg-image: 
+      linear-gradient(to bottom, rgba(10, 3, 5, 0) 0%, rgba(10, 3, 5, 0.65) 15%, rgba(10, 3, 5, 0.65) 85%, rgba(10, 3, 5, 1) 100%),
+      linear-gradient(rgba(10, 3, 5, 0.65), rgba(10, 3, 5, 0.65)),
+      url('/palace-bg.jpg');
   }
   
   [data-theme="pink"] {
     --bg-image: 
-      linear-gradient(to bottom, rgba(253, 242, 248, 1) 0%, rgba(253, 242, 248, 0) 15%, rgba(253, 242, 248, 0) 85%, rgba(253, 242, 248, 1) 100%),
+      linear-gradient(to bottom, rgba(253, 242, 248, 0) 0%, rgba(253, 242, 248, 0) 15%, rgba(253, 242, 248, 0) 85%, rgba(253, 242, 248, 1) 100%),
       linear-gradient(rgba(253, 242, 248, 0.8), rgba(253, 242, 248, 0.8)),
       url('/bg-rose.png');
     --bg-primary: #fdf2f8;
@@ -62,7 +67,7 @@
 
   [data-theme="midnight"] {
     --bg-image: 
-      linear-gradient(to bottom, rgba(15, 11, 41, 1) 0%, rgba(15, 11, 41, 0) 15%, rgba(15, 11, 41, 0) 85%, rgba(15, 11, 41, 1) 100%),
+      linear-gradient(to bottom, rgba(15, 11, 41, 0) 0%, rgba(15, 11, 41, 0) 15%, rgba(15, 11, 41, 0) 85%, rgba(15, 11, 41, 1) 100%),
       linear-gradient(rgba(15, 11, 41, 0.85), rgba(15, 11, 41, 0.85)),
       url('/bg-midnight.png');
     --bg-primary: #0f0b29;
@@ -276,6 +281,12 @@
   text-shadow: none !important;
   -webkit-filter: none !important;
 }
+[data-theme="pink"] .wax-seal-text span:first-child {
+  color: #ffffff !important;
+}
+[data-theme="pink"] .wax-seal-text span:last-child {
+  color: #ffcc00 !important;
+}
 /* --- GLOBAL WHATSAPP BUTTON --- */
 .btn-whatsapp {
   background: #00a83e !important;
@@ -289,4 +300,125 @@
 }
 .btn-whatsapp svg {
   color: #ffffff !important;
+}
+
+/* --- VENUE SECTION OVERRIDES --- */
+[data-theme="pink"] .venue-overlay {
+  background-image: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(20,4,9,0.5) 50%, transparent 100%) !important;
+}
+[data-theme="pink"] .venue-title {
+  color: #ffcc00 !important;
+}
+[data-theme="pink"] .venue-address {
+  color: #ffffff !important;
+}
+[data-theme="pink"] .venue-badge-text {
+  color: #ffffff !important;
+}
+[data-theme="pink"] .venue-badge-text svg {
+  color: #ffffff !important;
+}
+
+/* --- EVENT SECTION OVERRIDES --- */
+[data-theme="pink"] .event-image-overlay {
+  background-image: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%) !important;
+}
+
+/* --- EVENT BADGES (GLOBAL) --- */
+.event-badge-pooja {
+  background-color: #b91c1c !important; /* red */
+  color: #ffffff !important;
+  border-color: #b91c1c !important;
+}
+
+.event-badge-haldi {
+  background-color: #facc15 !important; /* yellow */
+  color: #000000 !important;
+  border-color: #facc15 !important;
+}
+
+.event-badge-mehendi {
+  background-color: #15803d !important; /* green */
+  color: #ffffff !important;
+  border-color: #15803d !important;
+}
+
+.event-badge-wedding {
+  background-color: #d7006b !important; /* pink */
+  color: #ffffff !important;
+  border-color: #d7006b !important;
+}
+
+/* --- SCRATCH CARD SHAPE OVERRIDE --- */
+[data-theme="pink"] .scratch-card-wrapper {
+  max-width: 440px !important; /* Made wider for text */
+  filter: drop-shadow(0 15px 30px rgba(215, 0, 107, 0.4));
+}
+
+[data-theme="pink"] .scratch-card-container {
+  aspect-ratio: 1.25 / 1; /* Wider aspect ratio so it doesn't clip horizontally */
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><path d="M100 185C100 185 15 125 15 65C15 30 55 15 100 55C145 15 185 30 185 65C185 125 100 185 100 185Z" /></svg>');
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><path d="M100 185C100 185 15 125 15 65C15 30 55 15 100 55C145 15 185 30 185 65C185 125 100 185 100 185Z" /></svg>');
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+[data-theme="pink"] .scratch-content-wrapper {
+  padding-top: 3.5rem !important; /* Push text down further from cleft */
+  padding-bottom: 3.5rem !important; /* Push text up from narrow bottom point */
+  padding-left: 3rem !important;
+  padding-right: 3rem !important;
+}
+
+/* Scale down font sizes inside the heart to fit perfectly */
+[data-theme="pink"] .scratch-content-wrapper h3 {
+  font-size: 1.1rem !important; 
+  line-height: 1.5 !important;
+  margin-top: 3.5rem !important; /* Push down into the wider part of the heart */
+}
+
+[data-theme="pink"] .scratch-content-wrapper .font-script {
+  font-size: 1rem !important; 
+}
+
+[data-theme="pink"] .scratch-content-wrapper .font-sans {
+  font-size: 0.65rem !important; 
+  max-width: 220px !important; /* force text wrapping before it hits the curve */
+  color: #004d00 !important; /* dark green to make it visible */
+}
+
+/* Move the top badge to the bottom in Pink Theme to avoid the top cleft */
+[data-theme="pink"] .scratch-content-wrapper .scratch-header {
+  order: 10 !important; /* Flexbox reordering */
+  margin-top: 0.75rem !important;
+  margin-bottom: 0 !important;
+  font-size: 9px !important;
+  color: #ffffff !important; /* Keep text white */
+}
+
+[data-theme="pink"] .scratch-content-wrapper .scratch-footer {
+  font-size: 9px !important;
+}
+
+[data-theme="pink"] .apple-maps-icon {
+  color: #000000 !important;
+}
+
+[data-theme="pink"] .scratch-card-container .royal-corner {
+  display: none !important;
+}
+
+[data-theme="pink"] .gallery-gradient {
+  background-image: linear-gradient(to top, #000000, rgba(20, 4, 9, 0.4), transparent) !important;
+}
+
+[data-theme="pink"] .directions-icon {
+  color: #000000 !important;
 }

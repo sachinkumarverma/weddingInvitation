@@ -38,18 +38,18 @@ export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover filter brightness-90 contrast-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[#140409]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[#140409]/40 to-transparent venue-overlay" />
           
           <div className="absolute bottom-6 left-6 right-6 text-center sm:text-left flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-crimson-dark)]/80 border border-[var(--accent-gold)]/40 text-[var(--text-primary)] text-xs font-cinzel mb-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-crimson-dark)]/80 border border-[var(--accent-gold)]/40 text-[var(--text-primary)] text-xs font-cinzel mb-2 venue-badge-text">
                 <MapPin className="w-3.5 h-3.5 text-[var(--accent-gold-light)]" />
                 <span>{venue.city}, {venue.state}</span>
               </div>
-              <h3 className="font-cinzel-dec text-2xl sm:text-4xl font-bold text-[#ffffff] drop-shadow-lg">
+              <h3 className="font-cinzel-dec text-2xl sm:text-4xl font-bold text-[#ffffff] drop-shadow-lg venue-title">
                 {venue.name}
               </h3>
-              <p className="text-xs sm:text-sm font-sans text-[var(--text-primary)] mt-1 max-w-xl">
+              <p className="text-xs sm:text-sm font-sans text-[var(--text-primary)] mt-1 max-w-xl venue-address">
                 {venue.address}
               </p>
             </div>
@@ -71,7 +71,7 @@ export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
                 rel="noreferrer"
                 className="btn-secondary flex items-center gap-2 px-5 py-2.5 rounded-full font-cinzel text-xs tracking-wider uppercase cursor-pointer"
               >
-                <ExternalLink className="w-3.5 h-3.5 text-[var(--accent-gold)]" />
+                <ExternalLink className="w-3.5 h-3.5 text-[var(--accent-gold)] apple-maps-icon" />
                 Apple Maps
               </a>
             </div>

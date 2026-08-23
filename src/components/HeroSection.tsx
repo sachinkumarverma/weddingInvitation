@@ -10,12 +10,12 @@ export const HeroSection: React.FC<{
   onScrollToVenue: () => void;
 }> = ({ wedding, onOpenEnvelopeModal, onScrollToEvents, onScrollToVenue }) => {
   return (
-    <header className="relative min-h-[92vh] sm:min-h-screen flex flex-col items-center justify-center text-center px-4 pt-16 pb-12 overflow-hidden">
+    <header className="relative min-h-[92vh] sm:min-h-screen flex flex-col items-center justify-center text-center px-4 pt-16 pb-12 overflow-hidden bg-[var(--bg-primary-dark)]">
       {/* Background Architectural & Palace Atmosphere */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-20 filter contrast-125 scale-105 transition-transform duration-10000 ease-out pointer-events-none"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=1600&auto=format&fit=crop')`,
+          backgroundImage: `url('/royal.png')`,
         }}
       />
       
@@ -81,12 +81,17 @@ export const HeroSection: React.FC<{
             </span>
           </div>
 
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--bg-card)]/80 border border-[var(--accent-gold)]/40 backdrop-blur-md shadow-[0_4px_15px_rgba(0,0,0,0.6)]">
+          <a 
+            href={wedding.venue.googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--bg-card)]/80 border border-[var(--accent-gold)]/40 backdrop-blur-md shadow-[0_4px_15px_rgba(0,0,0,0.6)] cursor-pointer hover:bg-[var(--accent-gold)]/10 transition-colors inline-flex"
+          >
             <MapPin className="w-4 h-4 text-[var(--accent-gold)]" />
             <span className="font-cinzel text-xs sm:text-sm font-semibold tracking-wider text-[var(--text-primary)]">
               {wedding.venue.name}, {wedding.venue.city}
             </span>
-          </div>
+          </a>
         </div>
 
         {/* Quick Action Buttons */}

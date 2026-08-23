@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import confetti from 'canvas-confetti';
+import Confetti from 'react-confetti';
 import { Sparkles, Heart, RefreshCw } from 'lucide-react';
 import { sound } from '../utils/soundEngine';
 import { RoyalCorner, GoldDivider } from './Ornaments';
@@ -10,6 +10,8 @@ export const ScratchRevealCard: React.FC<{ wedding: WeddingConfig }> = ({ weddin
   const [isRevealed, setIsRevealed] = useState(false);
   const [isScratching, setIsScratching] = useState(false);
   const [scratchPercent, setScratchPercent] = useState(0);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [recycleConfetti, setRecycleConfetti] = useState(true);
 
   // Initialize Canvas Gold Foil Layer
   const initCanvas = () => {
@@ -100,7 +102,7 @@ export const ScratchRevealCard: React.FC<{ wedding: WeddingConfig }> = ({ weddin
     const percent = Math.round((transparentCount / totalSampled) * 100);
     setScratchPercent(percent);
 
-    if (percent > 45 && !isRevealed) {
+    if (percent > 30 && !isRevealed) {
       handleCompleteReveal();
     }
   };
@@ -108,15 +110,20 @@ export const ScratchRevealCard: React.FC<{ wedding: WeddingConfig }> = ({ weddin
   const handleCompleteReveal = () => {
     setIsRevealed(true);
     sound.playGoldShimmer();
-    sound.playCelebrationChimes();
+    
+    // Play the celebration chime when the slow fade completes (1.5s)
+    setTimeout(() => {
+      sound.playCelebrationChimes();
+    }, 1500);
 
-    // Burst golden confetti
-    confetti({
-      particleCount: 60,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ['var(--accent-gold)', 'var(--accent-gold-light)', 'var(--brand-crimson)', '#ffffff'],
-    });
+    setShowConfetti(true);
+    setRecycleConfetti(true);
+
+    // Stop generating new particles after 4 seconds
+    setTimeout(() => setRecycleConfetti(false), 4000);
+
+    // Completely remove the canvas after 10 seconds to allow existing particles to fall
+    setTimeout(() => setShowConfetti(false), 10000);
   };
 
   const handleReset = () => {
@@ -126,28 +133,41 @@ export const ScratchRevealCard: React.FC<{ wedding: WeddingConfig }> = ({ weddin
   };
 
   return (
-    <section className="py-16 px-4 max-w-4xl mx-auto text-center">
+    <section className="py-16 px-4 max-w-4xl mx-auto text-center relative">
+      {showConfetti && (
+        <div className="fixed inset-0 pointer-events-none z-[100]">
+          <Confetti 
+            width={window.innerWidth}
+            height={window.innerHeight}
+            numberOfPieces={250}
+            gravity={0.15}
+            recycle={recycleConfetti}
+            colors={['#ffb7c5', '#ff9eaa', '#ffc0cb', '#d4af37', '#eab308', '#ffffff']}
+          />
+        </div>
+      )}
       <div className="mb-8">
         <p className="font-script text-2xl text-[var(--text-primary)]">A Royal Secret Unfolds</p>
         <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-gold-gradient tracking-wider uppercase mt-1">
           Scratch to Reveal Our Date
         </h2>
         <p className="text-xs sm:text-sm font-sans text-[var(--text-secondary)] max-w-md mx-auto mt-2">
-          Use your finger or mouse to gently scratch away the golden foil and reveal our sacred wedding vows & date.
+          Use your finger to gently scratch away the golden foil and reveal our sacred wedding vows & date.
         </p>
         <GoldDivider variant="diamond" className="max-w-xs mx-auto my-4" />
       </div>
 
       {/* The Scratch Container */}
-      <div className="relative mx-auto w-full max-w-sm sm:max-w-md rounded-2xl overflow-hidden border border-[var(--accent-gold)]/40 shadow-[0_20px_50px_rgba(0,0,0,0.8)] bg-[var(--bg-card)] backdrop-blur-md">
+      <div className="scratch-card-wrapper relative mx-auto w-full max-w-sm sm:max-w-md">
+        <div className="scratch-card-container relative w-full rounded-2xl overflow-hidden border border-[var(--accent-gold)]/40 shadow-[0_20px_50px_rgba(0,0,0,0.8)] bg-[var(--bg-card)] backdrop-blur-md">
         <RoyalCorner position="top-left" />
         <RoyalCorner position="top-right" />
         <RoyalCorner position="bottom-left" />
         <RoyalCorner position="bottom-right" />
 
         {/* Hidden Content Revealed Beneath */}
-        <div className="p-6 sm:p-8 flex flex-col items-center justify-center min-h-[220px] text-center">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-crimson-dark)]/60 border border-[var(--accent-gold)]/40 text-[var(--text-secondary)] text-[11px] font-cinzel mb-2">
+        <div className="scratch-content-wrapper p-6 sm:p-8 flex flex-col items-center justify-center min-h-[220px] h-full text-center">
+          <div className="scratch-header inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-crimson-dark)]/60 border border-[var(--accent-gold)]/40 text-[var(--text-secondary)] text-[11px] font-cinzel mb-2">
             <Heart className="w-3.5 h-3.5 text-[#e11d48] fill-current animate-pulse" />
             <span>Save Our Date</span>
           </div>
@@ -164,18 +184,19 @@ export const ScratchRevealCard: React.FC<{ wedding: WeddingConfig }> = ({ weddin
             "{wedding.couple.quote}"
           </p>
 
-          <div className="mt-4 flex flex-col gap-1.5 text-[11px] font-cinzel text-[var(--accent-gold)] font-semibold tracking-widest uppercase">
+          <div className="scratch-footer mt-4 flex flex-col gap-1.5 text-[11px] font-cinzel text-[var(--accent-gold)] font-semibold tracking-widest uppercase">
             <span>{wedding.couple.hashtag}</span>
             <span>{wedding.venue.city}, {wedding.venue.state}</span>
           </div>
         </div>
 
         {/* Canvas Scratch Foil Layer (Overlaid on top) */}
-        {!isRevealed && (
-          <canvas
-            ref={canvasRef}
-            id="scratch-card-canvas"
-            className="absolute inset-0 w-full h-full cursor-crosshair touch-none select-none z-20"
+        <canvas
+          ref={canvasRef}
+          id="scratch-card-canvas"
+          className={`absolute inset-0 w-full h-full cursor-crosshair touch-none select-none z-20 transition-opacity duration-[1500ms] ease-in-out ${
+            isRevealed ? 'opacity-0 pointer-events-none' : 'opacity-100'
+          }`}
             onMouseDown={(e) => {
               setIsScratching(true);
               scratch(e.clientX, e.clientY);
@@ -198,7 +219,7 @@ export const ScratchRevealCard: React.FC<{ wedding: WeddingConfig }> = ({ weddin
             }}
             onTouchEnd={() => setIsScratching(false)}
           />
-        )}
+        </div>
       </div>
 
       {/* Controls / Accessibility Actions */}

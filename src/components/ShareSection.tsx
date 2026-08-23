@@ -111,30 +111,30 @@ export const ShareSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
       {/* QR Code Modal */}
       {showQR && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 animate-in fade-in">
-          <div className="relative p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--accent-gold)]/50 max-w-sm text-center shadow-2xl">
+          <div className="relative p-8 md:p-12 rounded-3xl bg-[var(--bg-card)] border border-[var(--accent-gold)]/50 max-w-sm md:max-w-lg w-full text-center shadow-2xl transition-all duration-300">
             <RoyalCorner position="top-left" />
             <RoyalCorner position="top-right" />
             <RoyalCorner position="bottom-left" />
             <RoyalCorner position="bottom-right" />
 
-            <h3 className="font-cinzel text-lg font-bold text-gold-gradient mb-1">
+            <h3 className="font-cinzel text-lg md:text-2xl font-bold text-gold-gradient mb-1">
               Invitation QR Code
             </h3>
-            <p className="text-xs font-sans text-[var(--text-secondary)] mb-4">
+            <p className="text-xs md:text-sm font-sans text-[var(--text-secondary)] mb-4 md:mb-6">
               Scan with mobile camera to open the invitation
             </p>
 
-            <div className="p-4 bg-white rounded-2xl inline-block border-2 border-[var(--accent-gold)] shadow-inner mb-4">
+            <div className="p-4 md:p-6 bg-white rounded-2xl inline-block border-2 border-[var(--accent-gold)] shadow-inner mb-4 md:mb-6 transition-all duration-300">
               <img
-                src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(
                   shareUrl
                 )}`}
                 alt="Wedding QR Code"
-                className="w-44 h-44"
+                className="w-44 h-44 md:w-64 md:h-64 object-contain"
               />
             </div>
 
-            <div className="text-xs font-cinzel text-[var(--accent-gold)] font-bold">
+            <div className="text-xs md:text-sm font-cinzel text-[var(--accent-gold)] font-bold tracking-widest">
               {wedding.couple.initials} • Bhopal 2026
             </div>
 
