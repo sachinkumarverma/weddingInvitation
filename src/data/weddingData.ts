@@ -16,8 +16,8 @@ export const weddingData: WeddingConfig = {
       parents: "Mr. Naresh & Mrs. Kiran Dubey",
       image: "/female.jpg"
     },
-    initials: "S & H",
-    hashtag: "#SatyamWedsHarshita",
+    initials: "H & S",
+    hashtag: "#HarshitaWedsSatyam",
     quote: "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine.",
   },
   weddingDate: "2026-12-02T19:00:00",

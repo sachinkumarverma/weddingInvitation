@@ -356,7 +356,7 @@
 }
 
 [data-theme="pink"] .scratch-card-container {
-  aspect-ratio: 1.25 / 1; /* Wider aspect ratio so it doesn't clip horizontally */
+  aspect-ratio: 1.05 / 1 !important; /* Natural SVG aspect ratio to give more height on mobile */
   border-radius: 0 !important;
   border: none !important;
   box-shadow: none !important;
@@ -371,40 +371,44 @@
 }
 
 [data-theme="pink"] .scratch-content-wrapper {
-  padding-top: 3.5rem !important; /* Push text down further from cleft */
-  padding-bottom: 3.5rem !important; /* Push text up from narrow bottom point */
-  padding-left: 3rem !important;
-  padding-right: 3rem !important;
+  padding-top: 3.5rem !important;
+  padding-bottom: 1.5rem !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
 }
 
 /* Scale down font sizes inside the heart to fit perfectly */
 [data-theme="pink"] .scratch-content-wrapper h3 {
-  font-size: 1.1rem !important; 
-  line-height: 1.5 !important;
-  margin-top: 3.5rem !important; /* Push down into the wider part of the heart */
+  font-size: 0.95rem !important; 
+  line-height: 1.2 !important;
+  margin-top: 1.5rem !important; /* Push down just past the top cleft */
 }
 
 [data-theme="pink"] .scratch-content-wrapper .font-script {
-  font-size: 1rem !important; 
+  font-size: 0.85rem !important; 
+  margin-top: 0.25rem !important;
 }
 
 [data-theme="pink"] .scratch-content-wrapper .font-sans {
-  font-size: 0.65rem !important; 
-  max-width: 220px !important; /* force text wrapping before it hits the curve */
+  font-size: 0.55rem !important; 
+  max-width: 190px !important; /* force text wrapping before it hits the curve */
   color: #004d00 !important; /* dark green to make it visible */
+  margin-top: 0.25rem !important;
 }
 
 /* Move the top badge to the bottom in Pink Theme to avoid the top cleft */
 [data-theme="pink"] .scratch-content-wrapper .scratch-header {
   order: 10 !important; /* Flexbox reordering */
-  margin-top: 0.75rem !important;
+  margin-top: 0.5rem !important;
   margin-bottom: 0 !important;
-  font-size: 9px !important;
+  font-size: 8px !important;
+  padding: 0.2rem 0.5rem !important;
   color: #ffffff !important; /* Keep text white */
 }
 
 [data-theme="pink"] .scratch-content-wrapper .scratch-footer {
-  font-size: 9px !important;
+  font-size: 8px !important;
+  margin-top: 0.5rem !important;
 }
 
 [data-theme="pink"] .apple-maps-icon {

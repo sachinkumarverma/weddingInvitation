@@ -88,7 +88,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
     e.stopPropagation();
     addToNativeCalendar({
       title: `Satyam & Harshita's Wedding`,
-      description: `Dubey & Pathak Family cordially invite you to celebrate the wedding ceremony of Satyam & Harshita at ${wedding.venue.name}, ${wedding.venue.city}.`,
+      description: `Dubey Family cordially invite you to celebrate the wedding ceremony of Satyam & Harshita at ${wedding.venue.name}, ${wedding.venue.city}.`,
       location: `${wedding.venue.name}, ${wedding.venue.address}`,
       startDate: wedding.weddingDate,
       endDate: '2026-12-03T02:00:00',
@@ -179,7 +179,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
 
             {/* Family Invocation */}
             <p className="font-script text-lg sm:text-2xl text-[var(--brand-crimson-dark)] mt-0.5 mb-0.5 leading-tight">
-              Dubey & Pathak Family
+              Dubey Family
             </p>
             <p className="text-[9px] sm:text-[11px] font-cinzel font-semibold tracking-[0.22em] text-[#6b1424] uppercase mb-1">
               Cordially invite you to celebrate the wedding of
@@ -384,9 +384,10 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
 
                 <div 
                   onClick={handleDismiss}
-                  className="mt-1 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-crimson-dark)] text-[#ffffff] text-[10px] font-cinzel font-bold uppercase tracking-wider shadow-sm animate-pulse cursor-pointer hover:scale-105 transition-transform"
+                  className="mt-1 flex items-center justify-center gap-1.5 pl-2 pr-3 py-1 rounded-full bg-[var(--brand-crimson-dark)] text-[#ffffff] text-[10px] font-cinzel font-bold uppercase tracking-wider shadow-sm animate-pulse cursor-pointer hover:scale-105 transition-transform"
                 >
-                  <span>Click to Enter Website</span>
+                  <ChevronDown className="w-3 h-3 opacity-0" />
+                  <span>View Invitation</span>
                   <ChevronDown className="w-3 h-3 text-[var(--accent-gold-light)]" />
                 </div>
               </div>
@@ -402,7 +403,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                     ॥ श्री गणेशाय नमः ॥
                   </p>
                   <p className="font-script text-xl sm:text-2xl text-[var(--text-primary)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                    Dubey & Pathak Family
+                    Dubey Family Invites You
                   </p>
                 </div>
 
@@ -433,8 +434,9 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
             <button
               type="button"
               onClick={handleDismiss}
-              className="relative z-50 mt-8 flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[var(--brand-crimson-dark)] via-[var(--brand-crimson)] to-[var(--brand-crimson-dark)] text-[#ffffff] font-cinzel text-xs sm:text-sm font-bold tracking-widest uppercase border border-[var(--accent-gold)]/70 shadow-[0_10px_30px_rgba(168,28,56,0.6)] hover:shadow-[0_0_35px_rgba(212,175,55,0.7)] hover:scale-105 transition-all duration-300 cursor-pointer animate-bounce"
+              className="relative z-50 mt-8 flex items-center justify-center gap-2.5 pl-6 pr-8 py-3.5 rounded-full bg-gradient-to-r from-[var(--brand-crimson-dark)] via-[var(--brand-crimson)] to-[var(--brand-crimson-dark)] text-[#ffffff] font-cinzel text-xs sm:text-sm font-bold tracking-widest uppercase border border-[var(--accent-gold)]/70 shadow-[0_10px_30px_rgba(168,28,56,0.6)] hover:shadow-[0_0_35px_rgba(212,175,55,0.7)] hover:scale-105 transition-all duration-300 cursor-pointer animate-bounce"
             >
+              <ChevronDown className="w-4 h-4 opacity-0" />
               <span>Explore Wedding Invitation</span>
               <ChevronDown className="w-4 h-4 text-[var(--accent-gold-light)]" />
             </button>

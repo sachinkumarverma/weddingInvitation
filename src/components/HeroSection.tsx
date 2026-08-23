@@ -9,6 +9,10 @@ export const HeroSection: React.FC<{
   onScrollToEvents: () => void;
   onScrollToVenue: () => void;
 }> = ({ wedding, onOpenEnvelopeModal, onScrollToEvents, onScrollToVenue }) => {
+  const handleLittleScroll = () => {
+    window.scrollBy({ top: window.innerHeight * 0.4, behavior: 'smooth' });
+  };
+
   return (
     <header className="relative min-h-[92vh] sm:min-h-screen flex flex-col items-center justify-center text-center px-4 pt-16 pb-12 overflow-hidden bg-[var(--bg-primary-dark)]">
       {/* Background Architectural & Palace Atmosphere */}
@@ -46,7 +50,7 @@ export const HeroSection: React.FC<{
 
         {/* Introduction */}
         <p className="font-script text-2xl sm:text-3xl text-[var(--text-primary)] tracking-wide mb-3">
-          Dubey & Pathak Family
+          Dubey Family Invites You
         </p>
 
         <p className="text-[11px] sm:text-xs font-cinzel font-semibold tracking-[0.3em] text-[var(--accent-gold)] uppercase mb-6 opacity-90">
@@ -56,7 +60,7 @@ export const HeroSection: React.FC<{
         {/* Couple Names - The Crown of the Invitation */}
         <div className="my-3 space-y-1 sm:space-y-0">
           <h1 className="font-cinzel-dec text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient drop-shadow-title">
-            SATYAM
+            HARSHITA
           </h1>
           
           <div className="flex items-center justify-center my-1 sm:my-2">
@@ -66,16 +70,16 @@ export const HeroSection: React.FC<{
           </div>
 
           <h1 className="font-cinzel-dec text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient drop-shadow-title">
-            HARSHITA
+            SATYAM
           </h1>
         </div>
 
         <GoldDivider variant="lotus" className="w-full max-w-xs my-3" />
 
         {/* Date & Venue Badges */}
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 my-3">
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--bg-card)]/80 border border-[var(--accent-gold)]/40 backdrop-blur-md shadow-[0_4px_15px_rgba(0,0,0,0.6)]">
-            <Calendar className="w-4 h-4 text-[var(--accent-gold)]" />
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mt-6">
+          <div className="flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-black/40 backdrop-blur-md border border-[var(--accent-gold)]/40 hover:bg-[var(--accent-gold)]/20 transition-all cursor-default group">
+            <Calendar className="w-4 h-4 text-[var(--accent-gold)] group-hover:scale-110 transition-transform" />
             <span className="font-cinzel text-xs sm:text-sm font-semibold tracking-wider text-[var(--text-primary)]">
               {wedding.displayDate}
             </span>
@@ -85,9 +89,9 @@ export const HeroSection: React.FC<{
             href={wedding.venue.googleMapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--bg-card)]/80 border border-[var(--accent-gold)]/40 backdrop-blur-md shadow-[0_4px_15px_rgba(0,0,0,0.6)] cursor-pointer hover:bg-[var(--accent-gold)]/10 transition-colors inline-flex"
+            className="flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-black/40 backdrop-blur-md border border-[var(--accent-gold)]/40 hover:bg-[var(--accent-gold)]/20 transition-all cursor-pointer group"
           >
-            <MapPin className="w-4 h-4 text-[var(--accent-gold)]" />
+            <MapPin className="w-4 h-4 text-[var(--accent-gold)] group-hover:scale-110 transition-transform" />
             <span className="font-cinzel text-xs sm:text-sm font-semibold tracking-wider text-[var(--text-primary)]">
               {wedding.venue.name}, {wedding.venue.city}
             </span>
@@ -100,7 +104,7 @@ export const HeroSection: React.FC<{
             type="button"
             id="hero-events-cta"
             data-cursor="EVENTS"
-            onClick={onScrollToEvents}
+            onClick={handleLittleScroll}
             className="btn-primary px-7 sm:px-9 py-3 rounded-full font-cinzel text-xs sm:text-sm tracking-widest uppercase cursor-pointer"
           >
             Wedding Events & Itinerary
@@ -110,7 +114,7 @@ export const HeroSection: React.FC<{
             type="button"
             id="hero-venue-cta"
             data-cursor="VENUE"
-            onClick={onScrollToVenue}
+            onClick={handleLittleScroll}
             className="btn-secondary px-5 sm:px-7 py-3 rounded-full font-cinzel text-xs sm:text-sm tracking-wider uppercase cursor-pointer backdrop-blur-md"
           >
             Venue & Map
@@ -121,7 +125,7 @@ export const HeroSection: React.FC<{
       {/* Elegant Scroll Down Indicator */}
       <button
         type="button"
-        onClick={onScrollToEvents}
+        onClick={handleLittleScroll}
         aria-label="Scroll to explore invitation"
         className="relative z-20 mt-12 sm:mt-16 flex flex-col items-center gap-1 text-[var(--accent-gold)]/80 hover:text-[var(--accent-gold)] transition-colors cursor-pointer group"
       >

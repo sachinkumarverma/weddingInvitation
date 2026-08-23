@@ -25,8 +25,8 @@ export const ShareSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
 
 With the blessings of our beloved families,
 
-💍 *${wedding.couple.groom.fullName}* &
-🌸 *${wedding.couple.bride.fullName}*
+🌸 *${wedding.couple.bride.fullName}* &
+💍 *${wedding.couple.groom.fullName}*
 
 cordially invite you to grace the auspicious occasion of their wedding and bless them as they begin their journey of *love, togetherness & forever*. ❤️
 
@@ -41,7 +41,7 @@ Please open our *digital wedding invitation* to discover the complete details of
 ${shareUrl}
 
 With heartfelt love,  
-❤️ *${wedding.couple.groom.firstName} & ${wedding.couple.bride.firstName}* ❤️
+❤️ *${wedding.couple.bride.firstName} & ${wedding.couple.groom.firstName}* ❤️
 
 _We look forward to celebrating this beautiful beginning with you._ 🥂🌸`;
 
@@ -60,7 +60,7 @@ _We look forward to celebrating this beautiful beginning with you._ 🥂🌸`;
     <section className="py-16 px-4 max-w-4xl mx-auto text-center relative">
       <div className="mb-8">
         <p className="font-script text-2xl text-[var(--text-primary)]">Share the Celebration</p>
-        <h2 className="font-cinzel text-3xl font-bold text-gold-gradient tracking-wider uppercase mt-1">
+        <h2 className="font-cinzel text-xl sm:text-3xl font-bold text-gold-gradient tracking-widest sm:tracking-wider uppercase mt-1 px-2 break-all sm:break-normal">
           {wedding.couple.hashtag}
         </h2>
         <p className="text-xs sm:text-sm font-sans text-[var(--text-secondary)] max-w-md mx-auto mt-2">

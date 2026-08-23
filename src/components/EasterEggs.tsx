@@ -32,7 +32,7 @@ export const EasterEggModal: React.FC<{
           "May love be the song our hearts dance to, today and through every tomorrow."
           <br />
           <span className="text-[var(--accent-gold-light)] font-semibold mt-2 inline-block">
-            — {weddingData.couple.groom.firstName} & {weddingData.couple.bride.firstName}
+            — {weddingData.couple.bride.firstName} & {weddingData.couple.groom.firstName}
           </span>
         </p>
         <button

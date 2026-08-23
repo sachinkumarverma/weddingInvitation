@@ -41,7 +41,7 @@ export const FinalSection: React.FC<{
         </div>
 
         <p className="font-script text-3xl sm:text-4xl text-[var(--text-secondary)] my-3">
-          {wedding.couple.groom.firstName} & {wedding.couple.bride.firstName}
+          {wedding.couple.bride.firstName} & {wedding.couple.groom.firstName}
         </p>
 
         <div className="font-cinzel text-xs sm:text-sm font-semibold tracking-[0.3em] text-[var(--accent-gold)] uppercase my-2">

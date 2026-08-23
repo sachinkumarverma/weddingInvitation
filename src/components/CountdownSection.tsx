@@ -46,8 +46,8 @@ export const CountdownSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding
 
   const handleAddWeddingToCalendar = () => {
     addToNativeCalendar({
-      title: `${wedding.couple.groom.fullName} & ${wedding.couple.bride.fullName}'s Royal Wedding`,
-      description: `Dubey & Pathak Family cordially invite you to celebrate the Royal Wedding of ${wedding.couple.groom.fullName} & ${wedding.couple.bride.fullName} at ${wedding.venue.name}, ${wedding.venue.city}, ${wedding.venue.state}.`,
+      title: `${wedding.couple.bride.fullName} & ${wedding.couple.groom.fullName}'s Royal Wedding`,
+      description: `Dubey Family cordially invite you to celebrate the Royal Wedding of ${wedding.couple.bride.fullName} & ${wedding.couple.groom.fullName} at ${wedding.venue.name}, ${wedding.venue.city}, ${wedding.venue.state}.`,
       location: `${wedding.venue.name}, ${wedding.venue.address}`,
       startDate: wedding.weddingDate,
       endDate: '2026-12-03T02:00:00',
