@@ -32,7 +32,7 @@ export const FamilySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
         <RoyalCorner position="bottom-right" />
 
         <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center text-center mt-32">
-          <p className="font-serif-luxury text-[14px] sm:text-2xl text-[var(--accent-gold-light)] tracking-tight sm:tracking-wide leading-loose sm:leading-relaxed font-semibold whitespace-pre sm:whitespace-pre-line drop-shadow-md px-0 w-full overflow-x-visible">
+          <p className="font-serif-luxury text-[16px] sm:text-2xl text-[var(--accent-gold-light)] tracking-tight sm:tracking-wide leading-loose sm:leading-relaxed font-semibold whitespace-pre sm:whitespace-pre-line drop-shadow-md px-0 w-full overflow-x-visible">
             {familyBlessings.shlokaSanskrit}
           </p>
 

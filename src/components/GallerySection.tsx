@@ -140,7 +140,7 @@ export const GallerySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }
             id="lightbox-close-button"
             aria-label="Close Lightbox"
             onClick={(e) => { e.stopPropagation(); setSelectedPhotoIndex(null); }}
-            className="absolute top-6 right-6 z-50 p-2.5 rounded-full bg-[var(--bg-card)]/80 border border-[var(--accent-gold)]/40 text-[var(--accent-gold)] hover:scale-110 hover:border-[var(--accent-gold)] transition-all cursor-pointer shadow-lg"
+            className="hidden sm:flex absolute top-6 right-6 z-50 p-2.5 rounded-full bg-[var(--bg-card)]/80 border border-[var(--accent-gold)]/40 text-[var(--accent-gold)] hover:scale-110 hover:border-[var(--accent-gold)] transition-all cursor-pointer shadow-lg"
           >
             <X className="w-6 h-6" />
           </button>
@@ -153,9 +153,9 @@ export const GallerySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }
               e.stopPropagation();
               setSelectedPhotoIndex((prev) => (prev! - 1 + filteredPhotos.length) % filteredPhotos.length);
             }}
-            className="absolute left-4 sm:left-8 z-50 p-3 rounded-full bg-[var(--bg-card)]/80 border border-[var(--accent-gold)]/40 text-[var(--accent-gold)] hover:scale-110 hover:border-[var(--accent-gold)] transition-all cursor-pointer shadow-lg"
+            className="absolute left-2 sm:left-8 z-50 p-2 sm:p-3 rounded-full bg-[var(--bg-card)]/80 border border-[var(--accent-gold)]/40 text-[var(--accent-gold)] hover:scale-110 hover:border-[var(--accent-gold)] transition-all cursor-pointer shadow-lg"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           {/* Next Button */}
@@ -166,24 +166,34 @@ export const GallerySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }
               e.stopPropagation();
               setSelectedPhotoIndex((prev) => (prev! + 1) % filteredPhotos.length);
             }}
-            className="absolute right-4 sm:right-8 z-50 p-3 rounded-full bg-[var(--bg-card)]/80 border border-[var(--accent-gold)]/40 text-[var(--accent-gold)] hover:scale-110 hover:border-[var(--accent-gold)] transition-all cursor-pointer shadow-lg"
+            className="absolute right-2 sm:right-8 z-50 p-2 sm:p-3 rounded-full bg-[var(--bg-card)]/80 border border-[var(--accent-gold)]/40 text-[var(--accent-gold)] hover:scale-110 hover:border-[var(--accent-gold)] transition-all cursor-pointer shadow-lg"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           {/* Image & Caption Container */}
           <div 
-            className="max-w-4xl max-h-[85vh] flex flex-col items-center relative z-10"
+            className="max-w-4xl max-h-[85vh] flex flex-col items-center relative z-10 mt-6 sm:mt-0"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative rounded-2xl overflow-hidden border-2 border-[var(--accent-gold)]/60 shadow-[0_20px_60px_rgba(0,0,0,0.9)] max-h-[72vh]">
+            {/* Mobile Close Button (Positioned just above the image) */}
+            <button
+              type="button"
+              aria-label="Close Lightbox"
+              onClick={(e) => { e.stopPropagation(); setSelectedPhotoIndex(null); }}
+              className="sm:hidden self-end mb-3 p-2 rounded-full bg-[var(--bg-card)]/80 border border-[var(--accent-gold)]/40 text-[var(--accent-gold)] cursor-pointer shadow-lg"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="relative rounded-2xl overflow-hidden border-2 border-[var(--accent-gold)]/60 shadow-[0_20px_60px_rgba(0,0,0,0.9)] max-h-[70vh]">
               <RoyalCorner position="top-left" />
               <RoyalCorner position="top-right" />
               <img
                 src={filteredPhotos[selectedPhotoIndex].url}
                 alt={filteredPhotos[selectedPhotoIndex].title}
                 referrerPolicy="no-referrer"
-                className="max-h-[72vh] w-auto object-contain rounded-2xl"
+                className="max-h-[70vh] w-auto object-contain rounded-2xl"
               />
             </div>
 
