@@ -230,7 +230,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                 className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-full bg-[var(--brand-crimson-dark)] text-[#ffffff] hover:bg-[var(--brand-crimson)] text-xs font-cinzel font-bold tracking-wider uppercase transition-all shadow-md cursor-pointer whitespace-nowrap"
               >
                 <Calendar className="w-3.5 h-3.5 text-[var(--accent-gold-light)] shrink-0" />
-                <span>Save the Date</span>
+                <span className="leading-none inline-block" style={{ transform: 'translateY(1.5px)' }}>Save the Date</span>
               </button>
 
               <button
@@ -241,7 +241,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                 className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-full bg-[var(--bg-card-elevated)]/10 border border-[var(--brand-crimson-dark)]/40 text-[var(--brand-crimson-dark)] hover:bg-[var(--brand-crimson-dark)]/20 text-xs font-cinzel font-bold tracking-wider uppercase transition-all cursor-pointer whitespace-nowrap"
               >
                 <MapPin className="w-3.5 h-3.5 text-[var(--brand-crimson-dark)] shrink-0" />
-                <span>Venue Map</span>
+                <span className="leading-none inline-block" style={{ transform: 'translateY(1.5px)' }}>Venue Map</span>
               </button>
             </div>
 
@@ -384,11 +384,11 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
 
                 <div 
                   onClick={handleDismiss}
-                  className="mt-1 flex items-center justify-center gap-1.5 pl-2 pr-3 py-1 rounded-full bg-[var(--brand-crimson-dark)] text-[#ffffff] text-[10px] font-cinzel font-bold uppercase tracking-wider shadow-sm animate-pulse cursor-pointer hover:scale-105 transition-transform"
+                  className="mt-1 flex items-center justify-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-crimson-dark)] text-[#ffffff] text-[10px] font-cinzel font-bold uppercase tracking-wider shadow-sm animate-pulse cursor-pointer hover:scale-105 transition-transform"
                 >
-                  <ChevronDown className="w-3 h-3 opacity-0" />
-                  <span>View Invitation</span>
-                  <ChevronDown className="w-3 h-3 text-[var(--accent-gold-light)]" />
+                  <ChevronDown className="w-3 h-3 opacity-0 shrink-0" />
+                  <span className="leading-none inline-block" style={{ transform: 'translateY(1.5px)' }}>View Invitation</span>
+                  <ChevronDown className="w-3 h-3 text-[var(--accent-gold-light)] shrink-0" />
                 </div>
               </div>
 
@@ -434,11 +434,11 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
             <button
               type="button"
               onClick={handleDismiss}
-              className="relative z-50 mt-8 flex items-center justify-center gap-2.5 pl-6 pr-8 py-3.5 rounded-full bg-gradient-to-r from-[var(--brand-crimson-dark)] via-[var(--brand-crimson)] to-[var(--brand-crimson-dark)] text-[#ffffff] font-cinzel text-xs sm:text-sm font-bold tracking-widest uppercase border border-[var(--accent-gold)]/70 shadow-[0_10px_30px_rgba(168,28,56,0.6)] hover:shadow-[0_0_35px_rgba(212,175,55,0.7)] hover:scale-105 transition-all duration-300 cursor-pointer animate-bounce"
+              className="relative z-50 mt-8 flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[var(--brand-crimson-dark)] via-[var(--brand-crimson)] to-[var(--brand-crimson-dark)] text-[#ffffff] font-cinzel text-xs sm:text-sm font-bold tracking-widest uppercase border border-[var(--accent-gold)]/70 shadow-[0_10px_30px_rgba(168,28,56,0.6)] hover:shadow-[0_0_35px_rgba(212,175,55,0.7)] hover:scale-105 transition-all duration-300 cursor-pointer animate-bounce"
             >
-              <ChevronDown className="w-4 h-4 opacity-0" />
-              <span>Explore Wedding Invitation</span>
-              <ChevronDown className="w-4 h-4 text-[var(--accent-gold-light)]" />
+              <ChevronDown className="w-4 h-4 opacity-0 shrink-0" />
+              <span className="leading-none inline-block" style={{ transform: 'translateY(2px)' }}>Explore Wedding Invitation</span>
+              <ChevronDown className="w-4 h-4 text-[var(--accent-gold-light)] shrink-0" />
             </button>
           )}
         </>

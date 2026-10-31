@@ -59,10 +59,14 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
     switch (motif) {
       case 'pooja':
         return '🪔';
+      case 'tilak':
+        return '✨';
       case 'haldi':
         return '🌼';
       case 'mehendi':
         return '🪷';
+      case 'sangeet':
+        return '🪕';
       case 'wedding':
         return '👑';
       case 'reception':
@@ -75,8 +79,10 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
   const getMotifLabel = (motif: WeddingEvent['motif']) => {
     switch (motif) {
       case 'pooja': return 'Mata Poojan';
+      case 'tilak': return 'Tilak & Blessings';
       case 'haldi': return 'Haldi Ritual';
-      case 'mehendi': return 'Mehendi & Sangeet';
+      case 'mehendi': return 'Mehendi Ceremony';
+      case 'sangeet': return 'Sangeet Sandhya';
       case 'wedding': return 'The Wedding';
       case 'reception': return 'Grand Reception';
       default: return motif;
@@ -205,7 +211,7 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
 
               {/* Subtitle & Description */}
               {event.subTitle && (
-                <div className="font-script text-lg text-[var(--text-primary)] mb-2">
+                <div className="font-script text-xl sm:text-2xl text-[var(--text-primary)] mb-2 tracking-wide">
                   {event.subTitle}
                 </div>
               )}
@@ -246,7 +252,7 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
                 className="btn-primary flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full text-xs font-cinzel font-semibold tracking-wider uppercase cursor-pointer whitespace-nowrap"
               >
                 <Plus className="w-3.5 h-3.5 text-[var(--accent-gold)] shrink-0" />
-                <span>Save the Date</span>
+                <span className="leading-none inline-block">Save the Date</span>
               </button>
 
               <a
@@ -257,7 +263,7 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
                 className="btn-secondary flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-full text-xs font-cinzel tracking-wider uppercase cursor-pointer whitespace-nowrap"
               >
                 <MapPin className="w-3.5 h-3.5 text-[var(--accent-gold)] shrink-0 directions-icon" />
-                <span>Directions</span>
+                <span className="leading-none inline-block" >Directions</span>
               </a>
             </div>
           </div>

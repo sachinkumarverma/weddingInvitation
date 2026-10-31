@@ -6,7 +6,7 @@
     --font-cormorant: 'Cormorant Garamond', serif;
     --font-cinzel: 'Cinzel', serif;
     --font-cinzel-decorative: 'Cinzel Decorative', serif;
-    --font-script: 'Great Vibes', cursive;
+    --font-script: 'Allura', 'Great Vibes', cursive;
     --font-sans: 'Montserrat', sans-serif;
 
     /* Current / Dark Royal Theme (Default) */
@@ -341,6 +341,18 @@
   background-color: #15803d !important; /* green */
   color: #ffffff !important;
   border-color: #15803d !important;
+}
+
+.event-badge-tilak {
+  background-color: #ea580c !important; /* saffron/vermilion */
+  color: #ffffff !important;
+  border-color: #ea580c !important;
+}
+
+.event-badge-sangeet {
+  background-color: #7c3aed !important; /* royal purple */
+  color: #ffffff !important;
+  border-color: #7c3aed !important;
 }
 
 .event-badge-wedding {

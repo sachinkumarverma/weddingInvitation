@@ -7,7 +7,7 @@ export interface WeddingEvent {
   venue: string;
   address: string;
   dressCode: string;
-  motif: 'haldi' | 'mehendi' | 'wedding' | 'reception' | 'pooja';
+  motif: 'haldi' | 'mehendi' | 'sangeet' | 'wedding' | 'reception' | 'pooja' | 'tilak';
   description: string;
   coordinates?: { lat: number; lng: number };
   themeColor: string;
