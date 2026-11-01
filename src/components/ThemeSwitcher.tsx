@@ -24,11 +24,12 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ theme, setTheme })
   ] as const;
 
   return (
-    <div className="fixed top-5 left-5 z-[70] flex flex-col items-start gap-2">
+    <div className="fixed top-4 left-4 sm:top-5 sm:left-5 z-[70] flex flex-col items-start gap-2">
       <button
         type="button"
+        id="wedding-theme-toggle"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-10 h-10 rounded-full bg-[var(--bg-card)] border border-[var(--accent-gold)] text-[var(--accent-gold)] flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300"
+        className="group relative flex items-center justify-center w-9 h-9 rounded-full border border-[var(--accent-gold)]/60 bg-[var(--bg-card-elevated)]/90 backdrop-blur-md text-[var(--accent-gold)] shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-105 hover:border-[var(--accent-gold)] hover:shadow-[0_0_20px_rgba(212,175,55,0.35)] active:scale-95 cursor-pointer p-0 shrink-0"
         aria-label="Theme options"
       >
         <PaletteIcon theme={theme} />
@@ -69,7 +70,7 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ theme, setTheme })
 };
 
 const PaletteIcon = ({ theme }: { theme: string }) => {
-  if (theme === 'pink') return <Flower className="w-5 h-5" />;
-  if (theme === 'midnight') return <Sparkles className="w-5 h-5" />;
-  return <Moon className="w-5 h-5" />;
+  if (theme === 'pink') return <Flower className="w-4 h-4" />;
+  if (theme === 'midnight') return <Sparkles className="w-4 h-4" />;
+  return <Moon className="w-4 h-4" />;
 };

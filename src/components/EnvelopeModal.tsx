@@ -151,7 +151,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
         /* ========================================================================= */
         <div
           onClick={(e) => e.stopPropagation()}
-          className="relative w-full max-w-sm sm:max-w-md my-auto rounded-3xl p-4 sm:p-6 text-center select-none shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_40px_rgba(212,175,55,0.25)] border-2 border-[var(--accent-gold)]/70 animate-scale-in"
+          className="relative w-full max-w-sm sm:max-w-md my-auto translate-y-8 sm:translate-y-0 rounded-3xl p-4 sm:p-6 text-center select-none shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_40px_rgba(212,175,55,0.25)] border-2 border-[var(--accent-gold)]/70 animate-scale-in"
           style={{
             background: 'linear-gradient(135deg, #fffcf5 0%, #fbedcb 45%, #ebd193 100%)',
             boxShadow: '0 25px 60px rgba(0,0,0,0.8), inset 0 0 40px rgba(212,175,55,0.2)',
@@ -265,7 +265,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
         /* ========================================================================= */
         <>
           <div
-            className="relative w-full max-w-sm sm:max-w-md md:max-w-lg aspect-[1.1/1] sm:aspect-[1.3/1] perspective-1000 my-auto px-2 sm:px-0"
+            className="relative w-full max-w-sm sm:max-w-md md:max-w-lg aspect-[1.1/1] sm:aspect-[1.3/1] perspective-1000 my-auto translate-y-12 sm:translate-y-0 px-2 sm:px-0"
             onClick={(e) => {
               e.stopPropagation();
               handleOpenEnvelope();
@@ -278,7 +278,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                   ? 'animate-gentle-float hover:scale-102'
                   : stage === 'unsealing'
                   ? 'scale-105'
-                  : 'scale-108 -translate-y-4'
+                  : 'scale-105 sm:scale-108 translate-y-0 sm:-translate-y-4'
               }`}
               style={{
                 background: 'linear-gradient(145deg, #2b0b14 0%, #1a050b 60%, #120307 100%)',
@@ -352,9 +352,9 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                 id="sliding-gold-card"
                 className={`absolute left-4 right-4 sm:left-8 sm:right-8 h-[92%] rounded-xl p-5 sm:p-6 transition-all duration-1000 ease-out flex flex-col items-center justify-between text-center ${
                   stage === 'revealed'
-                    ? '-translate-y-16 shadow-2xl opacity-100'
+                    ? '-translate-y-10 sm:-translate-y-16 shadow-2xl opacity-100'
                     : stage === 'opening'
-                    ? '-translate-y-8 opacity-95'
+                    ? '-translate-y-5 sm:-translate-y-8 opacity-95'
                     : 'translate-y-2 opacity-0 pointer-events-none'
                 }`}
                 style={{
