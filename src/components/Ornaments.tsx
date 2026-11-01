@@ -106,14 +106,14 @@ export const WaxSealBadge: React.FC<{
   onClick?: () => void;
   size?: 'sm' | 'md' | 'lg';
   isPulsing?: boolean;
-}> = ({ initials = 'S & H', city = 'Bhopal', className = '', onClick, size = 'md', isPulsing = false }) => {
+}> = ({ initials = 'H & S', city = '', className = '', onClick, size = 'md', isPulsing = false }) => {
   const sizeMap = {
     sm: 'w-20 h-20 text-base',
     md: 'w-28 h-28 text-2xl',
     lg: 'w-36 h-36 text-4xl',
   };
 
-  const isHindiCity = /[\u0900-\u097F]/.test(city);
+  const isHindiCity = Boolean(city && /[\u0900-\u097F]/.test(city));
 
   return (
     <button
@@ -134,16 +134,18 @@ export const WaxSealBadge: React.FC<{
         <span className="font-cinzel-dec font-bold text-[var(--text-primary)] tracking-wider drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
           {initials}
         </span>
-        <span
-          className={`text-[0.42em] text-[var(--accent-gold)] mt-0.5 opacity-90 ${
-            isHindiCity
-              ? 'font-hindi-heading'
-              : 'font-sans tracking-[0.2em] uppercase'
-          }`}
-          style={isHindiCity ? { letterSpacing: '0px' } : undefined}
-        >
-          {city}
-        </span>
+        {city ? (
+          <span
+            className={`text-[0.42em] text-[var(--accent-gold)] mt-0.5 opacity-90 ${
+              isHindiCity
+                ? 'font-hindi-heading'
+                : 'font-sans tracking-[0.2em] uppercase'
+            }`}
+            style={isHindiCity ? { letterSpacing: '0px' } : undefined}
+          >
+            {city}
+          </span>
+        ) : null}
       </div>
     </button>
   );

@@ -57,7 +57,7 @@ export const CountdownSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding
   };
 
   return (
-    <section className="py-20 px-4 max-w-5xl mx-auto text-center relative">
+    <section className="py-8 px-4 max-w-5xl mx-auto text-center relative">
       <div className="mb-10">
         <p className="font-script text-2xl sm:text-3xl text-[var(--text-primary)] py-0.5">
           {t('countdown.subtitle')}

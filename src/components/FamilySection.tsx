@@ -25,7 +25,7 @@ export const FamilySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
         {/* Ganesh Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-no-repeat opacity-25 pointer-events-none"
-          style={{ backgroundImage: 'url(/ganeshji.png)', backgroundPosition: 'center 20%' }}
+          style={{ backgroundImage: 'url(/ganeshji.webp)', backgroundPosition: 'center 20%' }}
         />
 
         <RoyalCorner position="top-left" />

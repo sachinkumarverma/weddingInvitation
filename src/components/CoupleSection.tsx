@@ -29,13 +29,13 @@ export const CoupleSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
           <RoyalCorner position="bottom-right" />
 
           <div>
-            {/* Portrait Image Frame */}
-            <div className="relative mx-auto w-48 h-56 sm:w-56 sm:h-64 rounded-2xl overflow-hidden border-2 border-[var(--accent-gold)]/60 shadow-[0_10px_25px_rgba(0,0,0,0.8)] mb-6 group-hover:scale-103 transition-transform duration-500">
+            {/* Square Portrait Image Frame */}
+            <div className="relative mx-auto w-60 h-60 sm:w-56 sm:h-56 aspect-square rounded-2xl overflow-hidden border-2 border-[var(--accent-gold)]/60 shadow-[0_10px_25px_rgba(0,0,0,0.8)] mb-6 group-hover:scale-103 transition-transform duration-500">
               <img
                 src={bride.image}
                 alt={bride.fullName}
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover object-top filter brightness-95 contrast-105 group-hover:scale-110 transition-transform duration-700"
+                className="w-full h-full object-cover object-[center_15%] filter brightness-95 contrast-105 group-hover:scale-110 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card-dark)]/80 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-2 left-0 right-0 text-center">
@@ -70,13 +70,13 @@ export const CoupleSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
           <RoyalCorner position="bottom-right" />
 
           <div>
-            {/* Portrait Image Frame */}
-            <div className="relative mx-auto w-48 h-56 sm:w-56 sm:h-64 rounded-2xl overflow-hidden border-2 border-[var(--accent-gold)]/60 shadow-[0_10px_25px_rgba(0,0,0,0.8)] mb-6 group-hover:scale-103 transition-transform duration-500">
+            {/* Square Portrait Image Frame */}
+            <div className="relative mx-auto w-48 h-48 sm:w-56 sm:h-56 aspect-square rounded-2xl overflow-hidden border-2 border-[var(--accent-gold)]/60 shadow-[0_10px_25px_rgba(0,0,0,0.8)] mb-6 group-hover:scale-103 transition-transform duration-500">
               <img
                 src={groom.image}
                 alt={groom.fullName}
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover object-top filter brightness-95 contrast-105 group-hover:scale-110 transition-transform duration-700"
+                className="w-full h-full object-cover object-[center_15%] filter brightness-95 contrast-105 group-hover:scale-110 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card-dark)]/80 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-2 left-0 right-0 text-center">

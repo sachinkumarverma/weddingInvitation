@@ -7,14 +7,14 @@ export const weddingData: WeddingConfig = {
       fullName: "Satyam Pathak",
       title: "The Groom",
       parents: "Mr. Anil & Mrs. Mamta Pathak",
-      image: "/male.jpg"
+      image: "/male.webp"
     },
     bride: {
       firstName: "Harshita",
       fullName: "Harshita Dubey",
       title: "The Bride",
       parents: "Mr. Naresh & Mrs. Kiran Dubey",
-      image: "/female.jpg"
+      image: "/female.webp"
     },
     initials: "H & S",
     hashtag: "#HarshitaWedsSatyam",
@@ -31,8 +31,8 @@ export const weddingData: WeddingConfig = {
     address: "Sarvadharm Mandir, Near Gate No. 5 Minal Residency, JK road, Bhopal, Madhya Pradesh 462001",
     googleMapsUrl: "https://maps.app.goo.gl/bJCAB2kX7J8KVyNEA?g_st=ac",
     appleMapsUrl: "https://maps.app.goo.gl/bJCAB2kX7J8KVyNEA?g_st=ac",
-    image: "/marriage-garden1.png",
-    cityImage: "/bhopal.jpg",
+    image: "/marriage_garden1.webp",
+    cityImage: "/bhopal.webp",
     airportDistance: "16 km from Raja Bhoj Airport Bhopal (BHO)",
     railwayDistance: "7 km from Rani Kamlapati / Bhopal Junction Railway Station",
   },
@@ -50,7 +50,7 @@ export const weddingData: WeddingConfig = {
       motif: "pooja",
       description: "An auspicious beginning with prayers to the Goddess for a blessed union.",
       themeColor: "#eab308",
-      image: "/poojan.jpg",
+      image: "/poojan.webp",
     },
     {
       id: "tilak",
@@ -64,7 +64,7 @@ export const weddingData: WeddingConfig = {
       motif: "tilak",
       description: "An auspicious ceremony honoring the groom with the sacred tilak, and blessing the bride with shagun and divine goodwill.",
       themeColor: "#ea580c",
-      image: "/marriage_garden2.jpg",
+      image: "/marriage_garden2.webp",
     },
     {
       id: "haldi",
@@ -78,7 +78,7 @@ export const weddingData: WeddingConfig = {
       motif: "haldi",
       description: "A joyous celebration filled with auspicious turmeric, floral showers, and folk songs.",
       themeColor: "#eab308",
-      image: "/haldi.jpg",
+      image: "/haldi.webp",
     },
     {
       id: "mehendi",
@@ -92,7 +92,7 @@ export const weddingData: WeddingConfig = {
       motif: "mehendi",
       description: "Intricate henna artistry adorned on palms amidst folk songs, laughter, and fragrant floral celebrations.",
       themeColor: "#10b981",
-      image: "/mehendi.jpg",
+      image: "/mehendi.webp",
     },
     {
       id: "sangeet",
@@ -106,7 +106,7 @@ export const weddingData: WeddingConfig = {
       motif: "sangeet",
       description: "An enchanting evening of musical performances, energetic dhol beats, celebratory dances, and joyous family bonding.",
       themeColor: "#7c3aed",
-      image: "/marriage_garden1.png",
+      image: "/marriage_garden1.webp",
     },
     {
       id: "wedding",
@@ -120,13 +120,13 @@ export const weddingData: WeddingConfig = {
       motif: "wedding",
       description: "A majestic royal procession led by brass trumpets and dhols, followed by the Jai Mala garland exchange under a shower of rose petals and sacred Vedic wedding vows by the holy fire.",
       themeColor: "#dc2626",
-      image: "/wedding.jpg",
+      image: "/wedding.webp",
     },
   ],
   gallery: [
     {
       id: "g1",
-      url: "/photo1.jpg",
+      url: "/photo1.webp",
       title: "Golden Hour",
       subtitle: "Our beautiful shared moments",
       category: "moments",
@@ -134,7 +134,7 @@ export const weddingData: WeddingConfig = {
     },
     {
       id: "g2",
-      url: "/photo2.jpg",
+      url: "/photo2.webp",
       title: "A Shared Glance",
       subtitle: "Unspoken promises and joyful smiles",
       category: "moments",
@@ -157,7 +157,7 @@ export const weddingData: WeddingConfig = {
     brideInspo: [],
   },
   familyBlessings: {
-    shlokaSanskrit: "ॐ मङ्गलम् भगवान विष्णुः, मङ्गलम् गरुडध्वजः।\nमङ्गलम् पुण्डरीकाक्षः, मङ्गलाय तनो हरिः॥",
+    shlokaSanskrit: "ॐ मङ्गलम् भगवान विष्णुः मङ्गलम् गरुडध्वजः।\nमङ्गलम् पुण्डरीकाक्षः मङ्गलाय तनो हरिः॥",
     shlokaEnglish: "May the divine presence bless this union with prosperity, auspicious peace, and eternal companionship.",
     patrons: [
       {

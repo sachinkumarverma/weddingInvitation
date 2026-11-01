@@ -24,7 +24,7 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ theme, setTheme })
   ] as const;
 
   return (
-    <div className="fixed top-5 left-5 z-50 flex flex-col items-start gap-2">
+    <div className="fixed top-5 left-5 z-[70] flex flex-col items-start gap-2">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}

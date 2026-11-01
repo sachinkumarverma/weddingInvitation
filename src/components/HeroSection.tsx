@@ -17,12 +17,12 @@ export const HeroSection: React.FC<{
   };
 
   return (
-    <header className="relative min-h-[92vh] sm:min-h-screen flex flex-col items-center justify-center text-center px-4 pt-16 pb-12 overflow-hidden bg-[var(--bg-primary-dark)]">
+    <header className="relative min-h-[92vh] sm:min-h-screen flex flex-col items-center justify-center text-center px-4 pt-20 sm:pt-20 pb-12 overflow-hidden bg-[var(--bg-primary-dark)]">
       {/* Background Architectural & Palace Atmosphere */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-20 filter contrast-125 scale-105 transition-transform duration-10000 ease-out pointer-events-none"
         style={{
-          backgroundImage: `url('/royal.png')`,
+          backgroundImage: `url('/royal.webp')`,
         }}
       />
       
@@ -35,9 +35,9 @@ export const HeroSection: React.FC<{
       </div>
 
       {/* Main Hero Card Container */}
-      <div className="relative z-20 max-w-3xl mx-auto flex flex-col items-center">
+      <div className="relative z-30 max-w-3xl mx-auto flex flex-col items-center">
         {/* Auspicious Shloka top */}
-        <p className="text-xs sm:text-sm font-serif-luxury text-[var(--accent-gold-light)] tracking-widest uppercase mb-5 drop-shadow-md">
+        <p className="text-xs sm:text-sm font-hindi-heading text-[var(--accent-gold-light)] tracking-normal mt-3 sm:mt-4 mb-5 drop-shadow-md">
           ॥ श्री गणेशाय नमः ॥
         </p>
 

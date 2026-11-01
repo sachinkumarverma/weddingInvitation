@@ -5,10 +5,10 @@ import { RoyalCorner, GoldDivider } from './Ornaments';
 import { useLanguage } from '../context/LanguageContext';
 
 const venueImages = [
-  '/marriage_garden1.png',
-  '/marriage_garden2.jpg',
-  '/marriage_garden3.jpg',
-  '/marriage_garden4.jpg'
+  '/marriage_garden1.webp',
+  '/marriage_garden2.webp',
+  '/marriage_garden3.webp',
+  '/marriage_garden4.webp'
 ];
 
 export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) => {

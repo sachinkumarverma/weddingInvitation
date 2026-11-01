@@ -16,7 +16,7 @@ export const FinalSection: React.FC<{
       <div
         className="absolute inset-0 bg-cover bg-bottom opacity-15 filter contrast-125 pointer-events-none"
         style={{
-          backgroundImage: `url('${wedding.venue.cityImage || "/royal.png"}')`,
+          backgroundImage: `url('${wedding.venue.cityImage || "/royal.webp"}')`,
         }}
       />
 

@@ -105,7 +105,7 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
 
   const handleAddToCalendar = (event: WeddingEvent) => {
     addToNativeCalendar({
-      title: isHindi ? `${event.name} • सत्यम एवं हर्षिता विवाह` : `${event.name} • Satyam & Harshita Wedding`,
+      title: isHindi ? `${event.name} • हर्षिता एवं सत्यम विवाह` : `${event.name} • Harshita & Satyam Wedding`,
       description: `${event.description}\n${isHindi ? 'स्थान' : 'Venue'}: ${event.venue}, ${event.address}`,
       location: `${event.venue}, ${event.address}`,
       startDate: wedding.weddingDate,
@@ -114,7 +114,7 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
   };
 
   return (
-    <section id="events-section" className="py-20 px-4 max-w-6xl mx-auto relative scroll-mt-6">
+    <section id="events-section" className="py-15 px-4 max-w-6xl mx-auto relative scroll-mt-6">
       <div className="text-center mb-12">
         <p className="font-script text-2xl sm:text-3xl text-[var(--text-primary)] py-0.5">
           {t('events.subtitle')}

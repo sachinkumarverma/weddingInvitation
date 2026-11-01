@@ -7,14 +7,14 @@ export const weddingDataHindi: WeddingConfig = {
       fullName: "सत्यम पाठक",
       title: "वर",
       parents: "श्री अनिल एवं श्रीमती ममता पाठक",
-      image: "/male.jpg"
+      image: "/male.webp"
     },
     bride: {
       firstName: "हर्षिता",
       fullName: "हर्षिता दुबे",
       title: "वधू",
       parents: "श्री नरेश एवं श्रीमती किरण दुबे",
-      image: "/female.jpg"
+      image: "/female.webp"
     },
     initials: "H & S",
     hashtag: "#HarshitaWedsSatyam",
@@ -31,8 +31,8 @@ export const weddingDataHindi: WeddingConfig = {
     address: "सर्वधर्म मंदिर, गेट नंबर ५ मीनल रेसीडेंसी के पास, जेके रोड, भोपाल, मध्य प्रदेश ४६२००१",
     googleMapsUrl: "https://maps.app.goo.gl/bJCAB2kX7J8KVyNEA?g_st=ac",
     appleMapsUrl: "https://maps.app.goo.gl/bJCAB2kX7J8KVyNEA?g_st=ac",
-    image: "/marriage-garden1.png",
-    cityImage: "/bhopal.jpg",
+    image: "/marriage_garden1.webp",
+    cityImage: "/bhopal.webp",
     airportDistance: "राजा भोज विमानक्षेत्र भोपाल (BHO) से १६ किमी",
     railwayDistance: "रानी कमलापति / भोपाल जंक्शन रेलवे स्टेशन से ७ किमी",
   },
@@ -50,7 +50,7 @@ export const weddingDataHindi: WeddingConfig = {
       motif: "pooja",
       description: "विवाह के शुभ कार्य निर्विघ्न संपन्न होने हेतु कुलदेवी व प्रथम पूज्य भगवान श्री गणेश जी की पावन स्तुति व मंगल आराधना।",
       themeColor: "#eab308",
-      image: "/poojan.jpg",
+      image: "/poojan.webp",
     },
     {
       id: "tilak",
@@ -64,7 +64,7 @@ export const weddingDataHindi: WeddingConfig = {
       motif: "tilak",
       description: "वर पक्ष का पावन तिलक संस्कार एवं वधू को सगुन व फल-मिष्ठान्न भेंट कर परिवारजनों द्वारा मंगल आशीर्वाद।",
       themeColor: "#ea580c",
-      image: "/marriage_garden2.jpg",
+      image: "/marriage_garden2.webp",
     },
     {
       id: "haldi",
@@ -78,7 +78,7 @@ export const weddingDataHindi: WeddingConfig = {
       motif: "haldi",
       description: "सगे-संबंधियों के संग पारंपरिक लोकगीतों, पुष्पवर्षा और उल्लास के बीच वर-वधू को शुभ हल्दी का लेप।",
       themeColor: "#eab308",
-      image: "/haldi.jpg",
+      image: "/haldi.webp",
     },
     {
       id: "mehendi",
@@ -92,7 +92,7 @@ export const weddingDataHindi: WeddingConfig = {
       motif: "mehendi",
       description: "पारंपरिक लोकगीत, हंसी-ठिठोली और सुगंधित हिना के आकर्षक रंगों से सजेगी वधू व सखियों की हथेलियां।",
       themeColor: "#10b981",
-      image: "/mehendi.jpg",
+      image: "/mehendi.webp",
     },
     {
       id: "sangeet",
@@ -106,7 +106,7 @@ export const weddingDataHindi: WeddingConfig = {
       motif: "sangeet",
       description: "दोनों परिवारों का परस्पर मिलन, मनभावन प्रस्तुतियां, ढोल-नगाड़ों की गूंज और उल्लासमय संगीत व नृत्य का आनंद।",
       themeColor: "#7c3aed",
-      image: "/marriage_garden1.png",
+      image: "/marriage_garden1.webp",
     },
     {
       id: "wedding",
@@ -120,13 +120,13 @@ export const weddingDataHindi: WeddingConfig = {
       motif: "wedding",
       description: "बैंड-बाजों के संग भव्य बारात आगमन, वरमाला एवं पवित्र अग्नि के समक्ष वैदिक मन्त्रोच्चार संग सात फेरे एवं पाणिग्रहण संस्कार।",
       themeColor: "#dc2626",
-      image: "/wedding.jpg",
+      image: "/wedding.webp",
     },
   ],
   gallery: [
     {
       id: "g1",
-      url: "/photo1.jpg",
+      url: "/photo1.webp",
       title: "पावन स्मृतियाँ",
       subtitle: "प्रेम और विश्वास का सुंदर संगम",
       category: "moments",
@@ -134,7 +134,7 @@ export const weddingDataHindi: WeddingConfig = {
     },
     {
       id: "g2",
-      url: "/photo2.jpg",
+      url: "/photo2.webp",
       title: "मधुर मिलन",
       subtitle: "अनकहे वादे और मंगल मुस्कान",
       category: "moments",

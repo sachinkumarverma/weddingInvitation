@@ -89,8 +89,8 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
   const handleAddWeddingToCalendar = (e: React.MouseEvent) => {
     e.stopPropagation();
     addToNativeCalendar({
-      title: `${wedding.couple.groom.fullName} & ${wedding.couple.bride.fullName}'s Wedding`,
-      description: `${wedding.couple.groom.fullName} & ${wedding.couple.bride.fullName} - ${wedding.venue.name}, ${wedding.venue.city}.`,
+      title: `${wedding.couple.bride.fullName} & ${wedding.couple.groom.fullName}'s Wedding`,
+      description: `${wedding.couple.bride.fullName} & ${wedding.couple.groom.fullName} - ${wedding.venue.name}, ${wedding.venue.city}.`,
       location: `${wedding.venue.name}, ${wedding.venue.address}`,
       startDate: wedding.weddingDate,
       endDate: '2026-12-03T02:00:00',
@@ -166,7 +166,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
           {/* Inner Decorative Double Border */}
           <div className="border border-[#aa7c11]/40 rounded-2xl p-3 sm:p-5 flex flex-col justify-between">
             {/* Auspicious Shloka */}
-            <p className="font-serif-luxury text-[11px] sm:text-xs text-[var(--brand-crimson-dark)] tracking-widest uppercase font-bold mb-2">
+            <p className="font-hindi-heading text-[11px] sm:text-xs text-[var(--brand-crimson-dark)] tracking-normal font-bold mb-2">
               ॥ श्री गणेशाय नमः ॥
             </p>
 
@@ -174,7 +174,6 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
             <div className="flex justify-center my-1">
               <WaxSealBadge
                 initials={wedding.couple.initials}
-                city={wedding.venue.city}
                 size="sm"
               />
             </div>
@@ -190,13 +189,13 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
             {/* Venue */}
             <div className="my-1 pt-1.5 pb-2">
               <h1 className="font-cinzel-dec text-2xl sm:text-3xl font-bold tracking-wider text-[#3d0813] leading-normal pt-1 pb-0.5">
-                {wedding.couple.groom.firstName}
+                {wedding.couple.bride.firstName}
               </h1>
               <div className="font-script text-xl sm:text-2xl text-[var(--brand-crimson)] my-0.5 leading-normal py-0.5">
                 {t('common.weds')}
               </div>
               <h1 className="font-cinzel-dec text-2xl sm:text-3xl font-bold tracking-wider text-[#3d0813] leading-normal pt-1 pb-0.5">
-                {wedding.couple.bride.firstName}
+                {wedding.couple.groom.firstName}
               </h1>
             </div>
 
@@ -350,6 +349,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
 
               {/* Sliding Gold Card Content that emerges on tap */}
               <div
+                id="sliding-gold-card"
                 className={`absolute left-4 right-4 sm:left-8 sm:right-8 h-[92%] rounded-xl p-5 sm:p-6 transition-all duration-1000 ease-out flex flex-col items-center justify-between text-center ${
                   stage === 'revealed'
                     ? '-translate-y-16 shadow-2xl opacity-100'
@@ -363,13 +363,13 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                   boxShadow: '0 20px 40px rgba(0,0,0,0.8)',
                 }}
               >
-                <div className="text-[10px] font-sans tracking-[0.25em] text-[var(--brand-crimson-dark)] uppercase font-bold">
+                <div className={`text-[10px] ${isHindi ? 'font-hindi-heading tracking-normal normal-case' : 'font-sans tracking-[0.25em] uppercase font-bold'} text-[var(--brand-crimson-dark)]`}>
                   {t('envelope.royalInvitation')}
                 </div>
 
                 <div className="my-1">
                   <div className="font-cinzel-dec text-xl sm:text-2xl font-bold text-[#440915] tracking-wider pt-2 pb-0.5 leading-normal">
-                    {wedding.couple.groom.firstName} & {wedding.couple.bride.firstName}
+                    {wedding.couple.bride.firstName} & {wedding.couple.groom.firstName}
                   </div>
                   <div className="font-script text-base text-[#7c2d12] mt-0.5 py-0.5">
                     {t('envelope.areGettingMarried')}
@@ -381,7 +381,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                 </div>
 
                 <div className="text-[10px] font-sans font-semibold text-[#7c2d12] uppercase tracking-wider">
-                  {wedding.venue.name} • {wedding.venue.city}
+                  {wedding.venue.name}
                 </div>
 
                 <div 
@@ -401,7 +401,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                 }`}
               >
                 <div className="text-center px-4 mb-2">
-                  <p className="font-serif-luxury text-xs text-[var(--accent-gold-light)] tracking-widest uppercase mb-1">
+                  <p className="font-hindi-heading text-xs text-[var(--accent-gold-light)] tracking-normal font-bold mb-1">
                     ॥ श्री गणेशाय नमः ॥
                   </p>
                   <p className="font-script text-xl sm:text-2xl text-[var(--text-primary)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
@@ -412,7 +412,6 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                 <div className="my-2">
                   <WaxSealBadge
                     initials={wedding.couple.initials}
-                    city={wedding.venue.city}
                     size="lg"
                     isPulsing={true}
                   />

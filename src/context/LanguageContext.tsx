@@ -18,8 +18,18 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   });
 
   const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    localStorage.setItem('wedding_invitation_lang', lang);
+    if (lang === language) return;
+    try {
+      localStorage.setItem('wedding_invitation_lang', lang);
+    } catch {
+      // safe fallback
+    }
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.lang = lang;
+
+    React.startTransition(() => {
+      setLanguageState(lang);
+    });
   };
 
   const toggleLanguage = () => {
@@ -28,11 +38,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   useEffect(() => {
     document.documentElement.setAttribute('data-lang', language);
-    if (language === 'hi') {
-      document.documentElement.lang = 'hi';
-    } else {
-      document.documentElement.lang = 'en';
-    }
+    document.documentElement.lang = language;
   }, [language]);
 
   const t = (keyPath: string): string => {
