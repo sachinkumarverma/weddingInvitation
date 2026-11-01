@@ -2,6 +2,7 @@ import React from 'react';
 import { ChevronDown, Calendar, MapPin } from 'lucide-react';
 import { WeddingConfig } from '../types';
 import { GoldDivider, MandalaBackground, WaxSealBadge } from './Ornaments';
+import { useLanguage } from '../context/LanguageContext';
 
 export const HeroSection: React.FC<{
   wedding: WeddingConfig;
@@ -9,6 +10,8 @@ export const HeroSection: React.FC<{
   onScrollToEvents: () => void;
   onScrollToVenue: () => void;
 }> = ({ wedding, onOpenEnvelopeModal, onScrollToEvents, onScrollToVenue }) => {
+  const { t } = useLanguage();
+
   const handleLittleScroll = () => {
     window.scrollBy({ top: window.innerHeight * 0.4, behavior: 'smooth' });
   };
@@ -50,27 +53,27 @@ export const HeroSection: React.FC<{
 
         {/* Introduction */}
         <p className="font-script text-2xl sm:text-3xl text-[var(--text-primary)] tracking-wide mb-3">
-          Dubey Family Invites You
+          {t('hero.familyInvites')}
         </p>
 
         <p className="text-[11px] sm:text-xs font-cinzel font-semibold tracking-[0.3em] text-[var(--accent-gold)] uppercase mb-6 opacity-90">
-          Cordially invite you to celebrate the royal wedding of
+          {t('hero.cordiallyInvite')}
         </p>
 
         {/* Couple Names - The Crown of the Invitation */}
         <div className="my-3 space-y-1 sm:space-y-0">
-          <h1 className="font-cinzel-dec text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient drop-shadow-title">
-            HARSHITA
+          <h1 className="font-cinzel-dec text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient drop-shadow-title pt-3 pb-1 inline-block leading-tight">
+            {wedding.couple.bride.firstName}
           </h1>
           
           <div className="flex items-center justify-center my-1 sm:my-2">
-            <span className="font-script text-3xl sm:text-4xl md:text-5xl text-[var(--accent-gold)] px-4 -my-2">
-              weds
+            <span className="font-script text-3xl sm:text-4xl md:text-5xl text-[var(--accent-gold)] px-4 py-1">
+              {t('common.weds')}
             </span>
           </div>
 
-          <h1 className="font-cinzel-dec text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient drop-shadow-title">
-            SATYAM
+          <h1 className="font-cinzel-dec text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient drop-shadow-title pt-2 pb-1 inline-block leading-tight">
+            {wedding.couple.groom.firstName}
           </h1>
         </div>
 
@@ -107,7 +110,7 @@ export const HeroSection: React.FC<{
             onClick={handleLittleScroll}
             className="btn-primary px-7 sm:px-9 py-3 rounded-full font-cinzel text-xs sm:text-sm tracking-widest uppercase cursor-pointer"
           >
-            Wedding Events & Itinerary
+            {t('hero.eventsCta')}
           </button>
 
           <button
@@ -117,7 +120,7 @@ export const HeroSection: React.FC<{
             onClick={handleLittleScroll}
             className="btn-secondary px-5 sm:px-7 py-3 rounded-full font-cinzel text-xs sm:text-sm tracking-wider uppercase cursor-pointer backdrop-blur-md"
           >
-            Venue & Map
+            {t('hero.venueCta')}
           </button>
         </div>
       </div>
@@ -130,7 +133,7 @@ export const HeroSection: React.FC<{
         className="relative z-20 mt-12 sm:mt-16 flex flex-col items-center gap-1 text-[var(--accent-gold)]/80 hover:text-[var(--accent-gold)] transition-colors cursor-pointer group"
       >
         <span className="text-[10px] font-cinzel tracking-[0.25em] uppercase opacity-75 group-hover:opacity-100">
-          Scroll to Explore
+          {t('hero.scrollToExplore')}
         </span>
         <ChevronDown className="w-5 h-5 animate-bounce text-[var(--accent-gold)]" />
       </button>

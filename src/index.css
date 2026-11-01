@@ -7,7 +7,8 @@
     --font-cinzel: 'Cinzel', serif;
     --font-cinzel-decorative: 'Cinzel Decorative', serif;
     --font-script: 'Allura', 'Great Vibes', cursive;
-    --font-sans: 'Montserrat', sans-serif;
+    --font-devanagari-heading: 'Poppins', 'Noto Sans Devanagari', 'Anek Devanagari', sans-serif;
+    --font-devanagari-body: 'Poppins', 'Noto Sans Devanagari', 'Anek Devanagari', sans-serif;
 
     /* Current / Dark Royal Theme (Default) */
     --bg-primary: #0a0305;
@@ -114,23 +115,94 @@
   font-family: var(--font-sans), sans-serif;
 }
 
+.font-hindi-heading {
+  font-family: var(--font-devanagari-heading), sans-serif;
+  font-weight: 700;
+}
+
+.font-hindi-body {
+  font-family: var(--font-devanagari-body), sans-serif;
+}
+
+[data-lang="hi"] h1,
+[data-lang="hi"] h2,
+[data-lang="hi"] h3,
+[data-lang="hi"] h4,
+[data-lang="hi"] h5,
+[data-lang="hi"] h6,
+[data-lang="hi"] .font-cinzel,
+[data-lang="hi"] .font-cinzel-dec {
+  font-family: var(--font-devanagari-heading), sans-serif;
+  font-weight: 700;
+  letter-spacing: normal !important;
+}
+
+[data-lang="hi"] h1,
+[data-lang="hi"] h2,
+[data-lang="hi"] h3,
+[data-lang="hi"] h4,
+[data-lang="hi"] h5,
+[data-lang="hi"] h6 {
+  line-height: 1.35 !important;
+  padding-top: 0.15em;
+  padding-bottom: 0.08em;
+  overflow: visible !important;
+}
+
+[data-lang="hi"] .font-script {
+  font-family: 'Poppins', 'Noto Sans Devanagari', 'Anek Devanagari', sans-serif;
+  font-weight: 600;
+  letter-spacing: normal !important;
+  line-height: 1.35 !important;
+  padding-top: 0.12em;
+  padding-bottom: 0.08em;
+}
+
+[data-lang="hi"] .font-sans,
+[data-lang="hi"] .font-sans-clean {
+  font-family: var(--font-devanagari-body), sans-serif;
+  line-height: 1.5;
+}
+
+/* Ensure background gradient text clip has sufficient bounding box for Devanagari ascenders */
+[data-lang="hi"] .text-gold-gradient,
+[data-lang="hi"] .text-gold-light {
+  display: inline-block;
+  line-height: 1.35 !important;
+  padding-top: 0.18em !important;
+  padding-bottom: 0.08em !important;
+  margin-top: -0.1em;
+  overflow: visible !important;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
 /* Luxury Metallic Gold Foil Gradients & Shimmers */
 .text-gold-gradient {
   background: linear-gradient(135deg, var(--grad-1, #fff3b0) 0%, var(--accent-gold) 35%, var(--grad-3, #aa7c11) 65%, var(--accent-gold-light) 85%, var(--grad-5, #f9e29c) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .text-gold-light {
   background: linear-gradient(135deg, var(--grad-light-1, #ffffff) 0%, var(--grad-light-2, #f7e6b5) 40%, var(--grad-light-3, #dfb758) 75%, var(--grad-light-4, #fae69e) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .text-rose-gold {
   background: linear-gradient(135deg, #ffe5e5 0%, #e2a76f 40%, #c97d60 70%, #ffd0c7 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .bg-gold-metallic {

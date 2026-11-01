@@ -1,0 +1,75 @@
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { Language, translations } from '../data/translations';
+
+interface LanguageContextType {
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  toggleLanguage: () => void;
+  isHindi: boolean;
+  t: (keyPath: string) => string;
+}
+
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+
+export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [language, setLanguageState] = useState<Language>(() => {
+    const saved = localStorage.getItem('wedding_invitation_lang');
+    return saved === 'hi' || saved === 'en' ? saved : 'en';
+  });
+
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+    localStorage.setItem('wedding_invitation_lang', lang);
+  };
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'hi' : 'en');
+  };
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-lang', language);
+    if (language === 'hi') {
+      document.documentElement.lang = 'hi';
+    } else {
+      document.documentElement.lang = 'en';
+    }
+  }, [language]);
+
+  const t = (keyPath: string): string => {
+    const parts = keyPath.split('.');
+    let current: any = translations[language];
+    for (const part of parts) {
+      if (current && typeof current === 'object' && part in current) {
+        current = current[part];
+      } else {
+        // Fallback to English
+        let fallback: any = translations.en;
+        for (const fbPart of parts) {
+          if (fallback && typeof fallback === 'object' && fbPart in fallback) {
+            fallback = fallback[fbPart];
+          } else {
+            return keyPath;
+          }
+        }
+        return typeof fallback === 'string' ? fallback : keyPath;
+      }
+    }
+    return typeof current === 'string' ? current : keyPath;
+  };
+
+  const isHindi = language === 'hi';
+
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage, isHindi, t }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+};
+
+export const useLanguage = (): LanguageContextType => {
+  const context = useContext(LanguageContext);
+  if (!context) {
+    throw new Error('useLanguage must be used within a LanguageProvider');
+  }
+  return context;
+};

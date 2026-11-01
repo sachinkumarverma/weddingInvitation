@@ -5,6 +5,7 @@ import { sound } from '../utils/soundEngine';
 import { RoyalCorner, WaxSealBadge, GoldDivider } from './Ornaments';
 import { WeddingConfig } from '../types';
 import { addToNativeCalendar } from '../utils/calendar';
+import { useLanguage } from '../context/LanguageContext';
 
 interface EnvelopeModalProps {
   wedding: WeddingConfig;
@@ -19,6 +20,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
   hasOpenedBefore = false,
   onOpened,
 }) => {
+  const { isHindi, t } = useLanguage();
   // If previously opened, show opened card directly; otherwise start sealed
   const [stage, setStage] = useState<'closed' | 'unsealing' | 'opening' | 'revealed' | 'opened_card'>('closed');
   const [showConfetti, setShowConfetti] = useState(false);
@@ -87,8 +89,8 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
   const handleAddWeddingToCalendar = (e: React.MouseEvent) => {
     e.stopPropagation();
     addToNativeCalendar({
-      title: `Satyam & Harshita's Wedding`,
-      description: `Dubey Family cordially invite you to celebrate the wedding ceremony of Satyam & Harshita at ${wedding.venue.name}, ${wedding.venue.city}.`,
+      title: `${wedding.couple.groom.fullName} & ${wedding.couple.bride.fullName}'s Wedding`,
+      description: `${wedding.couple.groom.fullName} & ${wedding.couple.bride.fullName} - ${wedding.venue.name}, ${wedding.venue.city}.`,
       location: `${wedding.venue.name}, ${wedding.venue.address}`,
       startDate: wedding.weddingDate,
       endDate: '2026-12-03T02:00:00',
@@ -179,22 +181,22 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
 
             {/* Family Invocation */}
             <p className="font-script text-lg sm:text-2xl text-[var(--brand-crimson-dark)] mt-0.5 mb-0.5 leading-tight">
-              Dubey Family
+              {isHindi ? 'दुबे परिवार' : 'Dubey Family'}
             </p>
             <p className="text-[9px] sm:text-[11px] font-cinzel font-semibold tracking-[0.22em] text-[#6b1424] uppercase mb-1">
-              Cordially invite you to celebrate the wedding of
+              {t('hero.cordiallyInvite')}
             </p>
 
             {/* Venue */}
             <div className="my-1 pt-1.5 pb-2">
-              <h1 className="font-cinzel-dec text-2xl sm:text-3xl font-bold tracking-wider text-[#3d0813] leading-none">
-                SATYAM
+              <h1 className="font-cinzel-dec text-2xl sm:text-3xl font-bold tracking-wider text-[#3d0813] leading-normal pt-1 pb-0.5">
+                {wedding.couple.groom.firstName}
               </h1>
-              <div className="font-script text-xl sm:text-2xl text-[var(--brand-crimson)] my-0.5 leading-tight">
-                weds
+              <div className="font-script text-xl sm:text-2xl text-[var(--brand-crimson)] my-0.5 leading-normal py-0.5">
+                {t('common.weds')}
               </div>
-              <h1 className="font-cinzel-dec text-2xl sm:text-3xl font-bold tracking-wider text-[#3d0813] leading-none">
-                HARSHITA
+              <h1 className="font-cinzel-dec text-2xl sm:text-3xl font-bold tracking-wider text-[#3d0813] leading-normal pt-1 pb-0.5">
+                {wedding.couple.bride.firstName}
               </h1>
             </div>
 
@@ -203,10 +205,10 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
             {/* Date and Time */}
             <div className="my-1.5 py-1.5 border-y border-[#aa7c11]/30">
               <div className="font-cinzel text-xs sm:text-sm font-bold text-[var(--brand-crimson-dark)] tracking-widest uppercase">
-                Wednesday • 02 December 2026
+                {wedding.displayDate}
               </div>
               <div className="font-sans text-[11px] sm:text-xs text-[#6b1424] font-medium mt-1">
-                Barat & Varmala: 07:00 PM Onwards
+                {t('envelope.baratTime')}
               </div>
             </div>
 
@@ -227,10 +229,10 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                 id="opened-card-calendar-btn"
                 data-cursor="CALENDAR"
                 onClick={handleAddWeddingToCalendar}
-                className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-full bg-[var(--brand-crimson-dark)] text-[#ffffff] hover:bg-[var(--brand-crimson)] text-xs font-cinzel font-bold tracking-wider uppercase transition-all shadow-md cursor-pointer whitespace-nowrap"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[var(--brand-crimson-dark)] text-[#ffffff] hover:bg-[var(--brand-crimson)] text-xs sm:text-sm font-cinzel font-bold tracking-wider uppercase transition-all shadow-md cursor-pointer whitespace-nowrap min-h-[42px]"
               >
-                <Calendar className="w-3.5 h-3.5 text-[var(--accent-gold-light)] shrink-0" />
-                <span className="leading-none inline-block" style={{ transform: 'translateY(1.5px)' }}>Save the Date</span>
+                <Calendar className="w-4 h-4 text-[var(--accent-gold-light)] shrink-0" />
+                <span className="leading-normal pt-1 pb-0.5 inline-block">{t('common.saveTheDate')}</span>
               </button>
 
               <button
@@ -238,10 +240,10 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                 id="opened-card-map-btn"
                 data-cursor="MAP"
                 onClick={handleOpenMap}
-                className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-full bg-[var(--bg-card-elevated)]/10 border border-[var(--brand-crimson-dark)]/40 text-[var(--brand-crimson-dark)] hover:bg-[var(--brand-crimson-dark)]/20 text-xs font-cinzel font-bold tracking-wider uppercase transition-all cursor-pointer whitespace-nowrap"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[var(--bg-card-elevated)]/10 border border-[var(--brand-crimson-dark)]/40 text-[var(--brand-crimson-dark)] hover:bg-[var(--brand-crimson-dark)]/20 text-xs sm:text-sm font-cinzel font-bold tracking-wider uppercase transition-all cursor-pointer whitespace-nowrap min-h-[42px]"
               >
-                <MapPin className="w-3.5 h-3.5 text-[var(--brand-crimson-dark)] shrink-0" />
-                <span className="leading-none inline-block" style={{ transform: 'translateY(1.5px)' }}>Venue Map</span>
+                <MapPin className="w-4 h-4 text-[var(--brand-crimson-dark)] shrink-0" />
+                <span className="leading-normal pt-1 pb-0.5 inline-block">{t('common.venueMap')}</span>
               </button>
             </div>
 
@@ -253,7 +255,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                 onClick={handleDismiss}
                 className="w-full py-2 px-5 rounded-full bg-gradient-to-r from-[var(--brand-crimson-dark)] via-[var(--brand-crimson)] to-[var(--brand-crimson-dark)] text-[#ffffff] hover:scale-102 transition-all font-cinzel text-[11px] sm:text-xs font-bold uppercase tracking-widest shadow-sm cursor-pointer"
               >
-                Close & View Website
+                {t('common.closeAndView')}
               </button>
             </div>
           </div>
@@ -362,15 +364,15 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                 }}
               >
                 <div className="text-[10px] font-sans tracking-[0.25em] text-[var(--brand-crimson-dark)] uppercase font-bold">
-                  Royal Wedding Invitation
+                  {t('envelope.royalInvitation')}
                 </div>
 
                 <div className="my-1">
-                  <div className="font-cinzel-dec text-xl sm:text-2xl font-bold text-[#440915] tracking-wider">
-                    Satyam & Harshita
+                  <div className="font-cinzel-dec text-xl sm:text-2xl font-bold text-[#440915] tracking-wider pt-2 pb-0.5 leading-normal">
+                    {wedding.couple.groom.firstName} & {wedding.couple.bride.firstName}
                   </div>
-                  <div className="font-script text-base text-[#7c2d12] mt-0.5">
-                    are getting married
+                  <div className="font-script text-base text-[#7c2d12] mt-0.5 py-0.5">
+                    {t('envelope.areGettingMarried')}
                   </div>
                 </div>
 
@@ -384,11 +386,11 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
 
                 <div 
                   onClick={handleDismiss}
-                  className="mt-1 flex items-center justify-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-crimson-dark)] text-[#ffffff] text-[10px] font-cinzel font-bold uppercase tracking-wider shadow-sm animate-pulse cursor-pointer hover:scale-105 transition-transform"
+                  className="mt-2 flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-[var(--brand-crimson-dark)] via-[var(--brand-crimson)] to-[var(--brand-crimson-dark)] text-[#ffffff] border border-[var(--accent-gold)]/60 text-xs sm:text-sm font-cinzel font-bold uppercase tracking-wider shadow-md hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] cursor-pointer hover:scale-105 transition-all"
                 >
-                  <ChevronDown className="w-3 h-3 opacity-0 shrink-0" />
-                  <span className="leading-none inline-block" style={{ transform: 'translateY(1.5px)' }}>View Invitation</span>
-                  <ChevronDown className="w-3 h-3 text-[var(--accent-gold-light)] shrink-0" />
+                  <ChevronDown className="w-3.5 h-3.5 opacity-0 shrink-0" />
+                  <span className="leading-normal pt-0.5 pb-0.5 inline-block">{t('common.viewInvitation')}</span>
+                  <ChevronDown className="w-3.5 h-3.5 text-[var(--accent-gold-light)] shrink-0" />
                 </div>
               </div>
 
@@ -403,7 +405,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                     ॥ श्री गणेशाय नमः ॥
                   </p>
                   <p className="font-script text-xl sm:text-2xl text-[var(--text-primary)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                    Dubey Family Invites You
+                    {t('hero.familyInvites')}
                   </p>
                 </div>
 
@@ -419,7 +421,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                 <div className="mt-3 flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--bg-card)] border border-[var(--accent-gold)]/40 backdrop-blur-md shadow-lg animate-pulse">
                   <span className="w-2 h-2 rounded-full bg-[var(--accent-gold)] animate-ping" />
                   <span className="text-[11px] font-cinzel tracking-widest text-[var(--text-secondary)] uppercase font-bold">
-                    Tap to open invitation
+                    {t('envelope.tapToOpen')}
                   </span>
                 </div>
               </div>
@@ -437,7 +439,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
               className="relative z-50 mt-8 flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[var(--brand-crimson-dark)] via-[var(--brand-crimson)] to-[var(--brand-crimson-dark)] text-[#ffffff] font-cinzel text-xs sm:text-sm font-bold tracking-widest uppercase border border-[var(--accent-gold)]/70 shadow-[0_10px_30px_rgba(168,28,56,0.6)] hover:shadow-[0_0_35px_rgba(212,175,55,0.7)] hover:scale-105 transition-all duration-300 cursor-pointer animate-bounce"
             >
               <ChevronDown className="w-4 h-4 opacity-0 shrink-0" />
-              <span className="leading-none inline-block" style={{ transform: 'translateY(2px)' }}>Explore Wedding Invitation</span>
+              <span className="leading-normal pt-0.5 pb-0.5 inline-block">{t('common.exploreInvitation')}</span>
               <ChevronDown className="w-4 h-4 text-[var(--accent-gold-light)] shrink-0" />
             </button>
           )}

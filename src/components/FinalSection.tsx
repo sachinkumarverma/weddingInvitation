@@ -2,11 +2,14 @@ import React from 'react';
 import { ArrowUp } from 'lucide-react';
 import { WeddingConfig } from '../types';
 import { GoldDivider, WaxSealBadge } from './Ornaments';
+import { useLanguage } from '../context/LanguageContext';
 
 export const FinalSection: React.FC<{
   wedding: WeddingConfig;
   onScrollToTop: () => void;
 }> = ({ wedding, onScrollToTop }) => {
+  const { t } = useLanguage();
+
   return (
     <footer className="relative py-28 px-4 text-center overflow-hidden border-t border-[var(--accent-gold)]/30 bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-primary-dark,var(--bg-primary))]">
       {/* Background Palace Architecture silhouette */}
@@ -28,19 +31,19 @@ export const FinalSection: React.FC<{
         </div>
 
         {/* Emotionally Resonant Climax */}
-        <div className="space-y-1 mb-4">
-          <h2 className="font-cinzel-dec text-3xl sm:text-5xl font-bold tracking-widest text-gold-gradient">
-            TWO HEARTS
+        <div className="flex flex-col items-center space-y-1 mb-4">
+          <h2 className="font-cinzel-dec text-3xl sm:text-5xl font-bold tracking-widest text-gold-gradient pt-2 pb-1 inline-block leading-snug">
+            {t('final.twoHearts')}
           </h2>
-          <h2 className="font-cinzel-dec text-3xl sm:text-5xl font-bold tracking-widest text-gold-gradient">
-            ONE JOURNEY
+          <h2 className="font-cinzel-dec text-3xl sm:text-5xl font-bold tracking-widest text-gold-gradient pt-2 pb-1 inline-block leading-snug">
+            {t('final.oneJourney')}
           </h2>
-          <h2 className="font-cinzel-dec text-3xl sm:text-5xl font-bold tracking-widest text-gold-gradient">
-            FOREVER
+          <h2 className="font-cinzel-dec text-3xl sm:text-5xl font-bold tracking-widest text-gold-gradient pt-2 pb-1 inline-block leading-snug">
+            {t('final.forever')}
           </h2>
         </div>
 
-        <p className="font-script text-3xl sm:text-4xl text-[var(--text-secondary)] my-3">
+        <p className="font-script text-3xl sm:text-4xl text-[var(--text-secondary)] my-3 pt-1 pb-1 inline-block leading-normal">
           {wedding.couple.bride.firstName} & {wedding.couple.groom.firstName}
         </p>
 
@@ -51,7 +54,7 @@ export const FinalSection: React.FC<{
         <GoldDivider variant="lotus" className="max-w-xs my-6" />
 
         <p className="font-sans text-xs sm:text-sm text-[var(--text-secondary)] italic max-w-md mx-auto">
-          "Thank you for being part of our story, our joy, and our forever."
+          {t('final.thankYou')}
         </p>
 
         {/* Scroll to Top Button */}
@@ -64,7 +67,7 @@ export const FinalSection: React.FC<{
             className="flex items-center gap-2 px-6 py-2.5 rounded-full border border-[var(--accent-gold)]/40 bg-[var(--bg-card-elevated)]/80 text-[var(--text-secondary)] hover:text-[#ffffff] hover:border-[var(--accent-gold)] hover:bg-[var(--bg-card)] text-xs font-cinzel tracking-wider uppercase transition-all cursor-pointer shadow-md"
           >
             <ArrowUp className="w-3.5 h-3.5 text-[var(--accent-gold)]" />
-            Back to Top
+            {t('final.backToTop')}
           </button>
         </div>
 
@@ -72,7 +75,7 @@ export const FinalSection: React.FC<{
         <div className="mt-12 text-[10px] font-sans tracking-widest text-[#a68972] uppercase opacity-75 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2">
           <span>{wedding.couple.hashtag}</span>
           <span className="hidden sm:inline">•</span>
-          <span>Designed with Royal Elegance</span>
+          <span>{t('final.designedWith')}</span>
         </div>
       </div>
     </footer>

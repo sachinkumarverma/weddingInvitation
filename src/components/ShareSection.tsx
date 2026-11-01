@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Share2, Copy, Check, QrCode } from 'lucide-react';
 import { WeddingConfig } from '../types';
 import { RoyalCorner, GoldDivider } from './Ornaments';
+import { useLanguage } from '../context/LanguageContext';
 
 export const ShareSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) => {
   const [copied, setCopied] = useState(false);
   const [showQR, setShowQR] = useState(false);
+  const { isHindi, t } = useLanguage();
 
   useEffect(() => {
     if (showQR) {
@@ -19,7 +21,30 @@ export const ShareSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
   }, [showQR]);
 
   const shareUrl = "https://harshita-weds-satyam.vercel.app";
-  const inviteMessage = `🪔 *॥ श्री गणेशाय नमः ॥* 🪔
+  
+  const inviteMessage = isHindi
+    ? `🪔 *॥ श्री गणेशाय नमः ॥* 🪔
+
+✨ *शुभ विवाह* ✨
+
+हमारे परिवार के शुभाशीर्वाद से,
+
+🌸 *${wedding.couple.bride.fullName}* एवं
+💍 *${wedding.couple.groom.fullName}*
+
+के पावन परिणय सूत्र में बंधने के मांगलिक अवसर पर आप सपरिवार सादर आमंत्रित हैं। ❤️
+
+_“प्रभु कृपा से परिणय सूत्र में बंधते दो हृदय, आपकी गरिमामयी उपस्थिति से यह उत्सव मंगलमय बने।”_ ✨
+
+🌺 *आपकी गरिमामयी उपस्थिति एवं शुभाशीर्वाद हमारे लिए अत्यंत महत्वपूर्ण हैं।* 🌺
+
+💌 *पावन डिजिटल विवाह आमंत्रण पत्रिका:*
+${shareUrl}
+
+स्नेहाकांक्षी:  
+❤️ *${wedding.couple.bride.firstName} एवं ${wedding.couple.groom.firstName}* ❤️
+समस्त दुबे एवं पाठक परिवार`
+    : `🪔 *॥ श्री गणेशाय नमः ॥* 🪔
 
 ✨ *शुभ विवाह* ✨
 
@@ -59,12 +84,12 @@ _We look forward to celebrating this beautiful beginning with you._ 🥂🌸`;
   return (
     <section className="py-16 px-4 max-w-4xl mx-auto text-center relative">
       <div className="mb-8">
-        <p className="font-script text-2xl text-[var(--text-primary)]">Share the Celebration</p>
-        <h2 className="font-cinzel text-xl sm:text-3xl font-bold text-gold-gradient tracking-widest sm:tracking-wider uppercase mt-1 px-2 break-all sm:break-normal">
+        <p className="font-script text-2xl text-[var(--text-primary)] py-0.5">{t('share.subtitle')}</p>
+        <h2 className="font-cinzel text-xl sm:text-3xl font-bold text-gold-gradient tracking-widest sm:tracking-wider uppercase mt-1 pt-2 pb-1 inline-block leading-snug px-2 break-all sm:break-normal">
           {wedding.couple.hashtag}
         </h2>
         <p className="text-xs sm:text-sm font-sans text-[var(--text-secondary)] max-w-md mx-auto mt-2">
-          Tag your joyous moments, dance videos, and regal portraits with our official wedding hashtag!
+          {t('share.tagline')}
         </p>
         <GoldDivider variant="diamond" className="max-w-xs mx-auto my-4" />
       </div>
@@ -80,7 +105,7 @@ _We look forward to celebrating this beautiful beginning with you._ 🥂🌸`;
           className="btn-primary btn-whatsapp flex items-center gap-2.5 px-6 py-3 rounded-full font-cinzel text-xs tracking-wider uppercase cursor-pointer"
         >
           <Share2 className="w-4 h-4" />
-          Share via WhatsApp
+          {t('share.whatsapp')}
         </button>
 
         {/* Copy Link */}
@@ -94,12 +119,12 @@ _We look forward to celebrating this beautiful beginning with you._ 🥂🌸`;
           {copied ? (
             <>
               <Check className="w-4 h-4 text-[var(--accent-gold)]" />
-              Link Copied!
+              {t('share.copied')}
             </>
           ) : (
             <>
               <Copy className="w-4 h-4 text-[var(--accent-gold)]" />
-              Copy Invitation Link
+              {t('share.copyLink')}
             </>
           )}
         </button>
@@ -112,7 +137,7 @@ _We look forward to celebrating this beautiful beginning with you._ 🥂🌸`;
           className="btn-secondary flex items-center gap-2 px-5 py-3 rounded-full font-cinzel text-xs tracking-wider uppercase cursor-pointer"
         >
           <QrCode className="w-4 h-4 text-[var(--accent-gold)]" />
-          Scan QR
+          {t('share.scanQR')}
         </button>
       </div>
 
@@ -125,11 +150,11 @@ _We look forward to celebrating this beautiful beginning with you._ 🥂🌸`;
             <RoyalCorner position="bottom-left" />
             <RoyalCorner position="bottom-right" />
 
-            <h3 className="font-cinzel text-lg md:text-2xl font-bold text-gold-gradient mb-1">
-              Invitation QR Code
+            <h3 className="font-cinzel text-lg md:text-2xl font-bold text-gold-gradient mb-1 pt-1.5 pb-0.5 inline-block leading-snug">
+              {t('share.qrModalTitle')}
             </h3>
             <p className="text-xs md:text-sm font-sans text-[var(--text-secondary)] mb-4 md:mb-6">
-              Scan with mobile camera to open the invitation
+              {t('share.qrModalSubtitle')}
             </p>
 
             <div className="p-4 md:p-6 bg-white rounded-2xl inline-block border-2 border-[var(--accent-gold)] shadow-inner mb-4 md:mb-6 transition-all duration-300">
@@ -149,9 +174,9 @@ _We look forward to celebrating this beautiful beginning with you._ 🥂🌸`;
             <button
               type="button"
               onClick={() => setShowQR(false)}
-              className="mt-5 px-6 py-2 rounded-full border border-[var(--accent-gold)]/40 text-[var(--text-secondary)] text-xs font-cinzel hover:bg-[var(--accent-gold)]/10"
+              className="mt-5 px-6 py-2 rounded-full border border-[var(--accent-gold)]/40 text-[var(--text-secondary)] text-xs font-cinzel hover:bg-[var(--accent-gold)]/10 cursor-pointer"
             >
-              Close
+              {t('share.close')}
             </button>
           </div>
         </div>

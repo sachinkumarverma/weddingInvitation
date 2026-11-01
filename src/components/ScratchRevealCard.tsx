@@ -4,6 +4,7 @@ import { Sparkles, Heart, RefreshCw } from 'lucide-react';
 import { sound } from '../utils/soundEngine';
 import { RoyalCorner, GoldDivider } from './Ornaments';
 import { WeddingConfig } from '../types';
+import { useLanguage } from '../context/LanguageContext';
 
 export const ScratchRevealCard: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -12,6 +13,7 @@ export const ScratchRevealCard: React.FC<{ wedding: WeddingConfig }> = ({ weddin
   const [scratchPercent, setScratchPercent] = useState(0);
   const [showConfetti, setShowConfetti] = useState(false);
   const [recycleConfetti, setRecycleConfetti] = useState(true);
+  const { isHindi, t } = useLanguage();
 
   // Initialize Canvas Gold Foil Layer
   const initCanvas = () => {
@@ -43,20 +45,20 @@ export const ScratchRevealCard: React.FC<{ wedding: WeddingConfig }> = ({ weddin
 
     // Draw Foil Center Text
     ctx.fillStyle = '#422402';
-    ctx.font = 'bold 16px "Cinzel", serif';
+    ctx.font = isHindi ? 'bold 18px "Hind", sans-serif' : 'bold 16px "Cinzel", serif';
     ctx.textAlign = 'center';
-    ctx.fillText('SCRATCH TO REVEAL', width / 2, height / 2 - 8);
+    ctx.fillText(t('scratch.scratchToReveal'), width / 2, height / 2 - 8);
 
-    ctx.font = '13px "Great Vibes", cursive';
+    ctx.font = isHindi ? '600 15px "Hind", sans-serif' : '13px "Great Vibes", cursive';
     ctx.fillStyle = '#613809';
-    ctx.fillText('Our Auspicious Date & Vows', width / 2, height / 2 + 18);
+    ctx.fillText(t('scratch.dateAndVows'), width / 2, height / 2 + 18);
   };
 
   useEffect(() => {
     initCanvas();
     window.addEventListener('resize', initCanvas);
     return () => window.removeEventListener('resize', initCanvas);
-  }, []);
+  }, [isHindi]);
 
   const scratch = (clientX: number, clientY: number) => {
     const canvas = canvasRef.current;
@@ -147,12 +149,12 @@ export const ScratchRevealCard: React.FC<{ wedding: WeddingConfig }> = ({ weddin
         </div>
       )}
       <div className="mb-8">
-        <p className="font-script text-2xl text-[var(--text-primary)]">A Royal Secret Unfolds</p>
-        <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-gold-gradient tracking-wider uppercase mt-1">
-          Scratch to Reveal Our Date
+        <p className="font-script text-2xl text-[var(--text-primary)] py-0.5">{t('scratch.subtitle')}</p>
+        <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-gold-gradient tracking-wider uppercase mt-1 pt-2 pb-1 inline-block leading-snug">
+          {t('scratch.title')}
         </h2>
         <p className="text-xs sm:text-sm font-sans text-[var(--text-secondary)] max-w-md mx-auto mt-2">
-          Use your finger to gently scratch away the golden foil and reveal our sacred wedding vows & date.
+          {t('scratch.instruction')}
         </p>
         <GoldDivider variant="diamond" className="max-w-xs mx-auto my-4" />
       </div>
@@ -167,9 +169,9 @@ export const ScratchRevealCard: React.FC<{ wedding: WeddingConfig }> = ({ weddin
 
         {/* Hidden Content Revealed Beneath */}
         <div className="scratch-content-wrapper p-6 sm:p-8 flex flex-col items-center justify-center min-h-[220px] h-full text-center">
-          <div className="scratch-header inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-crimson-dark)]/60 border border-[var(--accent-gold)]/40 text-[var(--text-secondary)] text-[11px] font-cinzel mb-2">
-            <Heart className="w-3.5 h-3.5 text-[#e11d48] fill-current animate-pulse" />
-            <span>Save Our Date</span>
+          <div className="scratch-header inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--brand-crimson-dark)]/60 border border-[var(--accent-gold)]/40 text-[var(--text-secondary)] text-xs font-cinzel mb-2 min-h-[32px]">
+            <Heart className="w-3.5 h-3.5 text-[#e11d48] fill-current animate-pulse shrink-0" />
+            <span className="pt-0.5 pb-0.5 inline-block leading-normal">{t('scratch.saveOurDate')}</span>
           </div>
 
           <h3 className="font-cinzel-dec text-2xl sm:text-3xl font-bold text-[var(--accent-gold-light)] tracking-wider my-1">
@@ -233,7 +235,7 @@ export const ScratchRevealCard: React.FC<{ wedding: WeddingConfig }> = ({ weddin
             className="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--accent-gold)]/40 bg-[var(--bg-card-elevated)]/80 text-[var(--text-secondary)] hover:bg-[var(--bg-card)] hover:border-[var(--accent-gold)] text-xs font-cinzel transition-all shadow-md cursor-pointer"
           >
             <Sparkles className="w-3.5 h-3.5 text-[var(--accent-gold)]" />
-            Reveal Instantly
+            {t('scratch.revealInstantly')}
           </button>
         ) : (
           <button
@@ -243,7 +245,7 @@ export const ScratchRevealCard: React.FC<{ wedding: WeddingConfig }> = ({ weddin
             className="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--accent-gold)]/30 bg-[var(--bg-card-elevated)]/60 text-[var(--text-secondary)] hover:text-[#ffffff] hover:border-[var(--accent-gold)] text-xs font-cinzel transition-all shadow-md cursor-pointer"
           >
             <RefreshCw className="w-3.5 h-3.5 text-[var(--accent-gold)]" />
-            Scratch Again
+            {t('scratch.scratchAgain')}
           </button>
         )}
       </div>

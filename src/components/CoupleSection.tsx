@@ -1,18 +1,20 @@
 import React from 'react';
 import { WeddingConfig } from '../types';
 import { RoyalCorner, GoldDivider } from './Ornaments';
+import { useLanguage } from '../context/LanguageContext';
 
 export const CoupleSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) => {
   const { groom, bride } = wedding.couple;
+  const { t } = useLanguage();
 
   return (
     <section className="py-20 px-4 max-w-6xl mx-auto relative">
       <div className="text-center mb-14">
-        <p className="font-script text-2xl sm:text-3xl text-[var(--text-primary)]">
-          Destined by Love, Blessed by Heaven
+        <p className="font-script text-2xl sm:text-3xl text-[var(--text-primary)] py-0.5">
+          {t('couple.subtitle')}
         </p>
-        <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-gold-gradient tracking-wider uppercase mt-1">
-          The Bride & The Groom
+        <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-gold-gradient tracking-wider uppercase mt-1 pt-2 pb-1 inline-block leading-snug">
+          {t('couple.title')}
         </h2>
         <GoldDivider variant="lotus" className="max-w-xs mx-auto my-4" />
       </div>
@@ -45,12 +47,12 @@ export const CoupleSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
 
             {/* Bride Details */}
             <div className="text-center">
-              <h3 className="font-cinzel-dec text-2xl sm:text-3xl font-bold text-gold-gradient tracking-wide">
+              <h3 className="font-cinzel-dec text-2xl sm:text-3xl font-bold text-gold-gradient tracking-wide pt-2 pb-1 inline-block leading-normal">
                 {bride.fullName}
               </h3>
               
               <div className="text-xs font-cinzel font-semibold text-[var(--accent-gold)] tracking-wider uppercase mt-1">
-                Daughter of {bride.parents}
+                {t('couple.daughterOf')} {bride.parents}
               </div>
 
               <p className="text-xs sm:text-sm font-sans text-[var(--text-secondary)] mt-4 leading-relaxed max-w-md mx-auto">
@@ -86,12 +88,12 @@ export const CoupleSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
 
             {/* Groom Details */}
             <div className="text-center">
-              <h3 className="font-cinzel-dec text-2xl sm:text-3xl font-bold text-gold-gradient tracking-wide">
+              <h3 className="font-cinzel-dec text-2xl sm:text-3xl font-bold text-gold-gradient tracking-wide pt-2 pb-1 inline-block leading-normal">
                 {groom.fullName}
               </h3>
               
               <div className="text-xs font-cinzel font-semibold text-[var(--accent-gold)] tracking-wider uppercase mt-1">
-                Son of {groom.parents}
+                {t('couple.sonOf')} {groom.parents}
               </div>
             </div>
           </div>

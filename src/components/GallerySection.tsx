@@ -3,10 +3,12 @@ import { createPortal } from 'react-dom';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { WeddingConfig } from '../types';
 import { RoyalCorner, GoldDivider } from './Ornaments';
+import { useLanguage } from '../context/LanguageContext';
 
 export const GallerySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) => {
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
   const [category, setCategory] = useState<string>('all');
+  const { t } = useLanguage();
 
   const filteredPhotos = category === 'all'
     ? wedding.gallery
@@ -45,14 +47,14 @@ export const GallerySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }
   return (
     <section className="py-20 px-4 max-w-6xl mx-auto relative">
       <div className="text-center mb-12">
-        <p className="font-script text-2xl sm:text-3xl text-[var(--text-primary)]">
-          Captured in Golden Light
+        <p className="font-script text-2xl sm:text-3xl text-[var(--text-primary)] py-0.5">
+          {t('gallery.subtitle')}
         </p>
-        <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-gold-gradient tracking-wider uppercase mt-1">
-          Moments & Memories
+        <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-gold-gradient tracking-wider uppercase mt-1 pt-2 pb-1 inline-block leading-snug">
+          {t('gallery.title')}
         </h2>
         <p className="text-xs sm:text-sm font-sans text-[var(--text-secondary)] max-w-md mx-auto mt-2">
-          Glimpses into our shared laughter, quiet whispers, and the timeless beauty of our journey.
+          {t('gallery.intro')}
         </p>
         <GoldDivider variant="lotus" className="max-w-xs mx-auto my-4" />
 
@@ -70,7 +72,7 @@ export const GallerySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }
                     : 'bg-[var(--bg-card)]/60 text-[var(--text-secondary)] border border-[var(--accent-gold)]/30 hover:border-[var(--accent-gold)]'
                 }`}
               >
-                {cat}
+                {cat === 'all' ? t('gallery.all') : cat}
               </button>
             ))}
           </div>
@@ -198,7 +200,7 @@ export const GallerySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }
             </div>
 
             <div className="text-center mt-4">
-              <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-gold-gradient">
+              <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-gold-gradient pt-1.5 pb-0.5 inline-block leading-snug">
                 {filteredPhotos[selectedPhotoIndex].title}
               </h3>
               <p className="font-script text-base sm:text-lg text-[var(--text-primary)] mt-0.5">

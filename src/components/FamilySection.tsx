@@ -1,18 +1,20 @@
 import React from 'react';
 import { WeddingConfig } from '../types';
 import { RoyalCorner, GoldDivider } from './Ornaments';
+import { useLanguage } from '../context/LanguageContext';
 
 export const FamilySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) => {
   const { familyBlessings } = wedding;
+  const { t } = useLanguage();
 
   return (
     <section className="py-20 px-4 max-w-5xl mx-auto relative text-center">
       <div className="mb-12">
-        <p className="font-script text-2xl sm:text-3xl text-[var(--text-primary)]">
-          Rooted in Heritage & Lineage
+        <p className="font-script text-2xl sm:text-3xl text-[var(--text-primary)] py-0.5">
+          {t('family.subtitle')}
         </p>
-        <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-gold-gradient tracking-wider uppercase mt-1">
-          With Sacred Blessings
+        <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-gold-gradient tracking-wider uppercase mt-1 pt-2 pb-1 inline-block leading-snug">
+          {t('family.title')}
         </h2>
         <GoldDivider variant="lotus" className="max-w-xs mx-auto my-4" />
       </div>
@@ -54,7 +56,7 @@ export const FamilySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
             <RoyalCorner position="top-left" />
             <RoyalCorner position="bottom-right" />
 
-            <h3 className="font-cinzel text-xl font-bold text-gold-gradient tracking-wide mb-4 pb-2 border-b border-[var(--accent-gold)]/20">
+            <h3 className="font-cinzel text-xl font-bold text-gold-gradient tracking-wide mb-4 pb-2 pt-2 border-b border-[var(--accent-gold)]/20 inline-block leading-snug">
               {patron.family}
             </h3>
 

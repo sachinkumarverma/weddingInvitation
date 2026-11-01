@@ -3,6 +3,7 @@ import { Calendar } from 'lucide-react';
 import { WeddingConfig } from '../types';
 import { addToNativeCalendar } from '../utils/calendar';
 import { RoyalCorner, GoldDivider } from './Ornaments';
+import { useLanguage } from '../context/LanguageContext';
 
 interface TimeLeft {
   days: number;
@@ -12,6 +13,7 @@ interface TimeLeft {
 }
 
 export const CountdownSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) => {
+  const { t } = useLanguage();
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
@@ -57,11 +59,11 @@ export const CountdownSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding
   return (
     <section className="py-20 px-4 max-w-5xl mx-auto text-center relative">
       <div className="mb-10">
-        <p className="font-script text-2xl sm:text-3xl text-[var(--text-primary)]">
-          Counting Down to Forever
+        <p className="font-script text-2xl sm:text-3xl text-[var(--text-primary)] py-0.5">
+          {t('countdown.subtitle')}
         </p>
-        <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-gold-gradient tracking-wider uppercase mt-1">
-          The Auspicious Countdown
+        <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-gold-gradient tracking-wider uppercase mt-1 pt-2 pb-1 inline-block leading-snug">
+          {t('countdown.title')}
         </h2>
         <GoldDivider variant="lotus" className="max-w-xs mx-auto my-4" />
       </div>
@@ -69,10 +71,10 @@ export const CountdownSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding
       {/* Countdown Grid Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 max-w-3xl mx-auto">
         {[
-          { label: 'Days', value: timeLeft.days },
-          { label: 'Hours', value: timeLeft.hours },
-          { label: 'Minutes', value: timeLeft.minutes },
-          { label: 'Seconds', value: timeLeft.seconds },
+          { label: t('countdown.days'), value: timeLeft.days },
+          { label: t('countdown.hours'), value: timeLeft.hours },
+          { label: t('countdown.minutes'), value: timeLeft.minutes },
+          { label: t('countdown.seconds'), value: timeLeft.seconds },
         ].map((item, index) => (
           <div
             key={index}
@@ -99,10 +101,10 @@ export const CountdownSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding
           id="native-calendar-button"
           data-cursor="CALENDAR"
           onClick={handleAddWeddingToCalendar}
-          className="flex items-center gap-2.5 px-8 py-3.5 rounded-full border border-[var(--accent-gold)]/70 bg-gradient-to-r from-[var(--brand-crimson-dark)] via-[var(--brand-crimson)] to-[var(--brand-crimson-dark)] text-[#ffffff] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:scale-105 text-xs sm:text-sm font-cinzel font-bold tracking-widest uppercase transition-all duration-300 cursor-pointer shadow-[0_10px_25px_rgba(168,28,56,0.5)]"
+          className="flex items-center justify-center gap-2.5 px-8 py-3.5 sm:py-4 min-h-[46px] rounded-full border border-[var(--accent-gold)]/70 bg-gradient-to-r from-[var(--brand-crimson-dark)] via-[var(--brand-crimson)] to-[var(--brand-crimson-dark)] text-[#ffffff] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:scale-105 text-xs sm:text-sm font-cinzel font-bold tracking-widest uppercase transition-all duration-300 cursor-pointer shadow-[0_10px_25px_rgba(168,28,56,0.5)]"
         >
           <Calendar className="w-4 h-4 text-[var(--accent-gold-light)] shrink-0" />
-          <span className="leading-none inline-block" style={{ transform: 'translateY(1.5px)' }}>Save the Date</span>
+          <span className="leading-normal pt-1 pb-0.5 inline-block">{t('common.saveTheDate')}</span>
         </button>
       </div>
     </section>

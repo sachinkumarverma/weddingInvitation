@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MapPin, Navigation, Plane, Train, ExternalLink } from 'lucide-react';
 import { WeddingConfig } from '../types';
 import { RoyalCorner, GoldDivider } from './Ornaments';
+import { useLanguage } from '../context/LanguageContext';
 
 const venueImages = [
   '/marriage_garden1.png',
@@ -12,6 +13,7 @@ const venueImages = [
 
 export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) => {
   const { venue } = wedding;
+  const { t } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -31,11 +33,11 @@ export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
       )}
       
       <div className="text-center mb-12 relative z-10">
-        <p className="font-script text-2xl sm:text-3xl text-[var(--text-primary)]">
-          A Royal Celebration in the City of Lakes
+        <p className="font-script text-2xl sm:text-3xl text-[var(--text-primary)] py-0.5">
+          {t('venue.subtitle')}
         </p>
-        <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-gold-gradient tracking-wider uppercase mt-1">
-          The Wedding Venue
+        <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-gold-gradient tracking-wider uppercase mt-1 pt-2 pb-1 inline-block leading-snug">
+          {t('venue.title')}
         </h2>
         <GoldDivider variant="lotus" className="max-w-xs mx-auto my-4" />
       </div>
@@ -99,7 +101,7 @@ export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
                 className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-2 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[var(--accent-gold)] text-[var(--bg-card-dark)] font-cinzel font-bold text-[9px] sm:text-xs tracking-wider uppercase hover:bg-[var(--accent-gold-light)] hover:scale-105 transition-all shadow-lg whitespace-nowrap"
               >
                 <Navigation className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                Google Maps
+                {t('venue.googleMaps')}
               </a>
               <a
                 href={venue.appleMapsUrl}
@@ -108,7 +110,7 @@ export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
                 className="btn-secondary flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-2 py-2 sm:px-5 sm:py-2.5 rounded-full font-cinzel text-[9px] sm:text-xs tracking-wider uppercase cursor-pointer whitespace-nowrap"
               >
                 <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[var(--accent-gold)] apple-maps-icon" />
-                Apple Maps
+                {t('venue.appleMaps')}
               </a>
             </div>
           </div>
@@ -122,7 +124,7 @@ export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
             </div>
             <div>
               <h4 className="font-cinzel text-xs font-bold text-[var(--text-secondary)] uppercase">
-                By Air
+                {t('venue.byAir')}
               </h4>
               <p className="text-xs font-sans text-[var(--text-secondary)] mt-1">
                 {venue.airportDistance}
@@ -136,7 +138,7 @@ export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
             </div>
             <div>
               <h4 className="font-cinzel text-xs font-bold text-[var(--text-secondary)] uppercase">
-                By Rail
+                {t('venue.byRail')}
               </h4>
               <p className="text-xs font-sans text-[var(--text-secondary)] mt-1">
                 {venue.railwayDistance}

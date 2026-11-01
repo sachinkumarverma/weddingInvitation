@@ -3,6 +3,7 @@ import { Calendar, Clock, MapPin, Plus } from 'lucide-react';
 import { WeddingConfig, WeddingEvent } from '../types';
 import { addToNativeCalendar } from '../utils/calendar';
 import { RoyalCorner, GoldDivider } from './Ornaments';
+import { useLanguage } from '../context/LanguageContext';
 
 const EventImageSlider: React.FC<{ images: string[]; name: string }> = ({ images, name }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -50,6 +51,7 @@ const EventImageSlider: React.FC<{ images: string[]; name: string }> = ({ images
 
 export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
+  const { isHindi, t } = useLanguage();
 
   const filteredEvents = activeFilter === 'all'
     ? wedding.events
@@ -77,6 +79,18 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
   };
 
   const getMotifLabel = (motif: WeddingEvent['motif']) => {
+    if (isHindi) {
+      switch (motif) {
+        case 'pooja': return 'माता पूजन';
+        case 'tilak': return 'तिलक एवं आशीर्वाद';
+        case 'haldi': return 'हल्दी रस्म';
+        case 'mehendi': return 'मेहंदी उत्सव';
+        case 'sangeet': return 'संगीत संध्या';
+        case 'wedding': return 'शुभ विवाह';
+        case 'reception': return 'प्रीतिभोज';
+        default: return motif;
+      }
+    }
     switch (motif) {
       case 'pooja': return 'Mata Poojan';
       case 'tilak': return 'Tilak & Blessings';
@@ -91,8 +105,8 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
 
   const handleAddToCalendar = (event: WeddingEvent) => {
     addToNativeCalendar({
-      title: `${event.name} • Satyam & Harshita Wedding`,
-      description: `${event.description}\nVenue: ${event.venue}, ${event.address}`,
+      title: isHindi ? `${event.name} • सत्यम एवं हर्षिता विवाह` : `${event.name} • Satyam & Harshita Wedding`,
+      description: `${event.description}\n${isHindi ? 'स्थान' : 'Venue'}: ${event.venue}, ${event.address}`,
       location: `${event.venue}, ${event.address}`,
       startDate: wedding.weddingDate,
       endDate: '2026-12-03T02:00:00',
@@ -102,14 +116,14 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
   return (
     <section id="events-section" className="py-20 px-4 max-w-6xl mx-auto relative scroll-mt-6">
       <div className="text-center mb-12">
-        <p className="font-script text-2xl sm:text-3xl text-[var(--text-primary)]">
-          Sacred Ceremonies & Celebrations
+        <p className="font-script text-2xl sm:text-3xl text-[var(--text-primary)] py-0.5">
+          {t('events.subtitle')}
         </p>
-        <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-gold-gradient tracking-wider uppercase mt-1">
-          Wedding Itinerary
+        <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-gold-gradient tracking-wider uppercase mt-1 pt-2 pb-1 inline-block leading-snug">
+          {t('events.title')}
         </h2>
         <p className="text-xs sm:text-sm font-sans text-[var(--text-secondary)] max-w-lg mx-auto mt-2">
-          Join us across four joyous days of vibrant rituals, soulful music, royal feasts, and sacred blessings.
+          {t('events.intro')}
         </p>
         <GoldDivider variant="lotus" className="max-w-xs mx-auto my-4" />
 
@@ -118,26 +132,26 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
           <button
             type="button"
             onClick={() => setActiveFilter('all')}
-            className={`px-4 py-1.5 rounded-full text-xs font-cinzel tracking-wider uppercase transition-all cursor-pointer ${
+            className={`px-5 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-cinzel tracking-wider uppercase transition-all cursor-pointer min-h-[38px] sm:min-h-[42px] flex items-center justify-center ${
               activeFilter === 'all'
                 ? 'bg-[var(--accent-gold)] text-[var(--bg-card-dark)] font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)]'
                 : 'bg-[var(--bg-card)]/60 text-[var(--text-secondary)] border border-[var(--accent-gold)]/30 hover:border-[var(--accent-gold)]'
             }`}
           >
-            All Rituals
+            <span className="pt-0.5 pb-0.5 inline-block leading-normal">{t('events.allRituals')}</span>
           </button>
           {wedding.events.map((e) => (
             <button
               key={e.id}
               type="button"
               onClick={() => setActiveFilter(e.id)}
-              className={`px-4 py-1.5 rounded-full text-xs font-cinzel tracking-wider uppercase transition-all cursor-pointer ${
+              className={`px-5 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-cinzel tracking-wider uppercase transition-all cursor-pointer min-h-[38px] sm:min-h-[42px] flex items-center justify-center ${
                 activeFilter === e.id
                   ? 'bg-[var(--accent-gold)] text-[var(--bg-card-dark)] font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)]'
                   : 'bg-[var(--bg-card)]/60 text-[var(--text-secondary)] border border-[var(--accent-gold)]/30 hover:border-[var(--accent-gold)]'
               }`}
             >
-              {e.name.split('&')[0]}
+              <span className="pt-0.5 pb-0.5 inline-block leading-normal">{e.name.split('&')[0]}</span>
             </button>
           ))}
         </div>
@@ -176,16 +190,16 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
                 </div>
                 
                 <div
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[10px] sm:text-xs font-cinzel font-bold tracking-widest uppercase shadow-sm event-badge-${event.motif}`}
+                  className={`flex items-center gap-2 px-4 py-2 sm:py-2.5 rounded-full border text-xs sm:text-sm font-cinzel font-bold tracking-widest uppercase shadow-sm min-h-[34px] sm:min-h-[36px] event-badge-${event.motif}`}
                   style={{
                     borderColor: `${event.themeColor}40`,
                     color: event.themeColor,
                     backgroundColor: `${event.themeColor}10`,
                   }}
                 >
-                  <span className="w-1.5 h-1.5 rotate-45 border border-current opacity-80"></span>
-                  {getMotifLabel(event.motif)}
-                  <span className="w-1.5 h-1.5 rotate-45 border border-current opacity-80"></span>
+                  <span className="w-1.5 h-1.5 rotate-45 border border-current opacity-80 shrink-0"></span>
+                  <span className="pt-0.5 pb-0.5 inline-block leading-normal">{getMotifLabel(event.motif)}</span>
+                  <span className="w-1.5 h-1.5 rotate-45 border border-current opacity-80 shrink-0"></span>
                 </div>
               </div>
 
@@ -249,10 +263,10 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
                 type="button"
                 data-cursor="ADD"
                 onClick={() => handleAddToCalendar(event)}
-                className="btn-primary flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full text-xs font-cinzel font-semibold tracking-wider uppercase cursor-pointer whitespace-nowrap"
+                className="btn-primary flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-full text-xs sm:text-sm font-cinzel font-bold tracking-wider uppercase cursor-pointer whitespace-nowrap min-h-[42px] sm:min-h-[44px]"
               >
-                <Plus className="w-3.5 h-3.5 text-[var(--accent-gold)] shrink-0" />
-                <span className="leading-none inline-block">Save the Date</span>
+                <Plus className="w-4 h-4 text-[var(--accent-gold)] shrink-0" />
+                <span className="leading-normal pt-1 pb-0.5 inline-block">{t('events.saveDateBtn')}</span>
               </button>
 
               <a
@@ -260,10 +274,10 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
                 target="_blank"
                 rel="noreferrer"
                 data-cursor="MAP"
-                className="btn-secondary flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-full text-xs font-cinzel tracking-wider uppercase cursor-pointer whitespace-nowrap"
+                className="btn-secondary flex items-center justify-center gap-2 px-4 py-3 rounded-full text-xs sm:text-sm font-cinzel font-bold tracking-wider uppercase cursor-pointer whitespace-nowrap min-h-[42px] sm:min-h-[44px]"
               >
-                <MapPin className="w-3.5 h-3.5 text-[var(--accent-gold)] shrink-0 directions-icon" />
-                <span className="leading-none inline-block" >Directions</span>
+                <MapPin className="w-4 h-4 text-[var(--accent-gold)] shrink-0 directions-icon" />
+                <span className="leading-normal pt-1 pb-0.5 inline-block">{t('events.directionsBtn')}</span>
               </a>
             </div>
           </div>

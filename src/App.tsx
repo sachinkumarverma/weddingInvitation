@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Calendar, MapPin } from 'lucide-react';
 import { weddingData } from './data/weddingData';
+import { weddingDataHindi } from './data/weddingDataHindi';
+import { useLanguage } from './context/LanguageContext';
+import { LanguageToggle } from './components/LanguageToggle';
 import { FloatingParticles } from './components/FloatingParticles';
 import { CustomCursor } from './components/CustomCursor';
 import { MusicPlayer } from './components/MusicPlayer';
@@ -26,6 +29,9 @@ export default function App() {
   const [isEasterEggOpen, setIsEasterEggOpen] = useState(false);
   const [activeNavTab, setActiveNavTab] = useState<'events' | 'venue' | 'card'>('events');
   const [theme, setTheme] = useState<'default' | 'pink' | 'midnight'>('default');
+
+  const { isHindi, t } = useLanguage();
+  const activeWeddingData = isHindi ? weddingDataHindi : weddingData;
 
   useEffect(() => {
     if (isEnvelopeOpen) {
@@ -77,18 +83,21 @@ export default function App() {
       {/* Theme Switcher (Top Left) */}
       <ThemeSwitcher theme={theme} setTheme={setTheme} />
 
+      {/* Unified Top Right Controls Cluster (Language Toggle & Music Player) */}
+      <div className="fixed top-4 right-4 sm:top-5 sm:right-5 z-40 flex items-center gap-2 sm:gap-2.5">
+        <LanguageToggle />
+        <MusicPlayer autoStartPrompt={hasOpenedBefore} />
+      </div>
+
       {/* Desktop Luxury Follow Cursor */}
       <CustomCursor />
 
       {/* Floating Golden Dust, Rose Petals, or Midnight Stars depending on theme */}
       <FloatingParticles count={24} theme={theme} />
 
-      {/* Ambient Music Player */}
-      <MusicPlayer autoStartPrompt={hasOpenedBefore} />
-
       {/* The 3D Royal Physical Envelope & Opened Card Experience */}
       <EnvelopeModal
-        wedding={weddingData}
+        wedding={activeWeddingData}
         isOpen={isEnvelopeOpen}
         hasOpenedBefore={hasOpenedBefore}
         onOpened={handleEnvelopeOpened}
@@ -98,7 +107,7 @@ export default function App() {
       <main className="relative z-20">
         {/* 1. Hero Section */}
         <HeroSection
-          wedding={weddingData}
+          wedding={activeWeddingData}
           onOpenEnvelopeModal={handleReopenEnvelope}
           onScrollToEvents={() => scrollToSection('events-section', 'events')}
           onScrollToVenue={() => scrollToSection('venue-section', 'venue')}
@@ -111,32 +120,32 @@ export default function App() {
           style={{ backgroundImage: 'var(--bg-image, none)' }}
         >
           {/* 2. Interactive Scratch-to-Reveal Gold Card */}
-          <ScratchRevealCard wedding={weddingData} />
+          <ScratchRevealCard wedding={activeWeddingData} />
 
         {/* 3. Live Auspicious Countdown Section with Native Add-to-Calendar */}
-        <CountdownSection wedding={weddingData} />
+        <CountdownSection wedding={activeWeddingData} />
 
         {/* 4. Split-Screen Couple Showcase */}
-        <CoupleSection wedding={weddingData} />
+        <CoupleSection wedding={activeWeddingData} />
 
         {/* 5. Wedding Events & Ceremonies Itinerary */}
-        <EventsSection wedding={weddingData} />
+        <EventsSection wedding={activeWeddingData} />
 
         {/* 6. Editorial Photo Gallery with Lightbox */}
-        <GallerySection wedding={weddingData} />
+        <GallerySection wedding={activeWeddingData} />
 
         {/* 7. Venue & Location Showcase (Jaiswal Marriage Garden, Bhopal) */}
-        <VenueSection wedding={weddingData} />
+        <VenueSection wedding={activeWeddingData} />
 
         {/* 8. Sacred Vedic Family Blessings (Dubey & Pathak Families) */}
-        <FamilySection wedding={weddingData} />
+        <FamilySection wedding={activeWeddingData} />
 
         {/* 9. Social Sharing & WhatsApp Invite Generator */}
-        <ShareSection wedding={weddingData} />
+        <ShareSection wedding={activeWeddingData} />
 
         {/* 10. Emotional Climax & Closing */}
           <FinalSection
-            wedding={weddingData}
+            wedding={activeWeddingData}
             onScrollToTop={scrollToTop}
           />
         </div>
@@ -154,7 +163,7 @@ export default function App() {
           }`}
         >
           <Calendar className="w-3.5 h-3.5 text-[var(--accent-gold-light)]" />
-          <span>Events</span>
+          <span>{t('nav.events')}</span>
         </button>
 
         <button
@@ -167,7 +176,7 @@ export default function App() {
           }`}
         >
           <MapPin className="w-3.5 h-3.5 text-[var(--accent-gold-light)]" />
-          <span>Venue Map</span>
+          <span>{t('nav.venue')}</span>
         </button>
 
         <button
@@ -180,7 +189,7 @@ export default function App() {
           }`}
         >
           <Mail className="w-3.5 h-3.5 text-[var(--accent-gold-light)]" />
-          <span>Card</span>
+          <span>{t('nav.card')}</span>
         </button>
       </div>
 
