@@ -190,7 +190,7 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
                 </div>
                 
                 <div
-                  className={`flex items-center gap-2 px-4 py-2 sm:py-2.5 rounded-full border text-xs sm:text-sm font-cinzel font-bold tracking-widest uppercase shadow-sm min-h-[34px] sm:min-h-[36px] event-badge-${event.motif}`}
+                  className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full border text-xs sm:text-sm font-cinzel font-bold tracking-wider uppercase shadow-sm min-h-[28px] sm:min-h-[30px] event-badge-${event.motif}`}
                   style={{
                     borderColor: `${event.themeColor}40`,
                     color: event.themeColor,
@@ -198,7 +198,7 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
                   }}
                 >
                   <span className="w-1.5 h-1.5 rotate-45 border border-current opacity-80 shrink-0"></span>
-                  <span className="pt-0.5 pb-0.5 inline-block leading-normal">{getMotifLabel(event.motif)}</span>
+                  <span className="inline-block leading-normal transform translate-y-[1px]">{getMotifLabel(event.motif)}</span>
                   <span className="w-1.5 h-1.5 rotate-45 border border-current opacity-80 shrink-0"></span>
                 </div>
               </div>

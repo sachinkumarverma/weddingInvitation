@@ -113,6 +113,8 @@ export const WaxSealBadge: React.FC<{
     lg: 'w-36 h-36 text-4xl',
   };
 
+  const isHindiCity = /[\u0900-\u097F]/.test(city);
+
   return (
     <button
       type="button"
@@ -132,7 +134,14 @@ export const WaxSealBadge: React.FC<{
         <span className="font-cinzel-dec font-bold text-[var(--text-primary)] tracking-wider drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
           {initials}
         </span>
-        <span className="text-[0.4em] font-sans tracking-[0.2em] text-[var(--accent-gold)] uppercase mt-0.5 opacity-90">
+        <span
+          className={`text-[0.42em] text-[var(--accent-gold)] mt-0.5 opacity-90 ${
+            isHindiCity
+              ? 'font-hindi-heading'
+              : 'font-sans tracking-[0.2em] uppercase'
+          }`}
+          style={isHindiCity ? { letterSpacing: '0px' } : undefined}
+        >
           {city}
         </span>
       </div>

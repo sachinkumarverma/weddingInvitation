@@ -101,7 +101,7 @@ export const CountdownSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding
           id="native-calendar-button"
           data-cursor="CALENDAR"
           onClick={handleAddWeddingToCalendar}
-          className="flex items-center justify-center gap-2.5 px-8 py-3.5 sm:py-4 min-h-[46px] rounded-full border border-[var(--accent-gold)]/70 bg-gradient-to-r from-[var(--brand-crimson-dark)] via-[var(--brand-crimson)] to-[var(--brand-crimson-dark)] text-[#ffffff] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:scale-105 text-xs sm:text-sm font-cinzel font-bold tracking-widest uppercase transition-all duration-300 cursor-pointer shadow-[0_10px_25px_rgba(168,28,56,0.5)]"
+          className="flex items-center justify-center gap-2.5 px-7 py-2.5 sm:py-3 min-h-[42px] rounded-full border border-[var(--accent-gold)]/70 bg-gradient-to-r from-[var(--brand-crimson-dark)] via-[var(--brand-crimson)] to-[var(--brand-crimson-dark)] text-[#ffffff] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:scale-105 text-xs sm:text-sm font-cinzel font-bold tracking-widest uppercase transition-all duration-300 cursor-pointer shadow-[0_10px_25px_rgba(168,28,56,0.5)]"
         >
           <Calendar className="w-4 h-4 text-[var(--accent-gold-light)] shrink-0" />
           <span className="leading-normal pt-1 pb-0.5 inline-block">{t('common.saveTheDate')}</span>

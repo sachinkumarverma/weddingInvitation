@@ -84,7 +84,7 @@ export default function App() {
       <ThemeSwitcher theme={theme} setTheme={setTheme} />
 
       {/* Unified Top Right Controls Cluster (Language Toggle & Music Player) */}
-      <div className="fixed top-4 right-4 sm:top-5 sm:right-5 z-40 flex items-center gap-2 sm:gap-2.5">
+      <div className="fixed top-4 right-4 sm:top-5 sm:right-5 z-50 flex items-center gap-2 sm:gap-2.5">
         <LanguageToggle />
         <MusicPlayer autoStartPrompt={hasOpenedBefore} />
       </div>

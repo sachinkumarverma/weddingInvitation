@@ -16,7 +16,7 @@ export const weddingDataHindi: WeddingConfig = {
       parents: "श्री नरेश एवं श्रीमती किरण दुबे",
       image: "/female.jpg"
     },
-    initials: "ह & स",
+    initials: "H & S",
     hashtag: "#HarshitaWedsSatyam",
     quote: "सप्तपदी के पावन वचनों और सात फेरों के साथ, जीवन की नई मंगलमयी यात्रा का शुभारंभ।",
   },

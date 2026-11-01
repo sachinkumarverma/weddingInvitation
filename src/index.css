@@ -131,7 +131,8 @@
 [data-lang="hi"] h5,
 [data-lang="hi"] h6,
 [data-lang="hi"] .font-cinzel,
-[data-lang="hi"] .font-cinzel-dec {
+[data-lang="hi"] .font-cinzel-dec,
+[data-lang="hi"] .wax-seal-text span {
   font-family: var(--font-devanagari-heading), sans-serif;
   font-weight: 700;
   letter-spacing: normal !important;
