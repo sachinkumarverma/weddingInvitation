@@ -71,7 +71,7 @@ export const CoupleSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
 
           <div>
             {/* Square Portrait Image Frame */}
-            <div className="relative mx-auto w-48 h-48 sm:w-56 sm:h-56 aspect-square rounded-2xl overflow-hidden border-2 border-[var(--accent-gold)]/60 shadow-[0_10px_25px_rgba(0,0,0,0.8)] mb-6 group-hover:scale-103 transition-transform duration-500">
+            <div className="relative mx-auto w-60 h-60 sm:w-56 sm:h-56 aspect-square rounded-2xl overflow-hidden border-2 border-[var(--accent-gold)]/60 shadow-[0_10px_25px_rgba(0,0,0,0.8)] mb-6 group-hover:scale-103 transition-transform duration-500">
               <img
                 src={groom.image}
                 alt={groom.fullName}

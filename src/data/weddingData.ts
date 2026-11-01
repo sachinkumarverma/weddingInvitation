@@ -44,7 +44,7 @@ export const weddingData: WeddingConfig = {
       subTitle: "Seeking Divine Blessings",
       date: "Monday, 30 November 2026",
       time: "09:00 AM onwards",
-      venue: "Nij Niwas",
+      venue: "Own Residence",
       address: "Bhopal",
       dressCode: "",
       motif: "pooja",
