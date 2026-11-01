@@ -44,8 +44,8 @@ export const weddingData: WeddingConfig = {
       subTitle: "Seeking Divine Blessings",
       date: "Monday, 30 November 2026",
       time: "09:00 AM onwards",
-      venue: "Courtyard Lawn",
-      address: "Jaiswal Marriage Garden, Bhopal",
+      venue: "Nij Niwas",
+      address: "Bhopal",
       dressCode: "",
       motif: "pooja",
       description: "An auspicious beginning with prayers to the Goddess for a blessed union.",
@@ -161,19 +161,19 @@ export const weddingData: WeddingConfig = {
     shlokaEnglish: "May the divine presence bless this union with prosperity, auspicious peace, and eternal companionship.",
     patrons: [
       {
-        family: "The Dubey Family",
+        family: "The Dubey Family (Bride Side)",
         members: [
-          "Mr. Naresh & Mrs. Kiran Dubey",
-          "Mr. Abc & Mrs. Def Dubey",
-          "Mr. Xyz & Mrs. Abc Dubey",
+          "Naresh Dubey (Mob - 9425606767)",
+          "Kiran Dubey",
+          "Varsha Dubey",
         ],
       },
       {
-        family: "The Pathak Family",
+        family: "The Pathak Family (Groom Side)",
         members: [
-          "Mr. Anil & Mrs. Mamta Pathak",
-          "Mr. Abc & Mrs. Def Pathak",
-          "Dr. Xyz & Mrs. Abc Pathak",
+          "Anil Pathak (Mob - 8823886088)",
+          "Mamta Pathak",
+          "Toshi Dubey",
         ],
       },
     ],

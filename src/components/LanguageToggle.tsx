@@ -4,21 +4,12 @@ import { useLanguage } from '../context/LanguageContext';
 import { Language } from '../data/translations';
 
 export const LanguageToggle: React.FC<{ className?: string }> = ({ className = '' }) => {
-  const { language, setLanguage } = useLanguage();
-  const [activeLang, setActiveLang] = useState<Language>(language);
-
-  // Keep in sync with global context
-  useEffect(() => {
-    setActiveLang(language);
-  }, [language]);
+  const { language, setLanguage, isHindi } = useLanguage();
 
   const handleSelect = (lang: Language) => {
-    if (lang === activeLang) return;
-    setActiveLang(lang); // Immediate 0ms local response
-    setLanguage(lang);   // Background transition for full page
+    if (lang === language) return;
+    setLanguage(lang);
   };
-
-  const isHindi = activeLang === 'hi';
 
   return (
     <div

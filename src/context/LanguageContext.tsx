@@ -13,8 +13,12 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>(() => {
-    const saved = localStorage.getItem('wedding_invitation_lang');
-    return saved === 'hi' || saved === 'en' ? saved : 'en';
+    try {
+      const saved = localStorage.getItem('wedding_invitation_lang');
+      return saved === 'hi' || saved === 'en' ? saved : 'en';
+    } catch {
+      return 'en';
+    }
   });
 
   const setLanguage = (lang: Language) => {
@@ -24,19 +28,16 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     } catch {
       // safe fallback
     }
-    document.documentElement.setAttribute('data-lang', lang);
-    document.documentElement.lang = lang;
-
-    React.startTransition(() => {
-      setLanguageState(lang);
-    });
+    // Update state directly so React commits text and DOM attributes atomically
+    setLanguageState(lang);
   };
 
   const toggleLanguage = () => {
     setLanguage(language === 'en' ? 'hi' : 'en');
   };
 
-  useEffect(() => {
+  // Synchronously update data-lang attribute on <html> before paint
+  React.useLayoutEffect(() => {
     document.documentElement.setAttribute('data-lang', language);
     document.documentElement.lang = language;
   }, [language]);

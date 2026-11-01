@@ -61,12 +61,28 @@ export const FamilySection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
             </h3>
 
             <ul className="space-y-2.5">
-              {patron.members.map((member, mIdx) => (
-                <li key={mIdx} className="flex items-center gap-2 text-xs sm:text-sm font-sans text-[var(--text-secondary)]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)]" />
-                  <span>{member}</span>
-                </li>
-              ))}
+              {patron.members.map((member, mIdx) => {
+                const match = member.match(/^(.*?)\((?:Mob|मो\.)\s*-\s*([0-9\s]+)\)(.*)$/i);
+                return (
+                  <li key={mIdx} className="flex items-center gap-2 text-xs sm:text-sm font-sans text-[var(--text-secondary)]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)] shrink-0" />
+                    {match ? (
+                      <span>
+                        {match[1]}(Mob -{' '}
+                        <a
+                          href={`tel:${match[2].replace(/\s+/g, '')}`}
+                          className="text-[var(--accent-gold)] hover:underline hover:text-[var(--accent-gold-light)] font-medium"
+                        >
+                          {match[2].trim()}
+                        </a>
+                        ){match[3]}
+                      </span>
+                    ) : (
+                      <span>{member}</span>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         ))}

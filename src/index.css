@@ -92,27 +92,28 @@
 }
 
 .font-serif-luxury {
-  font-family: var(--font-cormorant), Georgia, serif;
+  font-family: var(--font-cormorant), var(--font-devanagari-heading), Georgia, serif;
 }
 
 .font-cinzel {
-  font-family: var(--font-cinzel), serif;
+  font-family: var(--font-cinzel), var(--font-devanagari-heading), serif;
 }
 
 .font-cinzel-dec {
-  font-family: var(--font-cinzel-decorative), serif;
+  font-family: var(--font-cinzel-decorative), var(--font-devanagari-heading), serif;
 }
 
 .font-playfair {
-  font-family: var(--font-serif), Georgia, serif;
+  font-family: var(--font-serif), var(--font-devanagari-heading), Georgia, serif;
 }
 
 .font-script {
-  font-family: var(--font-script), cursive;
+  font-family: var(--font-script), 'Poppins', var(--font-devanagari-heading), cursive;
 }
 
+.font-sans,
 .font-sans-clean {
-  font-family: var(--font-sans), sans-serif;
+  font-family: var(--font-sans), var(--font-devanagari-body), sans-serif;
 }
 
 .font-hindi-heading {
