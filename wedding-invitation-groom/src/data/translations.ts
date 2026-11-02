@@ -24,6 +24,7 @@ export const translations = {
       scrollToExplore: "Scroll to Explore",
     },
     envelope: {
+      familyInvites: "Pathak Family Invites You",
       royalInvitation: "Royal Wedding Invitation",
       areGettingMarried: "are getting married",
       tapToOpen: "Tap to open invitation",
@@ -141,6 +142,7 @@ export const translations = {
       scrollToExplore: "नीचे देखें",
     },
     envelope: {
+      familyInvites: "पाठक परिवार सस्नेह आमंत्रित करता है",
       royalInvitation: "शुभ विवाह निमंत्रण पत्र",
       areGettingMarried: "का पावन विवाह संस्कार",
       tapToOpen: "पावन निमंत्रण पत्र खोलने के लिए स्पर्श करें",

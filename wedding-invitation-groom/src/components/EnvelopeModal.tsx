@@ -405,7 +405,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                     ॥ श्री गणेशाय नमः ॥
                   </p>
                   <p className="font-script text-2xl sm:text-3xl text-[#fdf8f6] tracking-wide font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-                    {t('hero.familyInvites')}
+                    {t('envelope.familyInvites')}
                   </p>
                 </div>
 

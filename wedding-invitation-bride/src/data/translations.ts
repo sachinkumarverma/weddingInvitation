@@ -17,13 +17,14 @@ export const translations = {
       backToTop: "Back to Top",
     },
     hero: {
-      familyInvites: "Dubey Family Invites You",
+      familyInvites: "Dubey Family",
       cordiallyInvite: "Cordially invite you to celebrate the royal wedding of",
       eventsCta: "Wedding Events & Itinerary",
       venueCta: "Venue & Map",
       scrollToExplore: "Scroll to Explore",
     },
     envelope: {
+      familyInvites: "Dubey Family Invites You",
       royalInvitation: "Royal Wedding Invitation",
       areGettingMarried: "are getting married",
       tapToOpen: "Tap to open invitation",
@@ -134,13 +135,14 @@ export const translations = {
       backToTop: "शीर्ष पर जाएं",
     },
     hero: {
-      familyInvites: "दुबे परिवार सस्नेह आमंत्रित करता है",
+      familyInvites: "दुबे परिवार",
       cordiallyInvite: "के पावन मंगल परिणय उत्सव में आप सादर आमंत्रित हैं",
       eventsCta: "मांगलिक कार्यक्रम एवं तिथियाँ",
       venueCta: "विवाह स्थल एवं मार्ग",
       scrollToExplore: "नीचे देखें",
     },
     envelope: {
+      familyInvites: "दुबे परिवार सस्नेह आमंत्रित करता है",
       royalInvitation: "शुभ विवाह निमंत्रण पत्र",
       areGettingMarried: "का पावन विवाह संस्कार",
       tapToOpen: "पावन निमंत्रण पत्र खोलने के लिए स्पर्श करें",
