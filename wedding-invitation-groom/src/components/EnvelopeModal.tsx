@@ -401,10 +401,10 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                 }`}
               >
                 <div className="text-center px-4 mb-2">
-                  <p className="font-hindi-heading text-xs text-[var(--accent-gold-light)] tracking-normal font-bold mb-1">
+                  <p className="font-hindi-heading text-xs text-[#ffd700] tracking-normal font-bold mb-1 drop-shadow-md">
                     ॥ श्री गणेशाय नमः ॥
                   </p>
-                  <p className="font-script text-xl sm:text-2xl text-[var(--text-primary)] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                  <p className="font-script text-2xl sm:text-3xl text-[#fdf8f6] tracking-wide font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                     {t('hero.familyInvites')}
                   </p>
                 </div>
@@ -417,9 +417,9 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                   />
                 </div>
 
-                <div className="mt-3 flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--bg-card)] border border-[var(--accent-gold)]/40 backdrop-blur-md shadow-lg animate-pulse">
-                  <span className="w-2 h-2 rounded-full bg-[var(--accent-gold)] animate-ping" />
-                  <span className="text-[11px] font-cinzel tracking-widest text-[var(--text-secondary)] uppercase font-bold">
+                <div className="mt-3 flex items-center gap-2 px-5 py-2 rounded-full bg-black/60 border border-[#d4af37]/60 backdrop-blur-md shadow-lg animate-pulse">
+                  <span className="w-2 h-2 rounded-full bg-[#ffd700] animate-ping" />
+                  <span className="text-[11px] font-cinzel tracking-widest text-[#fdf8f6] uppercase font-bold">
                     {t('envelope.tapToOpen')}
                   </span>
                 </div>

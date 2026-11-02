@@ -638,6 +638,13 @@
   color: #ffffff !important; /* Keep text white */
 }
 
+[data-theme="pink"] .scratch-content-wrapper .scratch-header svg,
+[data-theme="pink"] .scratch-crown-icon {
+  color: #ffd700 !important;
+  stroke: #ffd700 !important;
+  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.7)) !important;
+}
+
 [data-theme="pink"] .scratch-content-wrapper .scratch-footer {
   font-size: 8px !important;
   margin-top: 0.5rem !important;

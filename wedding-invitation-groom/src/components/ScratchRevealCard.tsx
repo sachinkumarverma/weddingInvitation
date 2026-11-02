@@ -170,7 +170,7 @@ export const ScratchRevealCard: React.FC<{ wedding: WeddingConfig }> = ({ weddin
         {/* Hidden Content Revealed Beneath */}
         <div className="scratch-content-wrapper p-6 sm:p-8 flex flex-col items-center justify-center min-h-[220px] h-full text-center">
           <div className="scratch-header inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#181145] via-[#241a6b] to-[#181145] border border-[var(--accent-gold)]/70 text-[var(--accent-gold-light)] text-xs font-cinzel font-bold mb-2 min-h-[32px] shadow-md">
-            <Crown className="w-3.5 h-3.5 text-[var(--accent-gold-light)] shrink-0 animate-pulse" />
+            <Crown className="scratch-crown-icon w-3.5 h-3.5 text-[var(--accent-gold-light)] shrink-0 animate-pulse" />
             <span className="pt-0.5 pb-0.5 inline-block leading-normal">{t('scratch.saveOurDate')}</span>
           </div>
 
