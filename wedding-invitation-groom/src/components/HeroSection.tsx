@@ -20,10 +20,7 @@ export const HeroSection: React.FC<{
     <header className="relative min-h-[92vh] sm:min-h-screen flex flex-col items-center justify-center text-center px-4 pt-20 sm:pt-20 pb-12 overflow-hidden bg-[var(--bg-primary-dark)]">
       {/* Background Architectural & Palace Atmosphere */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-28 filter contrast-125 scale-105 transition-transform duration-10000 ease-out pointer-events-none"
-        style={{
-          backgroundImage: `url('/bg-midnight.webp')`,
-        }}
+        className="hero-palace-bg absolute inset-0 bg-cover bg-center opacity-28 filter contrast-125 scale-105 transition-transform duration-10000 ease-out pointer-events-none"
       />
       
       {/* Soft Vignette & Radial Glow */}
@@ -85,7 +82,7 @@ export const HeroSection: React.FC<{
         <GoldDivider variant="imperial" className="w-full max-w-sm my-3" />
 
         {/* Date & Venue Inscription Plaque */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 mt-4 px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl bg-black/50 border border-[var(--accent-gold)]/50 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.5)] max-w-full">
+        <div className="hero-badge-plaque flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 mt-4 px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl bg-black/50 border border-[var(--accent-gold)]/50 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.5)] max-w-full">
           <div className="flex items-center gap-2 text-[var(--text-primary)] shrink-0">
             <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[var(--accent-gold)] shrink-0" />
             <span className="font-cinzel text-xs sm:text-sm font-semibold tracking-wider whitespace-nowrap">
@@ -125,7 +122,7 @@ export const HeroSection: React.FC<{
             id="hero-venue-cta"
             data-cursor="VENUE"
             onClick={handleLittleScroll}
-            className="flex-1 flex items-center justify-center px-3 sm:px-6 py-2.5 sm:py-3 rounded-xl font-cinzel text-xs sm:text-sm font-semibold tracking-wider uppercase cursor-pointer backdrop-blur-md bg-[#181145]/80 text-[var(--text-primary)] border border-[var(--accent-gold)]/50 hover:border-[var(--accent-gold)] hover:bg-[#20155a] transition-all duration-300 min-h-[46px] sm:min-h-[50px] text-center"
+            className="royal-secondary-btn flex-1 flex items-center justify-center px-3 sm:px-6 py-2.5 sm:py-3 rounded-xl font-cinzel text-xs sm:text-sm font-semibold tracking-wider uppercase cursor-pointer min-h-[46px] sm:min-h-[50px] text-center"
           >
             <span className="leading-tight">{t('hero.venueCta')}</span>
           </button>

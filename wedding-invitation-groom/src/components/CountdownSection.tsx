@@ -78,7 +78,7 @@ export const CountdownSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding
         ].map((item, index) => (
           <div
             key={index}
-            className="relative w-32 h-32 sm:w-36 sm:h-36 mx-auto rounded-full border-2 border-[var(--accent-gold)]/60 bg-gradient-to-b from-[#181145] to-[#0a071c] shadow-[0_12px_35px_rgba(0,0,0,0.8),inset_0_0_20px_rgba(212,175,55,0.2)] flex flex-col items-center justify-center group hover:scale-105 hover:border-[var(--accent-gold)] transition-all duration-300 ring-1 ring-[var(--accent-gold)]/30 ring-offset-4 ring-offset-[#0a071c]"
+            className="countdown-dial relative w-32 h-32 sm:w-36 sm:h-36 mx-auto rounded-full border-2 border-[var(--accent-gold)]/60 bg-gradient-to-b from-[#181145] to-[#0a071c] shadow-[0_12px_35px_rgba(0,0,0,0.8),inset_0_0_20px_rgba(212,175,55,0.2)] flex flex-col items-center justify-center group hover:scale-105 hover:border-[var(--accent-gold)] transition-all duration-300 ring-1 ring-[var(--accent-gold)]/30 ring-offset-4 ring-offset-[#0a071c]"
           >
             {/* Inner dashed ring */}
             <div className="absolute inset-1.5 rounded-full border border-[var(--accent-gold)]/30 border-dashed pointer-events-none" />
@@ -87,7 +87,7 @@ export const CountdownSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding
               {String(item.value).padStart(2, '0')}
             </div>
 
-            <div className="text-[10px] sm:text-xs font-cinzel font-bold tracking-[0.2em] text-[var(--accent-gold-light)] uppercase mt-1 group-hover:text-white transition-colors">
+            <div className="countdown-label text-[10px] sm:text-xs font-cinzel font-bold tracking-[0.2em] text-[var(--accent-gold-light)] uppercase mt-1 group-hover:text-white transition-colors">
               {item.label}
             </div>
           </div>

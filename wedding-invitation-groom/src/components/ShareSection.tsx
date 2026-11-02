@@ -115,7 +115,7 @@ _We look forward to celebrating this beautiful beginning with you._ 🥂🌸`;
           id="copy-invite-btn"
           data-cursor="COPY"
           onClick={handleCopyLink}
-          className="flex items-center gap-2 px-6 py-3 rounded-xl font-cinzel text-xs font-semibold tracking-wider uppercase cursor-pointer bg-[#181145]/80 text-[var(--text-primary)] border border-[var(--accent-gold)]/50 hover:bg-[#20155a] hover:border-[var(--accent-gold)] transition-all"
+          className="royal-secondary-btn flex items-center gap-2 px-6 py-3 rounded-xl font-cinzel text-xs font-semibold tracking-wider uppercase cursor-pointer transition-all"
         >
           {copied ? (
             <>
@@ -135,7 +135,7 @@ _We look forward to celebrating this beautiful beginning with you._ 🥂🌸`;
           type="button"
           id="show-qr-code-btn"
           onClick={() => setShowQR(true)}
-          className="flex items-center gap-2 px-5 py-3 rounded-xl font-cinzel text-xs font-semibold tracking-wider uppercase cursor-pointer bg-[#181145]/80 text-[var(--text-primary)] border border-[var(--accent-gold)]/50 hover:bg-[#20155a] hover:border-[var(--accent-gold)] transition-all"
+          className="royal-secondary-btn flex items-center gap-2 px-5 py-3 rounded-xl font-cinzel text-xs font-semibold tracking-wider uppercase cursor-pointer transition-all"
         >
           <QrCode className="w-4 h-4 text-[var(--accent-gold)]" />
           {t('share.scanQR')}

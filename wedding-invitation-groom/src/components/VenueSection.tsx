@@ -107,7 +107,7 @@ export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
                 href={venue.appleMapsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl font-cinzel text-[10px] sm:text-xs font-semibold tracking-wider uppercase cursor-pointer whitespace-nowrap bg-[#181145]/80 text-[var(--text-primary)] border border-[var(--accent-gold)]/50 hover:bg-[#20155a] hover:border-[var(--accent-gold)] transition-all"
+                className="royal-secondary-btn flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl font-cinzel text-[10px] sm:text-xs font-semibold tracking-wider uppercase cursor-pointer whitespace-nowrap transition-all"
               >
                 <ExternalLink className="w-3.5 h-3.5 text-[var(--accent-gold)] apple-maps-icon" />
                 {t('venue.appleMaps')}

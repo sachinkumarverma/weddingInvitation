@@ -178,13 +178,13 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
               {/* Event Header with Motif Emoji & Badge */}
               <div className="flex items-center justify-between gap-2 mb-4">
                 <div 
-                  className="w-11 h-11 flex items-center justify-center rounded-xl border border-[var(--accent-gold)]/40 bg-[#181145] shadow-md"
+                  className="event-motif-box w-11 h-11 flex items-center justify-center rounded-xl border border-[var(--accent-gold)]/40 bg-[#181145] shadow-md"
                 >
                   <span className="text-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">{getMotifIcon(event.motif)}</span>
                 </div>
                 
                 <div
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--accent-gold)]/40 text-xs font-cinzel font-bold tracking-wider uppercase bg-black/40 text-[var(--accent-gold)] shadow-sm min-h-[30px]"
+                  className="event-motif-badge flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--accent-gold)]/40 text-xs font-cinzel font-bold tracking-wider uppercase bg-black/40 text-[var(--accent-gold)] shadow-sm min-h-[30px]"
                 >
                   <span className="w-1.5 h-1.5 rotate-45 border border-current opacity-80 shrink-0"></span>
                   <span className="inline-block leading-none transform translate-y-[0.5px]">{getMotifLabel(event.motif)}</span>
@@ -261,7 +261,7 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
                 target="_blank"
                 rel="noreferrer"
                 data-cursor="MAP"
-                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs font-cinzel font-semibold tracking-wider uppercase cursor-pointer whitespace-nowrap bg-[#181145]/80 text-[var(--text-primary)] border border-[var(--accent-gold)]/50 hover:bg-[#20155a] hover:border-[var(--accent-gold)] transition-all"
+                className="royal-secondary-btn flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs font-cinzel font-semibold tracking-wider uppercase cursor-pointer whitespace-nowrap transition-all"
               >
                 <MapPin className="w-4 h-4 text-[var(--accent-gold)] shrink-0" />
                 <span className="leading-normal pt-0.5">{t('events.directionsBtn')}</span>

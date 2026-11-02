@@ -30,7 +30,7 @@ export const CoupleSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
 
           <div>
             {/* Royal Palace Jharokha Arch Portrait Frame */}
-            <div className="relative mx-auto w-56 h-64 sm:w-60 sm:h-72 rounded-t-[5rem] rounded-b-2xl overflow-hidden border-2 border-[var(--accent-gold)]/60 shadow-[0_15px_35px_rgba(0,0,0,0.8)] ring-1 ring-[var(--accent-gold)]/30 ring-offset-4 ring-offset-[#0d0928] mb-6 group-hover:scale-102 transition-transform duration-500">
+            <div className="couple-arch-frame relative mx-auto w-56 h-64 sm:w-60 sm:h-72 rounded-t-[5rem] rounded-b-2xl overflow-hidden border-2 border-[var(--accent-gold)]/60 shadow-[0_15px_35px_rgba(0,0,0,0.8)] ring-1 ring-[var(--accent-gold)]/30 ring-offset-4 ring-offset-[#0d0928] mb-6 group-hover:scale-102 transition-transform duration-500">
               <img
                 src={groom.image}
                 alt={groom.fullName}
@@ -39,7 +39,7 @@ export const CoupleSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary-dark)]/85 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-3 left-0 right-0 text-center">
-                <span className="font-cinzel text-[11px] font-bold tracking-[0.25em] text-[var(--accent-gold-light)] uppercase bg-black/85 px-4 py-1 rounded-full border border-[var(--accent-gold)]/60 shadow-md inline-block transform translate-y-[1px]">
+                <span className="couple-title-badge font-cinzel text-[11px] font-bold tracking-[0.25em] text-[var(--accent-gold-light)] uppercase bg-black/85 px-4 py-1 rounded-full border border-[var(--accent-gold)]/60 shadow-md inline-block transform translate-y-[1px]">
                   {groom.title}
                 </span>
               </div>
@@ -73,7 +73,7 @@ export const CoupleSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
 
           <div>
             {/* Royal Palace Jharokha Arch Portrait Frame */}
-            <div className="relative mx-auto w-56 h-64 sm:w-60 sm:h-72 rounded-t-[5rem] rounded-b-2xl overflow-hidden border-2 border-[var(--accent-gold)]/60 shadow-[0_15px_35px_rgba(0,0,0,0.8)] ring-1 ring-[var(--accent-gold)]/30 ring-offset-4 ring-offset-[#0d0928] mb-6 group-hover:scale-102 transition-transform duration-500">
+            <div className="couple-arch-frame relative mx-auto w-56 h-64 sm:w-60 sm:h-72 rounded-t-[5rem] rounded-b-2xl overflow-hidden border-2 border-[var(--accent-gold)]/60 shadow-[0_15px_35px_rgba(0,0,0,0.8)] ring-1 ring-[var(--accent-gold)]/30 ring-offset-4 ring-offset-[#0d0928] mb-6 group-hover:scale-102 transition-transform duration-500">
               <img
                 src={bride.image}
                 alt={bride.fullName}
@@ -82,7 +82,7 @@ export const CoupleSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary-dark)]/85 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-3 left-0 right-0 text-center">
-                <span className="font-cinzel text-[11px] font-bold tracking-[0.25em] text-[var(--accent-gold-light)] uppercase bg-black/85 px-4 py-1 rounded-full border border-[var(--accent-gold)]/60 shadow-md inline-block transform translate-y-[1px]">
+                <span className="couple-title-badge font-cinzel text-[11px] font-bold tracking-[0.25em] text-[var(--accent-gold-light)] uppercase bg-black/85 px-4 py-1 rounded-full border border-[var(--accent-gold)]/60 shadow-md inline-block transform translate-y-[1px]">
                   {bride.title}
                 </span>
               </div>

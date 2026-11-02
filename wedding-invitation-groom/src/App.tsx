@@ -24,11 +24,13 @@ import { useSecurity } from './utils/useSecurity';
 
 export default function App() {
   useSecurity();
-  const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(true);
+  const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(() => !window.location.search.includes('open'));
   const [hasOpenedBefore, setHasOpenedBefore] = useState(false);
   const [isEasterEggOpen, setIsEasterEggOpen] = useState(false);
   const [activeNavTab, setActiveNavTab] = useState<'events' | 'venue' | 'card'>('events');
-  const [theme, setTheme] = useState<'midnight' | 'pink'>('midnight');
+  const [theme, setTheme] = useState<'midnight' | 'pink'>(() => 
+    window.location.search.includes('theme=pink') ? 'pink' : 'midnight'
+  );
 
   const { isHindi, t } = useLanguage();
   const activeWeddingData = isHindi ? weddingDataHindi : weddingData;
