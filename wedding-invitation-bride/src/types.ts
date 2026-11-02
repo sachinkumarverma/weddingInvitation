@@ -13,6 +13,7 @@ export interface WeddingEvent {
   themeColor: string;
   image: string;
   images?: string[];
+  googleMapsUrl?: string;
 }
 
 export interface StoryMilestone {

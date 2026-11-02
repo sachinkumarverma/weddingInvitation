@@ -238,9 +238,14 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
 
                   <div className="flex items-start gap-2.5 text-[var(--text-primary)]">
                     <MapPin className="w-4 h-4 text-[var(--accent-gold)] shrink-0 mt-0.5" />
-                    <span>
+                    <a
+                      href={event.googleMapsUrl || wedding.venue.googleMapsUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-[var(--accent-gold)] transition-colors cursor-pointer"
+                    >
                       <strong>{event.venue}</strong> — {event.address}
-                    </span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -258,7 +263,7 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
                 </button>
 
                 <a
-                  href={wedding.venue.googleMapsUrl}
+                  href={event.googleMapsUrl || wedding.venue.googleMapsUrl}
                   target="_blank"
                   rel="noreferrer"
                   data-cursor="MAP"

@@ -51,6 +51,7 @@ export const weddingDataHindi: WeddingConfig = {
       description: "विवाह के शुभ कार्य निर्विघ्न संपन्न होने हेतु कुलदेवी व प्रथम पूज्य भगवान श्री गणेश जी की पावन स्तुति व मंगल आराधना।",
       themeColor: "#eab308",
       image: "/poojan.webp",
+      googleMapsUrl: "https://maps.app.goo.gl/6nHiz7oZLHb8WHc4A",
     },
     {
       id: "tilak",

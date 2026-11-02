@@ -51,6 +51,7 @@ export const weddingData: WeddingConfig = {
       description: "An auspicious beginning with prayers to the Goddess for a blessed union.",
       themeColor: "#eab308",
       image: "/poojan.webp",
+      googleMapsUrl: "https://maps.app.goo.gl/7CzJHaPk8PwR8eKbA?g_st=ac",
     },
     {
       id: "tilak",
