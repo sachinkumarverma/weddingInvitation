@@ -163,17 +163,17 @@ export const weddingData: WeddingConfig = {
       {
         family: "The Dubey Family (Bride Side)",
         members: [
-          "Naresh Dubey (Mob - 9425606767)",
-          "Kiran Dubey",
-          "Varsha Dubey",
+          "Mr. Naresh Dubey (Mob - 9425606767)",
+          "Mrs. Kiran Dubey",
+          "Miss Varsha Dubey",
         ],
       },
       {
         family: "The Pathak Family (Groom Side)",
         members: [
-          "Anil Pathak (Mob - 8823886088)",
-          "Mamta Pathak",
-          "Toshi Dubey",
+          "Mr. Anil Pathak (Mob - 8823886088)",
+          "Mrs. Mamta Pathak",
+          "Mrs. Toshi Dubey",
         ],
       },
     ],
