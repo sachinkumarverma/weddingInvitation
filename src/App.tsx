@@ -28,7 +28,7 @@ export default function App() {
   const [hasOpenedBefore, setHasOpenedBefore] = useState(false);
   const [isEasterEggOpen, setIsEasterEggOpen] = useState(false);
   const [activeNavTab, setActiveNavTab] = useState<'events' | 'venue' | 'card'>('events');
-  const [theme, setTheme] = useState<'default' | 'pink' | 'midnight'>('default');
+  const [theme, setTheme] = useState<'default' | 'pink'>('default');
 
   const { isHindi, t } = useLanguage();
   const activeWeddingData = isHindi ? weddingDataHindi : weddingData;
@@ -92,8 +92,8 @@ export default function App() {
       {/* Desktop Luxury Follow Cursor */}
       <CustomCursor />
 
-      {/* Floating Golden Dust, Rose Petals, or Midnight Stars depending on theme */}
-      <FloatingParticles count={24} theme={theme} />
+      {/* Floating Golden Dust and Rose Petals */}
+      <FloatingParticles count={24} />
 
       {/* The 3D Royal Physical Envelope & Opened Card Experience */}
       <EnvelopeModal

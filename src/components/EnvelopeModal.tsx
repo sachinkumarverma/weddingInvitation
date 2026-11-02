@@ -127,7 +127,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,rgba(168,28,56,0.15)_0%,transparent_60%)]" />
       </div>
 
-      <div className={`relative z-10 w-full h-full overflow-y-auto flex flex-col items-center justify-center p-3 sm:p-6 transition-all duration-[1200ms] ease-in-out ${
+      <div className={`relative z-10 w-full h-full overflow-y-auto flex flex-col items-center justify-center p-3 pt-14 pb-10 sm:p-6 transition-all duration-[1200ms] ease-in-out ${
         isDismissing ? 'opacity-0 scale-125 blur-md translate-y-8' : 'opacity-100 scale-100 blur-0 translate-y-0'
       }`}>
       {showConfetti && (
@@ -151,7 +151,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
         /* ========================================================================= */
         <div
           onClick={(e) => e.stopPropagation()}
-          className="relative w-full max-w-sm sm:max-w-md my-auto translate-y-8 sm:translate-y-0 rounded-3xl p-4 sm:p-6 text-center select-none shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_40px_rgba(212,175,55,0.25)] border-2 border-[var(--accent-gold)]/70 animate-scale-in"
+          className="relative w-full max-w-sm sm:max-w-md my-auto rounded-3xl p-4 sm:p-6 text-center select-none shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_40px_rgba(212,175,55,0.25)] border-2 border-[var(--accent-gold)]/70 animate-scale-in"
           style={{
             background: 'linear-gradient(135deg, #fffcf5 0%, #fbedcb 45%, #ebd193 100%)',
             boxShadow: '0 25px 60px rgba(0,0,0,0.8), inset 0 0 40px rgba(212,175,55,0.2)',

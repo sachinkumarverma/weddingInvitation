@@ -1,9 +1,9 @@
 import React from 'react';
-import { Moon, Flower, Sparkles } from 'lucide-react';
+import { Moon, Flower } from 'lucide-react';
 
 interface ThemeSwitcherProps {
-  theme: 'default' | 'pink' | 'midnight';
-  setTheme: (theme: 'default' | 'pink' | 'midnight') => void;
+  theme: 'default' | 'pink';
+  setTheme: (theme: 'default' | 'pink') => void;
 }
 
 export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ theme, setTheme }) => {
@@ -20,7 +20,6 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ theme, setTheme })
   const themes = [
     { id: 'default', name: 'Royal Dark', icon: Moon, color: 'bg-[#1a0810]' },
     { id: 'pink', name: 'Rose Pink', icon: Flower, color: 'bg-[#ffe4e6]' },
-    { id: 'midnight', name: 'Midnight', icon: Sparkles, color: 'bg-[#0f0b29]' },
   ] as const;
 
   return (
@@ -71,6 +70,5 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ theme, setTheme })
 
 const PaletteIcon = ({ theme }: { theme: string }) => {
   if (theme === 'pink') return <Flower className="w-4 h-4" />;
-  if (theme === 'midnight') return <Sparkles className="w-4 h-4" />;
   return <Moon className="w-4 h-4" />;
 };
