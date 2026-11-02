@@ -281,7 +281,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                   : 'scale-105 sm:scale-108 translate-y-0 sm:-translate-y-4'
               }`}
               style={{
-                background: 'linear-gradient(145deg, #1b1242 0%, #100a2b 60%, #09051c 100%)',
+                background: 'var(--envelope-bg, linear-gradient(145deg, #1b1242 0%, #100a2b 60%, #09051c 100%))',
                 boxShadow:
                   '0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(212, 175, 55, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.15)',
                 border: '1px solid rgba(212, 175, 55, 0.4)',
@@ -304,14 +304,14 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                   <svg viewBox="0 0 400 200" preserveAspectRatio="none" className="w-full h-full">
                     <polygon
                       points="0,0 400,0 200,195"
-                      fill="#221654"
+                      fill="var(--envelope-flap-top, #221654)"
                       stroke="var(--accent-gold)"
                       strokeWidth="1.2"
                       strokeOpacity="0.4"
                     />
                     <polygon
                       points="20,0 380,0 200,175"
-                      fill="#180f3d"
+                      fill="var(--envelope-flap-inner, #180f3d)"
                       opacity="0.85"
                     />
                   </svg>
@@ -325,21 +325,21 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                 >
                   <polygon
                     points="0,0 180,150 0,300"
-                    fill="#130c33"
+                    fill="var(--envelope-fold, #130c33)"
                     stroke="var(--accent-gold)"
                     strokeWidth="0.8"
                     strokeOpacity="0.3"
                   />
                   <polygon
                     points="400,0 220,150 400,300"
-                    fill="#130c33"
+                    fill="var(--envelope-fold, #130c33)"
                     stroke="var(--accent-gold)"
                     strokeWidth="0.8"
                     strokeOpacity="0.3"
                   />
                   <polygon
                     points="0,300 200,160 400,300"
-                    fill="#0c0724"
+                    fill="var(--envelope-bottom, #0c0724)"
                     stroke="var(--accent-gold)"
                     strokeWidth="1"
                     strokeOpacity="0.4"

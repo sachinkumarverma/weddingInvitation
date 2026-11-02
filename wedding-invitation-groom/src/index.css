@@ -32,6 +32,13 @@
       linear-gradient(to bottom, rgba(15, 11, 41, 0) 0%, rgba(15, 11, 41, 0) 15%, rgba(15, 11, 41, 0) 85%, rgba(15, 11, 41, 1) 100%),
       linear-gradient(rgba(15, 11, 41, 0.72), rgba(15, 11, 41, 0.72)),
       url('/bg-midnight.webp');
+    --wax-seal-bg: radial-gradient(circle at 35% 30%, #2e2172 0%, #181044 60%, #0c0826 100%);
+    --wax-seal-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.25), inset 0 -4px 8px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(212, 175, 55, 0.5);
+    --envelope-bg: linear-gradient(145deg, #1b1242 0%, #100a2b 60%, #09051c 100%);
+    --envelope-flap-top: #221654;
+    --envelope-flap-inner: #180f3d;
+    --envelope-fold: #130c33;
+    --envelope-bottom: #0c0724;
   }
   
   [data-theme="pink"] {
@@ -56,6 +63,14 @@
     --brand-crimson: #be185d;
     --brand-crimson-dark: #9d174d;
     
+    --wax-seal-bg: radial-gradient(circle at 35% 30%, var(--brand-crimson) 0%, #6e0d22 60%, #3e0512 100%);
+    --wax-seal-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.25), inset 0 -4px 8px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(212, 175, 55, 0.4);
+    --envelope-bg: linear-gradient(145deg, #2b0b14 0%, #1a050b 60%, #120307 100%);
+    --envelope-flap-top: #380e1b;
+    --envelope-flap-inner: #2a0913;
+    --envelope-fold: #20060e;
+    --envelope-bottom: #16040a;
+
     --grad-1: #2e1018;
     --grad-3: #831843;
     --grad-5: #4a2c34;
@@ -494,16 +509,32 @@
 [data-theme="pink"] .drop-shadow-title-sm {
   filter: drop-shadow(0 1px 4px rgba(255,255,255,0.4)) !important;
 }
+[data-theme="pink"] .wax-seal-badge,
+[data-theme="pink"] #wax-seal-badge {
+  background: radial-gradient(circle at 35% 30%, var(--brand-crimson) 0%, #6e0d22 60%, #3e0512 100%) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.25), inset 0 -4px 8px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(212, 175, 55, 0.4) !important;
+}
+
+[data-theme="pink"] .wax-seal-badge .wax-seal-text span,
+[data-theme="pink"] #wax-seal-badge .wax-seal-text span,
 [data-theme="pink"] .wax-seal-text span {
   filter: none !important;
   text-shadow: none !important;
   -webkit-filter: none !important;
 }
+[data-theme="pink"] .wax-seal-badge .wax-seal-text span:first-child,
+[data-theme="pink"] #wax-seal-badge .wax-seal-text span:first-child,
 [data-theme="pink"] .wax-seal-text span:first-child {
   color: #ffffff !important;
 }
+[data-theme="pink"] .wax-seal-badge .wax-seal-text span:last-child,
+[data-theme="pink"] #wax-seal-badge .wax-seal-text span:last-child,
 [data-theme="pink"] .wax-seal-text span:last-child {
   color: #ffcc00 !important;
+}
+
+[data-theme="pink"] #royal-envelope-wrapper {
+  background: linear-gradient(145deg, #2b0b14 0%, #1a050b 60%, #120307 100%) !important;
 }
 /* --- GLOBAL WHATSAPP BUTTON --- */
 .btn-whatsapp {

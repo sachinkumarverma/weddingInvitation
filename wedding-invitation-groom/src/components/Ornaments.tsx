@@ -179,10 +179,10 @@ export const WaxSealBadge: React.FC<{
       type="button"
       id="wax-seal-badge"
       onClick={onClick}
-      className={`relative inline-flex items-center justify-center rounded-full select-none cursor-pointer transition-transform duration-300 hover:scale-105 active:scale-95 ${sizeMap[size]} ${isPulsing ? 'animate-pulse-glow' : ''} ${className}`}
+      className={`wax-seal-badge relative inline-flex items-center justify-center rounded-full select-none cursor-pointer transition-transform duration-300 hover:scale-105 active:scale-95 ${sizeMap[size]} ${isPulsing ? 'animate-pulse-glow' : ''} ${className}`}
       style={{
         background: 'var(--wax-seal-bg, radial-gradient(circle at 35% 30%, #2e2172 0%, #181044 60%, #0c0826 100%))',
-        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.25), inset 0 -4px 8px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(212, 175, 55, 0.5)',
+        boxShadow: 'var(--wax-seal-shadow, 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.25), inset 0 -4px 8px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(212, 175, 55, 0.5))',
       }}
     >
       {/* Outer irregular wax rim */}
