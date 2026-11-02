@@ -29,6 +29,9 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
 
   useEffect(() => {
     if (isOpen) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
       if (hasOpenedBefore) {
         setStage('opened_card');
       } else {
@@ -42,6 +45,11 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
   const handleDismiss = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
 
+    // Immediately guarantee the page underneath is at the top
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
     // If already visited, just close instantly without door animation
     if (hasOpenedBefore) {
       onOpened();
@@ -54,6 +62,9 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
     
     // Wait for the grand zoom-through animation to complete
     setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
       onOpened();
       setIsDismissing(false); // Reset state for future re-opens
     }, 1500);
@@ -371,7 +382,7 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
                   <div className="font-cinzel-dec text-xl sm:text-2xl font-bold text-[#440915] tracking-wider pt-2 pb-0.5 leading-normal">
                     {wedding.couple.bride.firstName} & {wedding.couple.groom.firstName}
                   </div>
-                  <div className="font-script text-base text-[#7c2d12] mt-0.5 py-0.5">
+                  <div className={`text-xs sm:text-sm ${isHindi ? 'font-hindi-heading' : 'font-cinzel tracking-[0.22em] uppercase'} font-semibold text-[#7c2d12] mt-1 pb-0.5`}>
                     {t('envelope.areGettingMarried')}
                   </div>
                 </div>

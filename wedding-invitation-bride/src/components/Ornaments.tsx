@@ -53,7 +53,7 @@ export const RoyalCorner: React.FC<{
   );
 };
 
-// Traditional Mandala SVG background
+// Traditional Royal Indian Mandala SVG background with fine gold linework
 export const MandalaBackground: React.FC<{ className?: string; size?: number }> = ({
   className = '',
   size = 500,
@@ -64,32 +64,105 @@ export const MandalaBackground: React.FC<{ className?: string; size?: number }> 
       height={size}
       viewBox="0 0 500 500"
       fill="none"
-      className={`pointer-events-none ${className}`}
+      className={`pointer-events-none select-none ${className}`}
+      aria-hidden="true"
     >
-      <circle cx="250" cy="250" r="230" stroke="currentColor" strokeWidth="0.75" strokeDasharray="4 4" opacity="0.3" />
-      <circle cx="250" cy="250" r="190" stroke="currentColor" strokeWidth="1" opacity="0.4" />
-      <circle cx="250" cy="250" r="140" stroke="currentColor" strokeWidth="1.2" opacity="0.5" />
-      <circle cx="250" cy="250" r="80" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" opacity="0.6" />
-      <circle cx="250" cy="250" r="30" fill="currentColor" opacity="0.1" />
+      {/* Outer Fine Scalloped Perimeter & Sacred Rings */}
+      <circle cx="250" cy="250" r="242" stroke="currentColor" strokeWidth="0.6" strokeDasharray="3 4" opacity="0.35" />
+      <circle cx="250" cy="250" r="234" stroke="currentColor" strokeWidth="0.8" opacity="0.4" />
+      <circle cx="250" cy="250" r="218" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.3" />
+      <circle cx="250" cy="250" r="185" stroke="currentColor" strokeWidth="1" opacity="0.45" />
+      <circle cx="250" cy="250" r="145" stroke="currentColor" strokeWidth="0.75" strokeDasharray="4 4" opacity="0.35" />
+      <circle cx="250" cy="250" r="110" stroke="currentColor" strokeWidth="1" opacity="0.5" />
+      <circle cx="250" cy="250" r="65" stroke="currentColor" strokeWidth="0.8" strokeDasharray="2 3" opacity="0.4" />
+      <circle cx="250" cy="250" r="30" stroke="currentColor" strokeWidth="1.2" opacity="0.6" />
+      <circle cx="250" cy="250" r="8" fill="currentColor" opacity="0.5" />
 
-      {/* Radial Petals */}
+      {/* 24 Outer Lace Arches */}
+      {Array.from({ length: 24 }).map((_, i) => {
+        const angle = (i * 360) / 24;
+        return (
+          <g key={`arch-${i}`} transform={`rotate(${angle} 250 250)`}>
+            <path
+              d="M250 16 C258 24 258 32 250 40 C242 32 242 24 250 16 Z"
+              stroke="currentColor"
+              strokeWidth="0.6"
+              fill="currentColor"
+              fillOpacity="0.02"
+              opacity="0.45"
+            />
+            <circle cx="250" cy="12" r="1.5" fill="currentColor" opacity="0.5" />
+          </g>
+        );
+      })}
+
+      {/* 16 Royal Lotus Petals with Delicate Ribbing */}
       {Array.from({ length: 16 }).map((_, i) => {
         const angle = (i * 360) / 16;
         return (
-          <g key={i} transform={`rotate(${angle} 250 250)`}>
+          <g key={`petal-${i}`} transform={`rotate(${angle} 250 250)`}>
+            {/* Outer pointed lotus tip */}
             <path
-              d="M250 110 C265 150 265 190 250 220 C235 190 235 150 250 110 Z"
+              d="M250 40 C275 90 280 145 250 185 C220 145 225 90 250 40 Z"
               stroke="currentColor"
-              strokeWidth="0.8"
+              strokeWidth="0.75"
               fill="currentColor"
               fillOpacity="0.03"
+              opacity="0.5"
             />
-            <circle cx="250" cy="90" r="3" fill="currentColor" opacity="0.5" />
+            {/* Center vein */}
+            <line x1="250" y1="55" x2="250" y2="175" stroke="currentColor" strokeWidth="0.5" opacity="0.35" />
+            
+            {/* Flanking leaf arcs */}
             <path
-              d="M250 30 C270 70 280 120 250 140 C220 120 230 70 250 30 Z"
+              d="M250 75 C265 110 268 145 250 165"
               stroke="currentColor"
-              strokeWidth="0.6"
+              strokeWidth="0.5"
               opacity="0.3"
+            />
+            <path
+              d="M250 75 C235 110 232 145 250 165"
+              stroke="currentColor"
+              strokeWidth="0.5"
+              opacity="0.3"
+            />
+
+            {/* Micro pearl dot on petal apex */}
+            <circle cx="250" cy="46" r="2" fill="currentColor" opacity="0.6" />
+          </g>
+        );
+      })}
+
+      {/* 16 Intermediate Rosette Petals (Offset by 11.25 deg) */}
+      {Array.from({ length: 16 }).map((_, i) => {
+        const angle = (i * 360) / 16 + 11.25;
+        return (
+          <g key={`inner-petal-${i}`} transform={`rotate(${angle} 250 250)`}>
+            <path
+              d="M250 110 C268 140 265 175 250 195 C235 175 232 140 250 110 Z"
+              stroke="currentColor"
+              strokeWidth="0.7"
+              fill="currentColor"
+              fillOpacity="0.04"
+              opacity="0.4"
+            />
+            <circle cx="250" cy="120" r="1.8" fill="currentColor" opacity="0.45" />
+          </g>
+        );
+      })}
+
+      {/* 8 Central Floral Medallion Petals */}
+      {Array.from({ length: 8 }).map((_, i) => {
+        const angle = (i * 360) / 8;
+        return (
+          <g key={`center-petal-${i}`} transform={`rotate(${angle} 250 250)`}>
+            <path
+              d="M250 195 C260 215 258 235 250 245 C242 235 240 215 250 195 Z"
+              stroke="currentColor"
+              strokeWidth="0.9"
+              fill="currentColor"
+              fillOpacity="0.06"
+              opacity="0.55"
             />
           </g>
         );

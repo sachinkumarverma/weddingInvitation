@@ -34,7 +34,19 @@ export default function App() {
   const activeWeddingData = isHindi ? weddingDataHindi : weddingData;
 
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
+
+  useEffect(() => {
     if (isEnvelopeOpen) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
@@ -45,15 +57,19 @@ export default function App() {
   }, [isEnvelopeOpen]);
 
   const handleEnvelopeOpened = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    document.body.style.overflow = 'auto';
     setIsEnvelopeOpen(false);
     setHasOpenedBefore(true);
     setActiveNavTab('events');
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'instant' });
-    }, 10);
   };
 
   const handleReopenEnvelope = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
     setActiveNavTab('card');
     setIsEnvelopeOpen(true);
   };

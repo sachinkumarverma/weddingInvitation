@@ -3,6 +3,7 @@ import { Calendar, Clock, MapPin, Plus } from 'lucide-react';
 import { WeddingConfig, WeddingEvent } from '../types';
 import { ImperialCorner, GoldDivider } from './Ornaments';
 import { useLanguage } from '../context/LanguageContext';
+import { ScrollReveal } from './ScrollReveal';
 
 const EventImageSlider: React.FC<{ images: string[]; name: string }> = ({ images, name }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -164,110 +165,111 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
             : 'grid-cols-1 md:grid-cols-2'
         }`}
       >
-        {filteredEvents.map((event) => (
-          <div
-            key={event.id}
-            className="relative rounded-3xl p-6 sm:p-8 royal-midnight-card flex flex-col justify-between group hover:border-[var(--accent-gold)] hover:shadow-[0_20px_50px_rgba(212,175,55,0.25)] transition-all duration-500"
-          >
-            <ImperialCorner position="top-left" size={36} />
-            <ImperialCorner position="top-right" size={36} />
-            <ImperialCorner position="bottom-left" size={36} />
-            <ImperialCorner position="bottom-right" size={36} />
+        {filteredEvents.map((event, index) => (
+          <ScrollReveal key={event.id} delay={(index % 2) * 0.12} className="h-full">
+            <div
+              className="relative rounded-3xl p-6 sm:p-8 royal-midnight-card flex flex-col justify-between group hover:border-[var(--accent-gold)] hover:shadow-[0_20px_50px_rgba(212,175,55,0.25)] transition-all duration-500 h-full"
+            >
+              <ImperialCorner position="top-left" size={36} />
+              <ImperialCorner position="top-right" size={36} />
+              <ImperialCorner position="bottom-left" size={36} />
+              <ImperialCorner position="bottom-right" size={36} />
 
-            <div className="flex flex-col flex-1">
-              {/* Event Header with Motif Emoji & Badge */}
-              <div className="flex items-center justify-between gap-2 mb-4">
-                <div 
-                  className="event-motif-box w-11 h-11 flex items-center justify-center rounded-xl border border-[var(--accent-gold)]/40 bg-[#181145] shadow-md"
-                >
-                  <span className="text-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">{getMotifIcon(event.motif)}</span>
-                </div>
-                
-                <div
-                  className="event-motif-badge flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--accent-gold)]/40 text-xs font-cinzel font-bold tracking-wider uppercase bg-black/40 text-[var(--accent-gold)] shadow-sm min-h-[30px]"
-                >
-                  <span className="w-1.5 h-1.5 rotate-45 border border-current opacity-80 shrink-0"></span>
-                  <span className="inline-block leading-none transform translate-y-[0.5px]">{getMotifLabel(event.motif)}</span>
-                  <span className="w-1.5 h-1.5 rotate-45 border border-current opacity-80 shrink-0"></span>
-                </div>
-              </div>
-
-              {/* Event Image Banner */}
-              {event.images && event.images.length > 1 ? (
-                <EventImageSlider images={event.images} name={event.name} />
-              ) : (
-                <div className="relative h-44 sm:h-64 rounded-2xl overflow-hidden mb-5 border border-[var(--accent-gold)]/30">
-                  <img
-                    src={event.image}
-                    alt={event.name}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 filter brightness-90"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary-dark)]/90 via-transparent to-transparent pointer-events-none event-image-overlay" />
-                  <div className="absolute bottom-3 left-4 right-4 z-10">
-                    <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#ffffff] drop-shadow-md">
-                      {event.name}
-                    </h3>
+              <div className="flex flex-col flex-1">
+                {/* Event Header with Motif Emoji & Badge */}
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <div 
+                    className="event-motif-box w-11 h-11 flex items-center justify-center rounded-xl border border-[var(--accent-gold)]/40 bg-[#181145] shadow-md"
+                  >
+                    <span className="text-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">{getMotifIcon(event.motif)}</span>
+                  </div>
+                  
+                  <div
+                    className="event-motif-badge flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[var(--accent-gold)]/40 text-xs font-cinzel font-bold tracking-wider uppercase bg-black/40 text-[var(--accent-gold)] shadow-sm min-h-[30px]"
+                  >
+                    <span className="w-1.5 h-1.5 rotate-45 border border-current opacity-80 shrink-0"></span>
+                    <span className="inline-block leading-none transform translate-y-[0.5px]">{getMotifLabel(event.motif)}</span>
+                    <span className="w-1.5 h-1.5 rotate-45 border border-current opacity-80 shrink-0"></span>
                   </div>
                 </div>
-              )}
 
-              {/* Subtitle & Description */}
-              {event.subTitle && (
-                <div className="font-script text-xl sm:text-2xl text-[var(--text-primary)] mb-2 tracking-wide">
-                  {event.subTitle}
-                </div>
-              )}
+                {/* Event Image Banner */}
+                {event.images && event.images.length > 1 ? (
+                  <EventImageSlider images={event.images} name={event.name} />
+                ) : (
+                  <div className="relative h-44 sm:h-64 rounded-2xl overflow-hidden mb-5 border border-[var(--accent-gold)]/30">
+                    <img
+                      src={event.image}
+                      alt={event.name}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 filter brightness-90"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary-dark)]/90 via-transparent to-transparent pointer-events-none event-image-overlay" />
+                    <div className="absolute bottom-3 left-4 right-4 z-10">
+                      <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-[#ffffff] drop-shadow-md">
+                        {event.name}
+                      </h3>
+                    </div>
+                  </div>
+                )}
 
-              <p className="text-xs sm:text-sm font-sans text-[var(--text-secondary)] leading-relaxed mb-6 flex-1">
-                {event.description}
-              </p>
+                {/* Subtitle & Description */}
+                {event.subTitle && (
+                  <div className="font-script text-xl sm:text-2xl text-[var(--text-primary)] mb-2 tracking-wide">
+                    {event.subTitle}
+                  </div>
+                )}
 
-              {/* Key Details List */}
-              <div className="space-y-2.5 py-4 border-y border-[var(--accent-gold)]/20 text-xs sm:text-sm font-sans">
-                <div className="flex items-center gap-2.5 text-[var(--text-primary)]">
-                  <Calendar className="w-4 h-4 text-[var(--accent-gold)] shrink-0" />
-                  <span className="font-semibold font-cinzel">{event.date}</span>
-                </div>
+                <p className="text-xs sm:text-sm font-sans text-[var(--text-secondary)] leading-relaxed mb-6 flex-1">
+                  {event.description}
+                </p>
 
-                <div className="flex items-center gap-2.5 text-[var(--text-primary)]">
-                  <Clock className="w-4 h-4 text-[var(--accent-gold)] shrink-0" />
-                  <span>{event.time}</span>
-                </div>
+                {/* Key Details List */}
+                <div className="space-y-2.5 py-4 border-y border-[var(--accent-gold)]/20 text-xs sm:text-sm font-sans">
+                  <div className="flex items-center gap-2.5 text-[var(--text-primary)]">
+                    <Calendar className="w-4 h-4 text-[var(--accent-gold)] shrink-0" />
+                    <span className="font-semibold font-cinzel">{event.date}</span>
+                  </div>
 
-                <div className="flex items-start gap-2.5 text-[var(--text-primary)]">
-                  <MapPin className="w-4 h-4 text-[var(--accent-gold)] shrink-0 mt-0.5" />
-                  <span>
-                    <strong>{event.venue}</strong> — {event.address}
-                  </span>
+                  <div className="flex items-center gap-2.5 text-[var(--text-primary)]">
+                    <Clock className="w-4 h-4 text-[var(--accent-gold)] shrink-0" />
+                    <span>{event.time}</span>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 text-[var(--text-primary)]">
+                    <MapPin className="w-4 h-4 text-[var(--accent-gold)] shrink-0 mt-0.5" />
+                    <span>
+                      <strong>{event.venue}</strong> — {event.address}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Action Buttons */}
-            <div className="flex items-center justify-between gap-3 mt-6 pt-2">
-              <button
-                type="button"
-                data-cursor="ADD"
-                onClick={() => handleAddToCalendar(event)}
-                className="royal-gold-btn flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-cinzel font-bold tracking-wider uppercase cursor-pointer whitespace-nowrap border border-[var(--accent-gold)]"
-              >
-                <Plus className="w-4 h-4 text-[#080616] shrink-0" />
-                <span className="leading-normal pt-0.5">{t('events.saveDateBtn')}</span>
-              </button>
+              {/* Action Buttons */}
+              <div className="flex items-center justify-between gap-3 mt-6 pt-2">
+                <button
+                  type="button"
+                  data-cursor="ADD"
+                  onClick={() => handleAddToCalendar(event)}
+                  className="royal-gold-btn flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-cinzel font-bold tracking-wider uppercase cursor-pointer whitespace-nowrap border border-[var(--accent-gold)]"
+                >
+                  <Plus className="w-4 h-4 text-[#080616] shrink-0" />
+                  <span className="leading-normal pt-0.5">{t('events.saveDateBtn')}</span>
+                </button>
 
-              <a
-                href={wedding.venue.googleMapsUrl}
-                target="_blank"
-                rel="noreferrer"
-                data-cursor="MAP"
-                className="royal-secondary-btn flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs font-cinzel font-semibold tracking-wider uppercase cursor-pointer whitespace-nowrap transition-all"
-              >
-                <MapPin className="w-4 h-4 text-[var(--accent-gold)] shrink-0" />
-                <span className="leading-normal pt-0.5">{t('events.directionsBtn')}</span>
-              </a>
+                <a
+                  href={wedding.venue.googleMapsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor="MAP"
+                  className="royal-secondary-btn flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs font-cinzel font-semibold tracking-wider uppercase cursor-pointer whitespace-nowrap transition-all"
+                >
+                  <MapPin className="w-4 h-4 text-[var(--accent-gold)] shrink-0" />
+                  <span className="leading-normal pt-0.5">{t('events.directionsBtn')}</span>
+                </a>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         ))}
       </div>
     </section>

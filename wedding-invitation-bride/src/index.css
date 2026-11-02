@@ -502,3 +502,191 @@
 [data-theme="pink"] .directions-icon {
   color: #000000 !important;
 }
+
+/* ========================================================================= */
+/* MODERN WEDDING BACKGROUND ANIMATIONS & VIEWPORT REVEALS                   */
+/* ========================================================================= */
+
+/* --- HERO MANDALA REVEAL & MAJESTIC ROTATION --- */
+.hero-mandala-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  animation: heroMandalaReveal 2.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  will-change: opacity, transform;
+}
+
+@keyframes heroMandalaReveal {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+  100% {
+    opacity: 0.24;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.animate-mandala-slow-spin {
+  animation: mandalaSlowSpin 220s linear infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+@keyframes mandalaSlowSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+[data-theme="pink"] .hero-mandala-container {
+  opacity: 0;
+  animation: heroMandalaRevealPink 2.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+@keyframes heroMandalaRevealPink {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+  100% {
+    opacity: 0.28;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* --- AMBIENT BOKEH & EDGE DUST PARTICLES --- */
+.ambient-bokeh-orb {
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.16) 0%, rgba(212, 175, 55, 0.03) 65%, transparent 100%);
+  filter: blur(50px);
+  will-change: transform, opacity;
+}
+
+[data-theme="pink"] .ambient-bokeh-orb {
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.16) 0%, rgba(251, 207, 232, 0.04) 65%, transparent 100%);
+  filter: blur(50px);
+}
+
+@keyframes bokehPulseDrift {
+  0% {
+    transform: scale(0.95) translate(0, 0);
+    opacity: 0.12;
+  }
+  50% {
+    opacity: 0.20;
+  }
+  100% {
+    transform: scale(1.08) translate(14px, 18px);
+    opacity: 0.14;
+  }
+}
+
+.ambient-gold-dust {
+  background: radial-gradient(circle, #fff3b0 0%, var(--accent-gold) 100%);
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.65);
+  will-change: transform, opacity;
+}
+
+[data-theme="pink"] .ambient-gold-dust {
+  background: radial-gradient(circle, #fdf2f8 0%, #f472b6 60%, #db2777 100%);
+  box-shadow: 0 0 6px rgba(219, 39, 119, 0.5);
+}
+
+@keyframes gentleDrift {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(8px, -18px);
+  }
+  100% {
+    transform: translate(-6px, -32px);
+  }
+}
+
+/* Occasional slow rose petals */
+@keyframes slowPetalFall {
+  0% {
+    transform: translateY(0vh) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.75;
+  }
+  50% {
+    transform: translateY(55vh) translateX(40px) rotate(180deg);
+  }
+  90% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateY(112vh) translateX(70px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+:root {
+  --petal-stop-1: #c2410c;
+  --petal-stop-2: #881337;
+  --petal-stop-3: #4c0519;
+}
+
+[data-theme="pink"] {
+  --petal-stop-1: #f472b6;
+  --petal-stop-2: #db2777;
+  --petal-stop-3: #be185d;
+}
+
+/* --- VIEWPORT SCROLL REVEALS --- */
+.scroll-reveal {
+  opacity: 0;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-up {
+  transform: translateY(24px);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- ACCESSIBILITY & PREFERS-REDUCED-MOTION --- */
+@media (prefers-reduced-motion: reduce) {
+  .hero-mandala-container {
+    opacity: 0.22 !important;
+    animation: none !important;
+    transform: translate(-50%, -50%) !important;
+  }
+  .animate-mandala-slow-spin {
+    animation: none !important;
+    transform: none !important;
+  }
+  .ambient-bokeh-orb {
+    animation: none !important;
+    opacity: 0.08 !important;
+  }
+  .ambient-gold-dust {
+    animation: none !important;
+  }
+  .ambient-rose-petal {
+    display: none !important;
+  }
+  .scroll-reveal,
+  .scroll-reveal-up {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

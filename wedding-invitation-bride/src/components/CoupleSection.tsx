@@ -2,6 +2,7 @@ import React from 'react';
 import { WeddingConfig } from '../types';
 import { RoyalCorner, GoldDivider } from './Ornaments';
 import { useLanguage } from '../context/LanguageContext';
+import { ScrollReveal } from './ScrollReveal';
 
 export const CoupleSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) => {
   const { groom, bride } = wedding.couple;
@@ -22,7 +23,8 @@ export const CoupleSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
       {/* Split Screen / Stacked Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
         {/* Bride Card */}
-        <div className="relative group rounded-3xl p-6 sm:p-8 bg-[var(--bg-card)]/80 border border-[var(--accent-gold)]/35 backdrop-blur-md shadow-[0_15px_40px_rgba(0,0,0,0.6)] flex flex-col justify-between transition-all duration-500 hover:border-[var(--accent-gold)] hover:shadow-[0_20px_50px_rgba(212,175,55,0.2)]">
+        <ScrollReveal delay={0.05} className="h-full">
+          <div className="relative group rounded-3xl p-6 sm:p-8 bg-[var(--bg-card)]/80 border border-[var(--accent-gold)]/35 backdrop-blur-md shadow-[0_15px_40px_rgba(0,0,0,0.6)] flex flex-col justify-between transition-all duration-500 hover:border-[var(--accent-gold)] hover:shadow-[0_20px_50px_rgba(212,175,55,0.2)] h-full">
           <RoyalCorner position="top-left" />
           <RoyalCorner position="top-right" />
           <RoyalCorner position="bottom-left" />
@@ -61,9 +63,11 @@ export const CoupleSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
             </div>
           </div>
         </div>
+      </ScrollReveal>
 
-        {/* Groom Card */}
-        <div className="relative group rounded-3xl p-6 sm:p-8 bg-[var(--bg-card)]/80 border border-[var(--accent-gold)]/35 backdrop-blur-md shadow-[0_15px_40px_rgba(0,0,0,0.6)] flex flex-col justify-between transition-all duration-500 hover:border-[var(--accent-gold)] hover:shadow-[0_20px_50px_rgba(212,175,55,0.2)]">
+      {/* Groom Card */}
+      <ScrollReveal delay={0.2} className="h-full">
+        <div className="relative group rounded-3xl p-6 sm:p-8 bg-[var(--bg-card)]/80 border border-[var(--accent-gold)]/35 backdrop-blur-md shadow-[0_15px_40px_rgba(0,0,0,0.6)] flex flex-col justify-between transition-all duration-500 hover:border-[var(--accent-gold)] hover:shadow-[0_20px_50px_rgba(212,175,55,0.2)] h-full">
           <RoyalCorner position="top-left" />
           <RoyalCorner position="top-right" />
           <RoyalCorner position="bottom-left" />
@@ -98,7 +102,8 @@ export const CoupleSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </ScrollReveal>
+    </div>
+  </section>
   );
 };

@@ -26,11 +26,6 @@ export const HeroSection: React.FC<{
       {/* Soft Vignette & Radial Glow */}
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary-dark)]/65 via-[var(--bg-secondary)]/45 to-[var(--bg-primary-dark)]/80 pointer-events-none" />
 
-      {/* Traditional Rotating Mandala in background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-25 text-[var(--accent-gold)] animate-[spin_120s_linear_infinite] pointer-events-none">
-        <MandalaBackground size={650} />
-      </div>
-
       {/* Main Hero Card Container - Imperial Cartouche */}
       <div className="relative z-30 max-w-3xl w-full mx-auto flex flex-col items-center px-6 py-10 sm:py-14 rounded-3xl royal-midnight-card">
         <ImperialCorner position="top-left" size={42} />
@@ -62,19 +57,29 @@ export const HeroSection: React.FC<{
           {t('hero.cordiallyInvite')}
         </p>
 
-        {/* Couple Names - The Crown of the Invitation */}
-        <div className="my-2 space-y-1 sm:space-y-0">
-          <h1 className="font-cinzel-dec text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient drop-shadow-title pt-2 pb-1 inline-block leading-tight">
+        {/* Couple Names - The Crown of the Invitation with Centered Rotating Royal Mandala Halo */}
+        <div className="relative my-2 space-y-1 sm:space-y-0 flex flex-col items-center justify-center">
+          {/* Traditional Rotating Mandala centered directly behind Satyam weds Harshita */}
+          <div 
+            className="hero-mandala-container text-[var(--accent-gold)] pointer-events-none select-none -z-10"
+            aria-hidden="true"
+          >
+            <div className="hero-mandala-spinner animate-mandala-slow-spin">
+              <MandalaBackground className="w-[480px] h-[480px] sm:w-[680px] sm:h-[680px] lg:w-[840px] lg:h-[840px] shrink-0" size={840} />
+            </div>
+          </div>
+
+          <h1 className="font-cinzel-dec text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient drop-shadow-title pt-2 pb-1 inline-block leading-tight relative z-10">
             {wedding.couple.groom.firstName}
           </h1>
           
-          <div className="flex items-center justify-center my-1 sm:my-2">
+          <div className="flex items-center justify-center my-1 sm:my-2 relative z-10">
             <span className="font-script text-3xl sm:text-4xl md:text-5xl text-[var(--accent-gold)] px-4 py-1">
               {t('common.weds')}
             </span>
           </div>
 
-          <h1 className="font-cinzel-dec text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient drop-shadow-title pt-1 pb-1 inline-block leading-tight">
+          <h1 className="font-cinzel-dec text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient drop-shadow-title pt-1 pb-1 inline-block leading-tight relative z-10">
             {wedding.couple.bride.firstName}
           </h1>
         </div>

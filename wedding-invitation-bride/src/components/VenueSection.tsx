@@ -3,6 +3,7 @@ import { MapPin, Navigation, Plane, Train, ExternalLink } from 'lucide-react';
 import { WeddingConfig } from '../types';
 import { RoyalCorner, GoldDivider } from './Ornaments';
 import { useLanguage } from '../context/LanguageContext';
+import { ScrollReveal } from './ScrollReveal';
 
 const venueImages = [
   '/marriage_garden1.webp',
@@ -43,7 +44,8 @@ export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
       </div>
 
       {/* Main Venue Showcase Card */}
-      <div className="relative rounded-3xl overflow-hidden border border-[var(--accent-gold)]/40 bg-[var(--bg-card)]/80 backdrop-blur-md shadow-2xl z-10">
+      <ScrollReveal delay={0.08}>
+        <div className="relative rounded-3xl overflow-hidden border border-[var(--accent-gold)]/40 bg-[var(--bg-card)]/80 backdrop-blur-md shadow-2xl z-10">
         <RoyalCorner position="top-left" />
         <RoyalCorner position="top-right" />
 
@@ -147,6 +149,7 @@ export const VenueSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding }) 
           </div>
         </div>
       </div>
-    </section>
+    </ScrollReveal>
+  </section>
   );
 };

@@ -4,6 +4,7 @@ import { WeddingConfig, WeddingEvent } from '../types';
 import { addToNativeCalendar } from '../utils/calendar';
 import { RoyalCorner, GoldDivider } from './Ornaments';
 import { useLanguage } from '../context/LanguageContext';
+import { ScrollReveal } from './ScrollReveal';
 
 const EventImageSlider: React.FC<{ images: string[]; name: string }> = ({ images, name }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -165,11 +166,11 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
             : 'grid-cols-1 md:grid-cols-2'
         }`}
       >
-        {filteredEvents.map((event) => (
-          <div
-            key={event.id}
-            className="relative rounded-3xl p-6 sm:p-8 bg-[var(--bg-card)]/85 border border-[var(--accent-gold)]/35 backdrop-blur-md shadow-[0_15px_40px_rgba(0,0,0,0.6)] flex flex-col justify-between group hover:border-[var(--accent-gold)] hover:shadow-[0_20px_50px_rgba(212,175,55,0.25)] transition-all duration-500"
-          >
+        {filteredEvents.map((event, index) => (
+          <ScrollReveal key={event.id} delay={(index % 2) * 0.12} className="h-full">
+            <div
+              className="relative rounded-3xl p-6 sm:p-8 bg-[var(--bg-card)]/85 border border-[var(--accent-gold)]/35 backdrop-blur-md shadow-[0_15px_40px_rgba(0,0,0,0.6)] flex flex-col justify-between group hover:border-[var(--accent-gold)] hover:shadow-[0_20px_50px_rgba(212,175,55,0.25)] transition-all duration-500 h-full"
+            >
             <RoyalCorner position="top-left" />
             <RoyalCorner position="top-right" />
             <RoyalCorner position="bottom-left" />
@@ -281,6 +282,7 @@ export const EventsSection: React.FC<{ wedding: WeddingConfig }> = ({ wedding })
               </a>
             </div>
           </div>
+        </ScrollReveal>
         ))}
       </div>
     </section>
