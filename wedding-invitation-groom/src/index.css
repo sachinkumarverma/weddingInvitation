@@ -1,0 +1,554 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-cormorant: 'Cormorant Garamond', serif;
+    --font-cinzel: 'Cinzel', serif;
+    --font-cinzel-decorative: 'Cinzel Decorative', serif;
+    --font-script: 'Allura', 'Great Vibes', cursive;
+    --font-devanagari-heading: 'Poppins', 'Noto Sans Devanagari', 'Anek Devanagari', sans-serif;
+    --font-devanagari-body: 'Poppins', 'Noto Sans Devanagari', 'Anek Devanagari', sans-serif;
+
+    /* Midnight Theme (Default) */
+    --bg-primary: #0f0b29;
+    --bg-primary-dark: #0a071c;
+    --bg-secondary: #1a1240;
+    --bg-card: rgba(15, 11, 41, 0.55);
+    --bg-card-dark: rgba(10, 7, 28, 0.68);
+    --bg-card-elevated: rgba(26, 18, 64, 0.78);
+    
+    --text-primary: #fdf8f6; /* Soft pearl white */
+    --text-secondary: #cbd5e1; /* Elegant silver grey */
+    --text-tertiary: #94a3b8; /* Muted grey */
+    
+    --accent-gold: #d4af37; /* Luxury gold */
+    --accent-gold-light: #fef08a;
+    
+    --brand-crimson: #d4af37;
+    --brand-crimson-dark: #b48b22;
+
+    --bg-image: 
+      linear-gradient(to bottom, rgba(15, 11, 41, 0) 0%, rgba(15, 11, 41, 0) 15%, rgba(15, 11, 41, 0) 85%, rgba(15, 11, 41, 1) 100%),
+      linear-gradient(rgba(15, 11, 41, 0.72), rgba(15, 11, 41, 0.72)),
+      url('/bg-midnight.webp');
+  }
+  
+  [data-theme="pink"] {
+    --bg-image: 
+      linear-gradient(to bottom, rgba(253, 242, 248, 0) 0%, rgba(253, 242, 248, 0) 15%, rgba(253, 242, 248, 0) 85%, rgba(253, 242, 248, 1) 100%),
+      linear-gradient(rgba(253, 242, 248, 0.8), rgba(253, 242, 248, 0.8)),
+      url('/bg-rose.webp');
+    --bg-primary: #fdf2f8;
+    --bg-primary-dark: #fce7f3;
+    --bg-secondary: #fbcfe8;
+    --bg-card: rgba(253, 242, 248, 0.7);
+    --bg-card-dark: rgba(252, 231, 243, 0.8);
+    --bg-card-elevated: rgba(251, 207, 232, 0.9);
+    
+    --text-primary: #2e1018; /* Very dark crimson/black */
+    --text-secondary: #4a2c34; /* Dark grey-maroon */
+    --text-tertiary: #6b4c54;
+    
+    --accent-gold: #db2777;
+    --accent-gold-light: #9d174d;
+    
+    --brand-crimson: #be185d;
+    --brand-crimson-dark: #9d174d;
+    
+    --grad-1: #2e1018;
+    --grad-3: #831843;
+    --grad-5: #4a2c34;
+    
+    --grad-light-1: #4a2c34;
+    --grad-light-2: #9d174d;
+    --grad-light-3: #2e1018;
+    --grad-light-4: #4a2c34;
+  }
+
+  [data-theme="midnight"] {
+    --bg-image: 
+      linear-gradient(to bottom, rgba(15, 11, 41, 0) 0%, rgba(15, 11, 41, 0) 15%, rgba(15, 11, 41, 0) 85%, rgba(15, 11, 41, 1) 100%),
+      linear-gradient(rgba(15, 11, 41, 0.72), rgba(15, 11, 41, 0.72)),
+      url('/bg-midnight.webp');
+    --bg-primary: #0f0b29;
+    --bg-primary-dark: #0a071c;
+    --bg-secondary: #1a1240;
+    --bg-card: rgba(15, 11, 41, 0.55);
+    --bg-card-dark: rgba(10, 7, 28, 0.68);
+    --bg-card-elevated: rgba(26, 18, 64, 0.78);
+    
+    --text-primary: #fdf8f6; /* Soft pearl white */
+    --text-secondary: #cbd5e1; /* Elegant silver grey */
+    --text-tertiary: #94a3b8; /* Muted grey */
+    
+    --accent-gold: #d4af37; /* Luxury gold */
+    --accent-gold-light: #fef08a;
+    
+    --brand-crimson: #d4af37;
+    --brand-crimson-dark: #b48b22;
+  }
+
+}
+
+.font-serif-luxury {
+  font-family: var(--font-cormorant), var(--font-devanagari-heading), Georgia, serif;
+}
+
+.font-cinzel {
+  font-family: var(--font-cinzel), var(--font-devanagari-heading), serif;
+}
+
+.font-cinzel-dec {
+  font-family: var(--font-cinzel-decorative), var(--font-devanagari-heading), serif;
+}
+
+.font-playfair {
+  font-family: var(--font-serif), var(--font-devanagari-heading), Georgia, serif;
+}
+
+.font-script {
+  font-family: var(--font-script), 'Poppins', var(--font-devanagari-heading), cursive;
+}
+
+.font-sans,
+.font-sans-clean {
+  font-family: var(--font-sans), var(--font-devanagari-body), sans-serif;
+}
+
+.font-hindi-heading {
+  font-family: var(--font-devanagari-heading), sans-serif;
+  font-weight: 700;
+}
+
+.font-hindi-body {
+  font-family: var(--font-devanagari-body), sans-serif;
+}
+
+/* In Hindi / Devanagari, letter spacing must NEVER be applied as it breaks the shirorekha (headline) into dashes */
+[data-lang="hi"] {
+  letter-spacing: normal !important;
+}
+
+[data-lang="hi"] :is(h1, h2, h3, h4, h5, h6, p, span, div, a, button, label, input, textarea, [class*="tracking-"]) {
+  letter-spacing: normal !important;
+}
+
+[data-lang="hi"] .font-serif-luxury {
+  font-family: var(--font-devanagari-heading), sans-serif;
+  letter-spacing: normal !important;
+}
+
+[data-lang="hi"] h1,
+[data-lang="hi"] h2,
+[data-lang="hi"] h3,
+[data-lang="hi"] h4,
+[data-lang="hi"] h5,
+[data-lang="hi"] h6,
+[data-lang="hi"] .font-cinzel,
+[data-lang="hi"] .font-cinzel-dec,
+[data-lang="hi"] .wax-seal-text span {
+  font-family: var(--font-devanagari-heading), sans-serif;
+  font-weight: 700;
+  letter-spacing: normal !important;
+}
+
+[data-lang="hi"] h1,
+[data-lang="hi"] h2,
+[data-lang="hi"] h3,
+[data-lang="hi"] h4,
+[data-lang="hi"] h5,
+[data-lang="hi"] h6 {
+  line-height: 1.35 !important;
+  padding-top: 0.15em;
+  padding-bottom: 0.08em;
+  overflow: visible !important;
+}
+
+[data-lang="hi"] .font-script {
+  font-family: 'Poppins', 'Noto Sans Devanagari', 'Anek Devanagari', sans-serif;
+  font-weight: 600;
+  letter-spacing: normal !important;
+  line-height: 1.35 !important;
+  padding-top: 0.12em;
+  padding-bottom: 0.08em;
+}
+
+[data-lang="hi"] .font-sans,
+[data-lang="hi"] .font-sans-clean {
+  font-family: var(--font-devanagari-body), sans-serif;
+  line-height: 1.5;
+}
+
+/* Ensure background gradient text clip has sufficient bounding box for Devanagari ascenders */
+[data-lang="hi"] .text-gold-gradient,
+[data-lang="hi"] .text-gold-light {
+  display: inline-block;
+  line-height: 1.35 !important;
+  padding-top: 0.18em !important;
+  padding-bottom: 0.08em !important;
+  margin-top: -0.1em;
+  overflow: visible !important;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Luxury Metallic Gold Foil Gradients & Shimmers */
+.text-gold-gradient {
+  background: linear-gradient(135deg, var(--grad-1, #fff3b0) 0%, var(--accent-gold) 35%, var(--grad-3, #aa7c11) 65%, var(--accent-gold-light) 85%, var(--grad-5, #f9e29c) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.text-gold-light {
+  background: linear-gradient(135deg, var(--grad-light-1, #ffffff) 0%, var(--grad-light-2, #f7e6b5) 40%, var(--grad-light-3, #dfb758) 75%, var(--grad-light-4, #fae69e) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.text-rose-gold {
+  background: linear-gradient(135deg, #ffe5e5 0%, #e2a76f 40%, #c97d60 70%, #ffd0c7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.bg-gold-metallic {
+  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--text-primary) 30%, #aa7c11 70%, var(--accent-gold) 100%);
+}
+
+.border-gold-subtle {
+  border-color: rgba(212, 175, 55, 0.28);
+}
+
+.border-gold-glow {
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15), inset 0 0 10px rgba(212, 175, 55, 0.05);
+}
+
+.gold-shadow {
+  box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.25);
+}
+
+.luxury-card {
+  background: rgba(25, 12, 16, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.luxury-card-hover {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-card-hover:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(212, 175, 55, 0.15);
+}
+
+/* Paper and Ornamental Texture overlays */
+.bg-noise {
+  background-image: radial-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.bg-mandala-pattern {
+  background-image: radial-gradient(circle at center, rgba(212, 175, 55, 0.08) 0, transparent 70%);
+}
+
+/* Animations */
+@keyframes shimmerGold {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmerGold 6s linear infinite;
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+.animate-gentle-float {
+  animation: gentleFloat 6s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Hide scrollbar across all browsers */
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  -webkit-user-select: none; /* Safari */
+  user-select: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 85%; /* Scales all rem-based Tailwind sizes down to exactly 85% */
+  }
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+
+/* Premium Universal Buttons */
+.btn-primary {
+  background: #c29100;
+  color: #000000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(194, 145, 0, 0.4);
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: #a37a00;
+  box-shadow: 0 6px 20px rgba(194, 145, 0, 0.6);
+  transform: scale(1.03);
+}
+.btn-primary svg {
+  color: #000000 !important;
+}
+
+.btn-secondary {
+  background: var(--bg-card-elevated);
+  border: 1px solid #d4af37;
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.btn-secondary:hover {
+  background: var(--bg-card);
+  border-color: #f3e5ab;
+  transform: translateY(-2px);
+}
+.btn-secondary svg {
+  color: #d4af37 !important;
+}
+
+/* Midnight Groom Architectural Styles */
+.royal-midnight-card {
+  background: linear-gradient(145deg, rgba(18, 13, 46, 0.65) 0%, rgba(9, 6, 24, 0.75) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.38);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+}
+
+.royal-arch-frame {
+  border-radius: 4.5rem 4.5rem 1.25rem 1.25rem;
+}
+
+.royal-gold-btn {
+  background: linear-gradient(135deg, #e5c158 0%, #d4af37 50%, #aa7c11 100%);
+  color: #080616 !important;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+  transition: all 0.3s ease;
+}
+.royal-gold-btn:hover {
+  background: linear-gradient(135deg, #fae69e 0%, #e5c158 50%, #b8860b 100%);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.55);
+  transform: translateY(-2px);
+}
+
+/* Base title shadow */
+.drop-shadow-title {
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.8));
+}
+.drop-shadow-title-sm {
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+/* --- PINK THEME SPECIFIC OVERRIDES --- */
+[data-theme="pink"] .drop-shadow-title {
+  filter: drop-shadow(0 2px 8px rgba(255,255,255,0.4)) !important;
+}
+[data-theme="pink"] .drop-shadow-title-sm {
+  filter: drop-shadow(0 1px 4px rgba(255,255,255,0.4)) !important;
+}
+[data-theme="pink"] .wax-seal-text span {
+  filter: none !important;
+  text-shadow: none !important;
+  -webkit-filter: none !important;
+}
+[data-theme="pink"] .wax-seal-text span:first-child {
+  color: #ffffff !important;
+}
+[data-theme="pink"] .wax-seal-text span:last-child {
+  color: #ffcc00 !important;
+}
+/* --- GLOBAL WHATSAPP BUTTON --- */
+.btn-whatsapp {
+  background: #00a83e !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4) !important;
+}
+.btn-whatsapp:hover {
+  background: #128C7E !important;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6) !important;
+}
+.btn-whatsapp svg {
+  color: #ffffff !important;
+}
+
+/* --- VENUE SECTION OVERRIDES --- */
+[data-theme="pink"] .venue-overlay {
+  background-image: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(20,4,9,0.5) 50%, transparent 100%) !important;
+}
+[data-theme="pink"] .venue-title {
+  color: #ffcc00 !important;
+}
+[data-theme="pink"] .venue-address {
+  color: #ffffff !important;
+}
+[data-theme="pink"] .venue-badge-text {
+  color: #ffffff !important;
+}
+[data-theme="pink"] .venue-badge-text svg {
+  color: #ffffff !important;
+}
+
+/* --- EVENT SECTION OVERRIDES --- */
+[data-theme="pink"] .event-image-overlay {
+  background-image: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%) !important;
+}
+
+/* --- EVENT BADGES (GLOBAL) --- */
+.event-badge-pooja {
+  background-color: #b91c1c !important; /* red */
+  color: #ffffff !important;
+  border-color: #b91c1c !important;
+}
+
+.event-badge-haldi {
+  background-color: #facc15 !important; /* yellow */
+  color: #000000 !important;
+  border-color: #facc15 !important;
+}
+
+.event-badge-mehendi {
+  background-color: #15803d !important; /* green */
+  color: #ffffff !important;
+  border-color: #15803d !important;
+}
+
+.event-badge-tilak {
+  background-color: #ea580c !important; /* saffron/vermilion */
+  color: #ffffff !important;
+  border-color: #ea580c !important;
+}
+
+.event-badge-sangeet {
+  background-color: #7c3aed !important; /* royal purple */
+  color: #ffffff !important;
+  border-color: #7c3aed !important;
+}
+
+.event-badge-wedding {
+  background-color: #d7006b !important; /* pink */
+  color: #ffffff !important;
+  border-color: #d7006b !important;
+}
+
+/* --- SCRATCH CARD SHAPE OVERRIDE --- */
+[data-theme="pink"] .scratch-card-wrapper {
+  max-width: 440px !important; /* Made wider for text */
+  filter: drop-shadow(0 15px 30px rgba(215, 0, 107, 0.4));
+}
+
+[data-theme="pink"] .scratch-card-container {
+  aspect-ratio: 1.05 / 1 !important; /* Natural SVG aspect ratio to give more height on mobile */
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><path d="M100 185C100 185 15 125 15 65C15 30 55 15 100 55C145 15 185 30 185 65C185 125 100 185 100 185Z" /></svg>');
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><path d="M100 185C100 185 15 125 15 65C15 30 55 15 100 55C145 15 185 30 185 65C185 125 100 185 100 185Z" /></svg>');
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+[data-theme="pink"] .scratch-content-wrapper {
+  padding-top: 3.5rem !important;
+  padding-bottom: 1.5rem !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+}
+
+/* Scale down font sizes inside the heart to fit perfectly */
+[data-theme="pink"] .scratch-content-wrapper h3 {
+  font-size: 0.95rem !important; 
+  line-height: 1.2 !important;
+  margin-top: 1.5rem !important; /* Push down just past the top cleft */
+}
+
+[data-theme="pink"] .scratch-content-wrapper .font-script {
+  font-size: 0.85rem !important; 
+  margin-top: 0.25rem !important;
+}
+
+[data-theme="pink"] .scratch-content-wrapper .font-sans {
+  font-size: 0.55rem !important; 
+  max-width: 190px !important; /* force text wrapping before it hits the curve */
+  color: #004d00 !important; /* dark green to make it visible */
+  margin-top: 0.25rem !important;
+}
+
+/* Move the top badge to the bottom in Pink Theme to avoid the top cleft */
+[data-theme="pink"] .scratch-content-wrapper .scratch-header {
+  order: 10 !important; /* Flexbox reordering */
+  margin-top: 0.5rem !important;
+  margin-bottom: 0 !important;
+  font-size: 8px !important;
+  padding: 0.2rem 0.5rem !important;
+  color: #ffffff !important; /* Keep text white */
+}
+
+[data-theme="pink"] .scratch-content-wrapper .scratch-footer {
+  font-size: 8px !important;
+  margin-top: 0.5rem !important;
+}
+
+[data-theme="pink"] .apple-maps-icon {
+  color: #000000 !important;
+}
+
+[data-theme="pink"] .scratch-card-container .royal-corner {
+  display: none !important;
+}
+
+[data-theme="pink"] .gallery-gradient {
+  background-image: linear-gradient(to top, #000000, rgba(20, 4, 9, 0.4), transparent) !important;
+}
+
+[data-theme="pink"] .directions-icon {
+  color: #000000 !important;
+}
