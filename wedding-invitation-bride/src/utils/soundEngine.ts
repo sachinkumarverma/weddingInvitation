@@ -11,14 +11,16 @@
 class SoundEngine {
   private ctx: AudioContext | null = null;
   private isPlayingMusic = false;
-  private musicInterval: any = null;
   private masterGain: GainNode | null = null;
-  private droneGain: GainNode | null = null;
   private isMuted = false;
+  private userMuted = false;
+  private isPlayPending = false;
   private audioElement: HTMLAudioElement | null = null;
+  private autoplayInitialized = false;
+  private listeners: Set<(playing: boolean) => void> = new Set();
 
   private initContext() {
-    if (!this.ctx) {
+    if (!this.ctx && typeof window !== 'undefined') {
       const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
       if (AudioCtx) {
         this.ctx = new AudioCtx();
@@ -28,8 +30,52 @@ class SoundEngine {
       }
     }
     if (this.ctx && this.ctx.state === 'suspended') {
-      this.ctx.resume();
+      this.ctx.resume().catch(() => {});
     }
+  }
+
+  private getAudioElement(): HTMLAudioElement | null {
+    if (typeof window === 'undefined') return null;
+    if (!this.audioElement) {
+      this.audioElement = new Audio('/Song.webm');
+      this.audioElement.loop = true;
+      this.audioElement.volume = 0.5;
+      this.audioElement.preload = 'auto';
+      this.audioElement.setAttribute('playsinline', 'true');
+      (this.audioElement as any).playsInline = true;
+
+      this.audioElement.addEventListener('play', () => {
+        this.isPlayingMusic = true;
+        this.notifyListeners();
+      });
+      this.audioElement.addEventListener('pause', () => {
+        this.isPlayingMusic = false;
+        this.notifyListeners();
+      });
+      this.audioElement.addEventListener('ended', () => {
+        this.isPlayingMusic = false;
+        this.notifyListeners();
+      });
+    }
+    return this.audioElement;
+  }
+
+  public subscribe(listener: (playing: boolean) => void): () => void {
+    this.listeners.add(listener);
+    listener(this.isPlayingMusic);
+    return () => {
+      this.listeners.delete(listener);
+    };
+  }
+
+  private notifyListeners() {
+    this.listeners.forEach((listener) => {
+      try {
+        listener(this.isPlayingMusic);
+      } catch (e) {
+        console.warn('Sound listener error:', e);
+      }
+    });
   }
 
   // Play a soft acoustic chime / sitar pluck note
@@ -197,20 +243,35 @@ class SoundEngine {
   }
 
   // Start continuous soothing ambient wedding background melody
-  public startAmbientMelody() {
-    if (this.isPlayingMusic) return;
-    this.isPlayingMusic = true;
+  public async startAmbientMelody(): Promise<boolean> {
+    if (this.userMuted) return false;
 
-    if (!this.audioElement) {
-      this.audioElement = new Audio('/Song.webm');
-      this.audioElement.loop = true;
-      this.audioElement.volume = 0.5;
+    const audio = this.getAudioElement();
+    if (!audio) return false;
+
+    if (this.isPlayingMusic && !audio.paused) {
+      return true;
     }
-    
-    this.audioElement.play().catch(e => {
-      console.warn('Audio playback failed', e);
+
+    if (this.isPlayPending) {
+      return true;
+    }
+
+    try {
+      this.isPlayPending = true;
+      await audio.play();
+      this.isPlayingMusic = true;
+      this.initContext();
+      this.notifyListeners();
+      return true;
+    } catch {
+      // Autoplay blocked by browser policy without gesture; waiting for interaction
       this.isPlayingMusic = false;
-    });
+      this.notifyListeners();
+      return false;
+    } finally {
+      this.isPlayPending = false;
+    }
   }
 
   public stopAmbientMelody() {
@@ -218,21 +279,83 @@ class SoundEngine {
     if (this.audioElement) {
       this.audioElement.pause();
     }
+    this.notifyListeners();
   }
 
   public toggleMusic(): boolean {
-    if (this.isPlayingMusic) {
-      this.stopAmbientMelody();
-      return false;
-    } else {
+    if (this.userMuted) {
+      this.userMuted = false;
       this.startAmbientMelody();
+      this.notifyListeners();
       return true;
+    } else {
+      if (this.isPlayingMusic) {
+        this.userMuted = true;
+        this.stopAmbientMelody();
+        this.notifyListeners();
+        return false;
+      } else {
+        this.userMuted = false;
+        this.startAmbientMelody();
+        this.notifyListeners();
+        return true;
+      }
     }
   }
 
   public getMusicStatus(): boolean {
     return this.isPlayingMusic;
   }
+
+  public isUserMuted(): boolean {
+    return this.userMuted;
+  }
+
+  // Autoplay by default: attempts immediate playback, and registers gesture unlock fallback
+  public initAutoplay() {
+    if (this.autoplayInitialized || typeof window === 'undefined') return;
+    this.autoplayInitialized = true;
+
+    // 1. Preload and attempt playback immediately
+    this.startAmbientMelody();
+
+    // 2. Set up fallback interaction listeners in case browser blocks unmuted playback without gesture
+    const interactionEvents = ['click', 'touchstart', 'touchend', 'pointerdown', 'keydown'];
+
+    const removeListeners = () => {
+      interactionEvents.forEach((evt) => {
+        window.removeEventListener(evt, handleFirstInteraction, true);
+        document.removeEventListener(evt, handleFirstInteraction, true);
+      });
+    };
+
+    const handleFirstInteraction = () => {
+      if (this.userMuted) {
+        removeListeners();
+        return;
+      }
+
+      this.startAmbientMelody().then((success) => {
+        if (success || this.isPlayingMusic) {
+          removeListeners();
+        }
+      });
+    };
+
+    interactionEvents.forEach((evt) => {
+      window.addEventListener(evt, handleFirstInteraction, { capture: true, passive: true });
+      document.addEventListener(evt, handleFirstInteraction, { capture: true, passive: true });
+    });
+  }
 }
 
 export const sound = new SoundEngine();
+
+// Auto-initialize sound playback by default on load
+if (typeof window !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => sound.initAutoplay());
+  } else {
+    sound.initAutoplay();
+  }
+}

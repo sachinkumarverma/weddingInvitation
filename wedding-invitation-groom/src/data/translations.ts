@@ -27,7 +27,7 @@ export const translations = {
       familyInvites: "Pathak Family Invites You",
       royalInvitation: "Royal Wedding Invitation",
       areGettingMarried: "are getting married",
-      tapToOpen: "Tap to open invitation",
+      tapToOpen: "Tap to Open Invitation & Play Music 🎵",
       baratTime: "Barat & Varmala: 07:00 PM Onwards",
     },
     scratch: {
@@ -145,7 +145,7 @@ export const translations = {
       familyInvites: "पाठक परिवार सस्नेह आमंत्रित करता है",
       royalInvitation: "शुभ विवाह निमंत्रण पत्र",
       areGettingMarried: "का पावन विवाह संस्कार",
-      tapToOpen: "पावन निमंत्रण पत्र खोलने के लिए स्पर्श करें",
+      tapToOpen: "पावन निमंत्रण पत्र खोलें व संगीत सुनें 🎵",
       baratTime: "बारात एवं जयमाला: सायं ०७:०० बजे से",
     },
     scratch: {

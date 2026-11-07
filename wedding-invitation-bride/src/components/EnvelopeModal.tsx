@@ -50,6 +50,9 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
 
+    // Ensure ambient wedding music is playing when entering the invitation
+    sound.startAmbientMelody();
+
     // If already visited, just close instantly without door animation
     if (hasOpenedBefore) {
       onOpened();
@@ -116,9 +119,10 @@ export const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
   return (
     <div
       id="envelope-modal-overlay"
+      onClick={stage === 'closed' ? handleOpenEnvelope : undefined}
       className={`fixed inset-0 z-50 overflow-hidden ${
         isDismissing ? 'pointer-events-none' : ''
-      }`}
+      } ${stage === 'closed' ? 'cursor-pointer' : ''}`}
     >
       {/* Left Royal Door */}
       <div 

@@ -21,6 +21,7 @@ import { FinalSection } from './components/FinalSection';
 import { EasterEggModal } from './components/EasterEggs';
 import { ThemeSwitcher } from './components/ThemeSwitcher';
 import { useSecurity } from './utils/useSecurity';
+import { sound } from './utils/soundEngine';
 
 export default function App() {
   useSecurity();
@@ -34,6 +35,7 @@ export default function App() {
   const activeWeddingData = isHindi ? weddingDataHindi : weddingData;
 
   useEffect(() => {
+    sound.initAutoplay();
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
