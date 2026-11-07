@@ -27,7 +27,7 @@ export const translations = {
       familyInvites: "Dubey Family Invites You",
       royalInvitation: "Royal Wedding Invitation",
       areGettingMarried: "are getting married",
-      tapToOpen: "Tap to Open Invitation & Play Music 🎵",
+      tapToOpen: "Tap to Open Invitation",
       baratTime: "Barat & Varmala: 07:00 PM Onwards",
     },
     scratch: {
