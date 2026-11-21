@@ -5,7 +5,7 @@ interface ScrollRevealProps {
   className?: string;
   delay?: number; // Delay in seconds (e.g. 0.1, 0.2)
   direction?: 'up' | 'none';
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
 }
 
 export const ScrollReveal: React.FC<ScrollRevealProps> = ({

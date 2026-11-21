@@ -22,6 +22,7 @@ import { EasterEggModal } from './components/EasterEggs';
 import { ThemeSwitcher } from './components/ThemeSwitcher';
 import { useSecurity } from './utils/useSecurity';
 import { sound } from './utils/soundEngine';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App() {
   useSecurity();
@@ -216,6 +217,9 @@ export default function App() {
         isOpen={isEasterEggOpen}
         onClose={() => setIsEasterEggOpen(false)}
       />
+
+      {/* Vercel Web Analytics */}
+      <Analytics />
     </div>
   );
 }

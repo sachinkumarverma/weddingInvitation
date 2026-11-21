@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Calendar, Clock, MapPin, Plus } from 'lucide-react';
 import { WeddingConfig, WeddingEvent } from '../types';
+import { addToNativeCalendar } from '../utils/calendar';
 import { ImperialCorner, GoldDivider } from './Ornaments';
 import { useLanguage } from '../context/LanguageContext';
 import { ScrollReveal } from './ScrollReveal';
